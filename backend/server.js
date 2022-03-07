@@ -8,6 +8,37 @@ const connection = require("./database/db")
 app.use(cors());
 
 app.use(express.json());
+//hamza 
+
+
+
+
+
+
+
+
+
+
+//batool
+
+
+
+
+
+
+
+
+
+
+
+//me 
+
+
+
+
+
+
+
 
 const PORT = 5000;
 
