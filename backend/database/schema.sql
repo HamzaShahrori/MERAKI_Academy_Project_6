@@ -41,8 +41,9 @@ PRIMARY KEY (id)
 
 CREATE TABLE booking(
 id INT AUTO_INCREMENT NOT NULL,
-booking_day INT,
-booking_time VARCHAR(255),
+booking_day VARCHAR(255),
+date_booking DATE,
+booking_time INT,
 Payment INT,
 halls_id INT,
 FOREIGN KEY (halls_id) REFERENCES halls(id),
