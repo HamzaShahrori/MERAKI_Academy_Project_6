@@ -6,31 +6,21 @@ const createNewRole = (req, res) => {
 
   const data = [role_name];
 
-  connection.query(query,data,(err,result)=>{
-      console.log(result);
+  connection.query(query, data, (err, result) => {
+    console.log(result);
 
     if (err) {
-        res.status(500).json({
-          success: false,
-          message: `Server Error`,
-        });
-      }
-
-
-
-      res.status(201).json({
-        success: true,
-        message: `Sucess role created`,
-        result: result,
+      res.status(500).json({
+        success: false,
+        message: `Server Error`,
       });
-    
-
-  })
- 
-   
-
-
-   
-
     }
+
+    res.status(201).json({
+      success: true,
+      message: `Sucess role created`,
+      result: result,
+    });
+  });
+};
 module.exports = { createNewRole };
