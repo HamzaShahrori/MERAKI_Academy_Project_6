@@ -9,7 +9,8 @@ app.use(cors());
 
 app.use(express.json());
 //hamza 
-
+const hallsRouter = require("./routes/halls");
+app.use("/halls",hallsRouter)
 
 
 
