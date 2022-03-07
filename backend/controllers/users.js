@@ -11,13 +11,9 @@ const query = `INSERT INTO users (firstName,lastName,country,email,pass,reservat
 
 const data = [firstName,lastName,country,email,hashingPassword,reservation,publishing,role_id]
 
-console.log(data);
 
 connection.query(query,data,(err,result)=>{
-console.log(result);
-
 if (err){
-    // console.log(err);
   return  res.status(409).json({
         success:false,
         message: `The email already exists`
@@ -26,18 +22,12 @@ if (err){
 
 
 
-res.status(200).json({
+return res.status(200).json({
     success: true,
     message: `Success User Added`,
     result: result
 })
-
-
-})
-
-
-}
-
+})}
 module.exports = {
     createNewUser
 }

@@ -5,8 +5,8 @@ const app = express();
 const db = require("./database/db");
 const connection = require("./database/db")
 
-app.use(cors());
 
+app.use(cors());
 app.use(express.json());
 //hamza 
 const hallsRouter = require("./routes/halls");
@@ -21,9 +21,10 @@ app.use("/halls",hallsRouter)
 
 
 //batool
-
-
-
+const loginRouter = require("./routes/login")
+app.use("/login", loginRouter)
+const bookingRouter = require("./routes/booking")
+app.use("/booking",bookingRouter )
 
 
 
@@ -34,7 +35,7 @@ app.use("/halls",hallsRouter)
 
 //me 
 const roleRouter = require("./routes/roles");
-app.use("/roles",roleRouter)
+app.use("/roles", roleRouter)
 
 const userRouter = require("./routes/users");
 app.use("/users",userRouter)
