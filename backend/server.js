@@ -32,8 +32,8 @@ app.use(express.json());
 
 
 //me 
-
-
+const roleRouter = require("./routes/roles");
+app.use("/roles",roleRouter)
 
 
 
