@@ -5,13 +5,19 @@ import { Routes, Route } from "react-router-dom";
 import Navigation from "./component/NabBar/Navigation";
 import New from "./component/NewHalls/New";
 import Home from "./component/Home/Home";
+import AllHalls from "./component/allHalls/AllHalls";
 function App() {
+
+  const [num, setNum] = useState(1);
+  const [categoryNav,setCategory] = useState("")
+  const [search,setSearch] = useState("")
   return (
     <>
-    <Navigation/>
+    <Navigation setSearch={setSearch}/>
       <Routes>
         <Route path="/new" element={<New />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/all" element={<AllHalls num = {num} setNum={setNum} search={search} />} />
       </Routes>
     </>
   );
