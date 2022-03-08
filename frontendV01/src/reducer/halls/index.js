@@ -32,6 +32,7 @@ const hallsReducer = (state = initialState, { type, payload }) => {
       return state;
   }
 };
+// 
 
 export default hallsReducer;
 
