@@ -1,11 +1,24 @@
 const connection = require("../database/db");
 
 const createNewHall = (req, res) => {
-  const { hall_image, hall_name, video, hall_description, hall_address } =
-    req.body;
-  const query = `INSERT INTO Halls (hall_image, hall_name,video, hall_description,hall_address) VALUES (?,?,?,?,?); `;
+  const {
+    hall_image,
+    hall_name,
+    video,
+    hall_description,
+    hall_address,
+    price,
+  } = req.body;
+  const query = `INSERT INTO Halls (hall_image, hall_name,video, hall_description,hall_address,price) VALUES (?,?,?,?,?,?); `;
 
-  const data = [hall_image, hall_name, video, hall_description, hall_address];
+  const data = [
+    hall_image,
+    hall_name,
+    video,
+    hall_description,
+    hall_address,
+    price,
+  ];
 
   connection.query(query, data, (err, result) => {
     if (err) {
@@ -169,6 +182,113 @@ const getHallsByAddress = (req, res) => {
   });
 };
 
+const updateThePriceAfterDiscount = (req, res) => {
+  const { discount } = req.body;
+
+  const id = [req.body.id];
+  const query = `SELECT * FROM Halls  WHERE id=? and is_deleted=0`;
+  connection.query(query, id, (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        message: `Server Error`,
+      });
+    } else if (!result[0]) {
+      return res.status(200).json({
+        success: false,
+        message: `No Halls at id ${id}`,
+      });
+    } else if (result[0] && discount > 1) {
+      let price = result[0].price - result[0].price * (discount / 100);
+      let PriceBeforeDiscount = result[0].price;
+
+      const query = `UPDATE Halls SET price=?,discount=?,PriceBeforeDiscount=? WHERE id=?;`;
+      const data = [price, discount, PriceBeforeDiscount, id];
+      connection.query(query, data, (err, results) => {
+        if (err) {
+          return res.status(500).json({
+            success: false,
+            massage: `Server error`,
+            err: err,
+          });
+        } else if (results.changedRows == 0) {
+          res.status(404).json({
+            success: false,
+            massage: `The Hall: ${id} is not found`,
+            err: err,
+          });
+        }
+
+        res.status(201).json({
+          success: true,
+          massage: `Hall Price updated`,
+          price: price,
+          PriceBeforeDiscount: PriceBeforeDiscount,
+        });
+      });
+    } else if (result[0] && discount == 1) {
+      let price = result[0].PriceBeforeDiscount;
+      let PriceBeforeDiscount = result[0].PriceBeforeDiscount;
+
+      const query = `UPDATE Halls SET price=?,discount=?,PriceBeforeDiscount=? WHERE id=?;`;
+      const data = [price, discount, PriceBeforeDiscount, id];
+      connection.query(query, data, (err, results) => {
+        if (err) {
+          return res.status(500).json({
+            success: false,
+            massage: `Server error`,
+            err: err,
+          });
+        } else if (results.changedRows == 0) {
+          res.status(404).json({
+            success: false,
+            massage: `The Hall: ${id} is not found`,
+            err: err,
+          });
+        }
+
+        res.status(201).json({
+          success: true,
+          massage: `Hall Price updated`,
+          price: price,
+          PriceBeforeDiscount: PriceBeforeDiscount,
+        });
+      });
+    }
+  });
+};
+
+const getHallsByDiscount = (req, res) => {
+  const limit = 4;
+  const page = req.query.page;
+
+  const offset = (page - 1) * limit;
+
+  const query = `SELECT * FROM Halls WHERE Halls.discount>1 AND  Halls.is_deleted=0 ORDER BY discount DESC  limit ${limit} OFFSET ${offset} `;
+
+  connection.query(query, (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        message: `Server Error`,
+      });
+    }
+
+    if (!result[0]) {
+      return res.status(200).json({
+        success: false,
+        message: `NO Halls Yet `,
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: `all Halls by discount`,
+      result: result,
+    });
+  });
+};
+
 module.exports = {
   createNewHall,
   getAllHalls,
@@ -176,4 +296,6 @@ module.exports = {
   updateHallById,
   deleteHallById,
   getHallsByAddress,
+  updateThePriceAfterDiscount,
+  getHallsByDiscount,
 };
