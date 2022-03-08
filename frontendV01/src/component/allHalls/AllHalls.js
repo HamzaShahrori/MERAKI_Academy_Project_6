@@ -13,7 +13,7 @@ const AllHalls = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  //
   const getAllHalls = async () => {
     try {
       const res = await axios.get(
