@@ -22,7 +22,7 @@ function App() {
     <Navigation setSearch={setSearch}/>
       <Routes>
         <Route path="/new" element={<New />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
       
