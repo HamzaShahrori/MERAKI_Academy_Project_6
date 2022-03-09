@@ -7,7 +7,6 @@ const Navigation = ({ setSearch }) => {
 
   return (
     <>
-    
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
           <a class="navbar-brand" href="/home">
@@ -46,6 +45,11 @@ const Navigation = ({ setSearch }) => {
                 <Link to="/login" class="nav-link">
                   {" "}
                   Login
+                </Link>
+              </li>
+              <li class="nav-item">
+                <Link to="/all" class="nav-link active" aria-current="page">
+                  all
                 </Link>
               </li>
               {/* <li class="nav-item dropdown">
