@@ -21,35 +21,7 @@ const New = ({ num, setNum, search }) => {
     };
   });
 
-  const getAllHalls = async () => {
-    try {
-      const res = await axios.get(`http://localhost:5000/page`, {
-        headers: { Authorization: `Bearer ${state.token}` },
-      });
-
-      if (!res.data.success) {
-        if (num == 0) {
-          setNum(num + 1);
-        } else {
-          setNum(num - 1);
-        }
-      }
-      if (res.data.success) {
-        dispatch(setHalls(res.data.result));
-      }
-    } catch (error) {
-      if (error) {
-        if (num == 0) {
-          setNum(num + 1);
-        } else {
-          setNum(num - 1);
-        }
-      }
-      if (!error) {
-        return setMessage(error.response.data.message);
-      }
-    }
-  };
+  
   const addNewHall = () => {
     axios
       .post(
@@ -77,7 +49,6 @@ const New = ({ num, setNum, search }) => {
             price,
           })
         );
-        getAllHalls();
         setMessage("the hall has been created successfully");
       })
       .catch((err) => {
