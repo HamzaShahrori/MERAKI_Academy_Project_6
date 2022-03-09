@@ -4,46 +4,52 @@ import { useDispatch, useSelector } from "react-redux";
 import { setHalls } from "../../reducer/halls/index";
 import { useNavigate } from "react-router-dom";
 
-const AllHalls = ({num,setNum,search}) => {
-
-  const [message,setMessage] = useState("")
+const AllHalls = ({ num, setNum, search }) => {
+  const [message, setMessage] = useState("");
 
   const state = useSelector((state) => {
     return {
+      token: state.loginReducer.token,
       halls: state.hallsReducer.halls,
     };
   });
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  //
+  //hall_image
+  // hall_name
+  // video
+  // hall_description
+  // hall_address
+  // price
+  // discount
+  // PriceBeforeDiscount
+
   const getAllHalls = async () => {
     try {
-      const res = await axios.get(
-        `http://localhost:3000/page`,
-        // { headers: { Authorization: `Bearer ${state.token}` } }
-      );
-
-if (!res.data.success){
-   if (num == 0 ){
-     setNum(num+1)
-   } else {
-     setNum(num-1)
-   }
-}
-
+      const res = await axios.get(`http://localhost:5000/halls/page?page=${num}`, {
+        headers: { Authorization: `Bearer ${state.token}` },
+      });
+console.log("res",res.data);
+      if (!res.data.success) {
+        if (num == 0) {
+          setNum(num + 1);
+        } else {
+          setNum(num - 1);
+        }
+      }
       if (res.data.success) {
         dispatch(setHalls(res.data.result));
+        console.log(res.data.result);
       }
     } catch (error) {
-
-if (error){
-   if (num ==0){
-     setNum(num +1)
-   } else {
-     setNum(num-1)
-   }
-}
+      if (error) {
+        if (num == 0) {
+          setNum(num + 1);
+        } else {
+          setNum(num - 1);
+        }
+      }
 
       if (!error) {
         return setMessage(error.response.data.message);
@@ -51,97 +57,96 @@ if (error){
     }
   };
 
-  const getHallByAddress = async () =>{
-
+  const getHallByAddress = async () => {
     try {
-     const res = await axios.get(`http://localhost:5000/halls/page/hall_address/?page=1&hall_address=Amman`, { headers: { Authorization: `Bearer ${state.token}` } }
-     )
+      const res = await axios.get(
+        `http://localhost:5000/halls/page/hall_address/?page=1&hall_address=Amman`,
+        { headers: { Authorization: `Bearer ${state.token}` } }
+      );
 
-if (!res.data.success){
-if (num == 0){
-  setNum(num + 1)
-} else {
-  setNum(num - 1)
-}
-}
-
-
-if (res.data.success){
-  dispatch(setHalls(res.data.result))
-}
-
-     
-    } catch (error) {
-      
-        if (num == 0){
-          setNum (num + 1)
+      if (!res.data.success) {
+        if (num == 0) {
+          setNum(num + 1);
         } else {
-          setNum (num - 1)
+          setNum(num - 1);
         }
-      
+      }
 
-if (!error){
-  return setMessage(error.response.data.message)
-}
+      if (res.data.success) {
+        dispatch(setHalls(res.data.result));
+      }
+    } catch (error) {
+      if (num == 0) {
+        setNum(num + 1);
+      } else {
+        setNum(num - 1);
+      }
 
+      if (!error) {
+        return setMessage(error.response.data.message);
+      }
     }
-  
-  }
+  };
 
-useEffect(()=>{
+  useEffect(() => {
+    getAllHalls();
+  });
 
-})
-
-
-useEffect(()=>{
-  
-})
-
-
+  useEffect(() => {});
+  console.log(state.halls);
 
   return (
     <>
-    
       {state.halls &&
-        state.halls.filter((hallinfo)=>{
+        state.halls
+          .filter((hallinfo) => {
+            if ((search = "")) {
+              return hallinfo;
+            } else if (
+              hallinfo.hall_address
+                .toLowerCase()
+                .includes(search.toLowerCase()) ||
+              hallinfo.hall_name.toLowerCase().includes(search.toLowerCase())
+            ) {
+              return hallinfo;
+            }
+          })
+          .map((element, i) => (
+            <div key={i}>
+              <img src={element.image}></img>
+              <p>{element.hall_name}</p>
+              <video>{element.video}</video>
+              <p>{element.hall_description}</p>
+              <p>{element.price}</p>
+              <p>{element.discount}</p>
+              <p>{element.PriceBeforeDiscount}</p>
+            </div>
+  ))}
+      
 
-        if (search = "") {
-          return hallinfo
-        } else if (hallinfo.hall_address.toLowerCase().includes(search.toLowerCase()) || hallinfo.hall_name.toLowerCase().includes(search.toLowerCase())){
+      {num == 1 ? (
+        <></>
+      ) : (
+        <a
+          onClick={() => {
+            setNum(num - 1);
+          }}
+        >
+          <span>BACK</span>
+        </a>
+      )}
 
-         return hallinfo
-        }
-
-
-
-        }).map((element, i) => {
-          <div key={i}></div>;
-        })}
-
-{num == 1 ? <></> 
-
-: 
-<a onClick={()=>{
- setNum ( num - 1) 
-}}>
-
-<span>BACK</span>
-</a>
-
-}
-
-{num == 1 ? <a onClick={()=>{
- setNum( num + 1 )
-}}> 
-<span>Next</span>
-
-</a> :
-<> </>
-
-
-}
-
-
+      {num == 1 ? (
+        <a
+          onClick={() => {
+            setNum(num + 1);
+          }}
+        >
+          <span>Next</span>
+        </a>
+      ) : (
+        <> </>
+      )}
     </>
   );
 };
