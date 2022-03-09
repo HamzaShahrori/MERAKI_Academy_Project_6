@@ -1,12 +1,20 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { setHalls } from "../../reducer/halls/index";
+import { setHalls, updateHalls, deleteHalls } from "../../reducer/halls/index";
 import { useNavigate } from "react-router-dom";
 
 const AllHalls = ({ num, setNum, searchHall }) => {
   const [message, setMessage] = useState("");
-
+  const [hallId, setHallId] = useState("");
+  const [hall_image, setHall_image] = useState("");
+  const [hall_name, setHall_name] = useState("");
+  const [video, setVideo] = useState("");
+  const [discount, setDiscount] = useState("");
+  const [priceBeforeDiscount, setPriceBeforeDiscount] = useState("");
+  const [hall_description, setHall_description] = useState("");
+  const [hall_address, setHall_address] = useState("");
+  const [price, setPrice] = useState("");
   const state = useSelector((state) => {
     return {
       token: state.loginReducer.token,
@@ -27,6 +35,13 @@ const AllHalls = ({ num, setNum, searchHall }) => {
 
   const getAllHalls = async () => {
     try {
+      const res = await axios.get(
+        `http://localhost:5000/halls/page?page=${num}`,
+        {
+          headers: { Authorization: `Bearer ${state.token}` },
+        }
+      );
+
       const res = await axios.get(`http://localhost:5000/halls/page?page=${num}`, {
         headers: { Authorization: `Bearer ${state.token}` },
       });
@@ -85,7 +100,26 @@ const AllHalls = ({ num, setNum, searchHall }) => {
       }
     }
   };
-
+  //---------------------------------------------------------------------------
+  const updateHallById = async (id) => {
+    try {
+      const result = await axios.put(`http://localhost:5000//halls/${id}`, {
+        hall_image,
+        hall_name,
+        video,
+        hall_description,
+        hall_address,
+        price,
+        discount,
+        priceBeforeDiscount,
+      });
+      dispatch(updateHalls(result.data.results));
+      getAllHalls();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  //------------------------------------------------------------------------------
   useEffect(() => {
     getAllHalls();
   });
@@ -126,9 +160,45 @@ const AllHalls = ({ num, setNum, searchHall }) => {
               <p>{element.price}</p>
               <p>{element.discount}</p>
               <p>{element.PriceBeforeDiscount}</p>
+              <input
+                type="text"
+                placeholder="image"
+                defaultValue={element.hall_image}
+                onChange={(e) => setHall_image(e.target.value)}
+              ></input>{" "}
+               <input
+                type="text"
+                placeholder="Video"
+                defaultValue={element.video}
+                onChange={(e) => setVideo(e.target.value)}
+              ></input>
+               <input
+                type="text"
+                placeholder="name"
+                defaultValue={element.hall_name}
+                onChange={(e) => setHall_name(e.target.value)}
+              ></input>
+               <input
+                type="text"
+                placeholder="description"
+                defaultValue={element.hall_description}
+                onChange={(e) => setHall_description(e.target.value)}
+              ></input>
+               <input
+                type="text"
+                placeholder="price"
+                defaultValue={element.price}
+                onChange={(e) => setPrice(e.target.value)}
+              ></input>
+              <button
+                onClick={() => {
+                  updateHallById(hallId);
+                }}
+              >
+                update
+              </button>
             </div>
-  ))}
-      
+          ))}
 
       {num == 1 ? (
         <></>
