@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setHalls } from "../../reducer/halls/index";
 import { useNavigate } from "react-router-dom";
 
-const AllHalls = ({ num, setNum, search }) => {
+const AllHalls = ({ num, setNum, searchHall }) => {
   const [message, setMessage] = useState("");
 
   const state = useSelector((state) => {
@@ -30,7 +30,6 @@ const AllHalls = ({ num, setNum, search }) => {
       const res = await axios.get(`http://localhost:5000/halls/page?page=${num}`, {
         headers: { Authorization: `Bearer ${state.token}` },
       });
-console.log("res",res.data);
       if (!res.data.success) {
         if (num == 0) {
           setNum(num + 1);
@@ -40,7 +39,6 @@ console.log("res",res.data);
       }
       if (res.data.success) {
         dispatch(setHalls(res.data.result));
-        console.log(res.data.result);
       }
     } catch (error) {
       if (error) {
@@ -93,21 +91,29 @@ console.log("res",res.data);
   });
 
   useEffect(() => {});
-  console.log(state.halls);
 
+
+// console.log(state.halls);
   return (
     <>
       {state.halls &&
         state.halls
           .filter((hallinfo) => {
-            if ((search = "")) {
+  //  console.log("info",hallinfo);
+  // console.log("seARCH",searchHall); //
+
+            if ((searchHall == "")) {
+
               return hallinfo;
+
             } else if (
               hallinfo.hall_address
                 .toLowerCase()
-                .includes(search.toLowerCase()) ||
-              hallinfo.hall_name.toLowerCase().includes(search.toLowerCase())
+                .includes(searchHall.toLowerCase()) ||
+              hallinfo.hall_name.toLowerCase().includes(searchHall.toLowerCase())
             ) {
+              console.log("after",searchHall); //
+
               return hallinfo;
             }
           })
