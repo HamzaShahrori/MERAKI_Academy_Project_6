@@ -49,7 +49,7 @@ const Register = () => {
     <br/>
     <br/>
     <br/>
-    
+
       <div className="Form">
         <>
           <p className="Title">Register:</p>
@@ -117,6 +117,7 @@ const Register = () => {
             : message && <div className="ErrorMessage">{message}</div>}
         </>
       </div>
+      
     </>
   );
 };
