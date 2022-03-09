@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import axios from "axios";
+import axios from "axios";
 import "./Home.css";
 
 const Home = () => {
@@ -26,6 +26,19 @@ const Home = () => {
     <span class="visually-hidden">Next</span>
   </button>
 </div>
+<>
+{/* <div>
+<div className="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="..."/>
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+</div> */}
+</>
+{/*  */}
       {/* <div className="container">
         <nav>
           <h1 className="logo">TEST</h1>
