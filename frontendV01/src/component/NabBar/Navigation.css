@@ -1,0 +1,9 @@
+.navbar{
+    /* position: absolute !important; */
+    z-index: 1 !important;
+    width: 100% !important;
+ 
+    box-sizing: border-box !important;
+    /* background: rgb(43, 41, 41) !important; */
+    opacity: 0.6 !important;
+}
