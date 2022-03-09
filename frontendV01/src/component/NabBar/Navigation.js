@@ -19,6 +19,7 @@ const Navigation = ({ setSearch }) => {
   }
   return (
     <>
+
   
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
@@ -64,6 +65,13 @@ const Navigation = ({ setSearch }) => {
                   {" "}
                   Login
                 </Link>
+              </li>
+              <li class="nav-item">
+                <Link to="/all" class="nav-link active" aria-current="page">
+                  all
+                </Link>
+              </li>
+
               </li></>)}
              
               {/* <li class="nav-item dropdown">

@@ -25,6 +25,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+      
         <Route path="/all" element={<AllHalls num = {num} setNum={setNum} search={search} />} />
       </Routes>
     </>

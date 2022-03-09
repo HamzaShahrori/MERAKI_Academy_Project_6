@@ -2,23 +2,58 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./New.css";
 import { useDispatch, useSelector } from "react-redux";
-
 import { AddHall, setHalls } from "../../reducer/halls/index";
-const New = () => {
+const New = ({ num, setNum, search }) => {
   const [message, setMessage] = useState("");
-
   const [hall_image, setHall_image] = useState("");
   const [hall_name, setHall_name] = useState("");
   const [video, setVideo] = useState("");
+  const [discount, setDiscount] = useState("");
+  const [priceBeforeDiscount, setPriceBeforeDiscount] = useState("");
   const [hall_description, setHall_description] = useState("");
   const [hall_address, setHall_address] = useState("");
   const [price, setPrice] = useState("");
   const dispatch = useDispatch();
+  const state = useSelector((state) => {
+    return {
+      token: state.loginReducer.token,
+      halls: state.hallsReducer.halls,
+    };
+  });
 
+  const getAllHalls = async () => {
+    try {
+      const res = await axios.get(`http://localhost:5000/page`, {
+        headers: { Authorization: `Bearer ${state.token}` },
+      });
+
+      if (!res.data.success) {
+        if (num == 0) {
+          setNum(num + 1);
+        } else {
+          setNum(num - 1);
+        }
+      }
+      if (res.data.success) {
+        dispatch(setHalls(res.data.result));
+      }
+    } catch (error) {
+      if (error) {
+        if (num == 0) {
+          setNum(num + 1);
+        } else {
+          setNum(num - 1);
+        }
+      }
+      if (!error) {
+        return setMessage(error.response.data.message);
+      }
+    }
+  };
   const addNewHall = () => {
     axios
       .post(
-        "http://localhost:3000/halls",
+        "http://localhost:5000/halls",
         {
           hall_image,
           hall_name,
@@ -26,8 +61,10 @@ const New = () => {
           hall_description,
           hall_address,
           price,
+          discount,
+          priceBeforeDiscount,
         },
-        // { headers: { Authorization: `Bearer ${token}` } }
+        { headers: { Authorization: `Bearer ${state.token}` } }
       )
       .then((result) => {
         dispatch(
@@ -40,6 +77,7 @@ const New = () => {
             price,
           })
         );
+        getAllHalls();
         setMessage("the hall has been created successfully");
       })
       .catch((err) => {
@@ -48,9 +86,6 @@ const New = () => {
   };
   return (
     <>
-    <br/>
-    <br/>
-    <br/>
       <div>
         <input
           className="name"
@@ -78,8 +113,9 @@ const New = () => {
         ></input>
         <input
           type="text"
+          placeholder="video"
           onChange={(e) => {
-            setVideo(e.target.files[0]);
+            setVideo(e.target.value);
           }}
         ></input>
         <input
@@ -97,6 +133,20 @@ const New = () => {
             setHall_description(e.target.value);
           }}
         ></textarea>
+        <input
+          placeholder="priceBeforeDiscount"
+          type="text"
+          onChange={(e) => {
+            setPriceBeforeDiscount(e.target.value);
+          }}
+        ></input>
+        <input
+          placeholder="discount"
+          type="text"
+          onChange={(e) => {
+            setDiscount(e.target.value);
+          }}
+        ></input>
         <button className="new" onClick={addNewHall}>
           New Hall
         </button>
