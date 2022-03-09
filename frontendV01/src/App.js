@@ -16,17 +16,17 @@ function App() {
 
   const [num, setNum] = useState(1);
   const [categoryNav,setCategory] = useState("")
-  const [search,setSearch] = useState("")
+  const [searchHall,setSearchHall] = useState("")
   return (
     <>
-    <Navigation setSearch={setSearch}/>
+    <Navigation setSearchHall={setSearchHall}/>
       <Routes>
         <Route path="/new" element={<New />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
       
-        <Route path="/all" element={<AllHalls num = {num} setNum={setNum} search={search} />} />
+        <Route path="/all" element={<AllHalls num = {num} setNum={setNum} searchHall={searchHall} />} />
       </Routes>
     </>
   );
