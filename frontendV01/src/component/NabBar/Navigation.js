@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../../reducer/login";
 import { useNavigate } from "react-router-dom";
 import "./Navigation.css";
-const Navigation = ({ setSearch }) => {
+const Navigation = ({ setSearchHall }) => {
   const dispatch = useDispatch();
   const state = useSelector((state) => {
     return {
@@ -94,16 +94,14 @@ const Navigation = ({ setSearch }) => {
             <form class="d-flex">
               <input
                 onChange={(e) => {
-                  setSearch(e.target.value);
+                  setSearchHall(e.target.value);
                 }}
                 class="form-control me-2"
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
               />
-              <button class="btn btn-outline-success" type="submit">
-                Search
-              </button>
+              
             </form>
           </div>
         </div>
