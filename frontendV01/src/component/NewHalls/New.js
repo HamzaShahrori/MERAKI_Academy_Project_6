@@ -48,6 +48,9 @@ const New = () => {
   };
   return (
     <>
+    <br/>
+    <br/>
+    <br/>
       <div>
         <input
           className="name"
