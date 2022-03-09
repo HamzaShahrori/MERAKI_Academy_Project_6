@@ -62,3 +62,20 @@ margin-right: 150px;
     height: auto;
    z-index: -100;
 }
+
+
+#carouselExampleControls{
+   position: relative !important;
+  
+  
+   min-height:100vh !important;
+  
+   overflow: hidden !important;
+   overflow-x: hidden !important;
+   overflow-y: hidden !important;
+   min-height: 100vh !important;
+   width: 100% !important;
+   display: flex !important;
+   flex-wrap: wrap !important;
+   position: relative !important;
+}

@@ -101,6 +101,7 @@ useEffect(()=>{
 
   return (
     <>
+    
       {state.halls &&
         state.halls.filter((hallinfo)=>{
 
