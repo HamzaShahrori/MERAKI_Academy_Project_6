@@ -65,14 +65,15 @@ const Navigation = ({ setSearch }) => {
                   {" "}
                   Login
                 </Link>
-              </li>
+       
+             
+
+              </li></>)}
               <li class="nav-item">
                 <Link to="/all" class="nav-link active" aria-current="page">
                   all
                 </Link>
               </li>
-
-              </li></>)}
              
               {/* <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
