@@ -35,12 +35,7 @@ const AllHalls = ({ num, setNum, searchHall }) => {
 
   const getAllHalls = async () => {
     try {
-      const res = await axios.get(
-        `http://localhost:5000/halls/page?page=${num}`,
-        {
-          headers: { Authorization: `Bearer ${state.token}` },
-        }
-      );
+      
 
       const res = await axios.get(`http://localhost:5000/halls/page?page=${num}`, {
         headers: { Authorization: `Bearer ${state.token}` },
