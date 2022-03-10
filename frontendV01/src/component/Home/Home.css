@@ -1,81 +1,199 @@
-.container{
-    min-height: 100vh;
+/* .container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+} */
+
+/* .container nav {
+  width: 100%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  padding: 30px 5% 0;
+  z-index: 100;
+} */
+
+/* .logo {
+  width: 140px;
+  cursor: pointer;
+} */
+
+/* .container nav ul {
+  flex: 1;
+  text-align: right;
+  margin-right: 150px;
+} */
+/* .container nav ul li {
+  display: inline-block;
+  margin: 0 42px;
+} */
+
+/* .container nav ul li a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 500;
+} */
+
+/* .left-col {
+  flex-basis: 62%;
+  padding: 10% 5% 0;
+  background-color: rgb(218, 18, 111);
+} */
+
+/* .right-col {
+  flex-basis: 38%;
+  padding: 10% 3% 0;
+
+  position: relative;
+} */
+
+/* .back-video {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  z-index: -100;
+} */
+
+/* .carousel-inner {
+  position: relative !important; */
+
+  /* height: 50rem !important; */
+
+
+
+  /* width:  !important; */
+ 
+  /* position: relative !important; */
+  /* object-fit: cover !important; */
+/* } */
+
+
+.containerHero{
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
+    min-height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url(../../image/6.avif);
+    background-size: cover;
+    background-position: center;
     position: relative;
-  
+    padding: 0 8%;
+}
+
+.contentHero{
+    padding-top: 180px;
+    color: #fff;
+}
+
+.contentHero h1{
+font-size: 60px;
+}
+
+.btuHeroBook button{
+    background: #fff;
+    color: #000;
+    padding: 8px 30px;
+    border-radius: 4px;
+}
+
+.discount{
+    padding: 40px;
+    background: #eee;
+}
+
+.discount h3{
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 30px;
+    padding: 10px;
 }
 
 
-.container nav{
-    width: 100%;
-    position: absolute;
+.cover-discount{
     display: flex;
     align-items: center;
-    padding: 30px 5% 0;
-    z-index:100 ;
+    justify-content: center;
+    
 
 }
 
-.logo{
-    width: 140px;
-    cursor: pointer;
+.cover-discount .cover{
+    background: linear-gradient(-55deg,#f1f0f0 29%,#9e9696 29.1%,#050505 68%,#eee8e8 68.1%);
+    border-radius: 5px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    box-shadow: 0 5px 10px #0005;
+    overflow: hidden;
+    width: 90%;
 }
 
-.container nav ul{
-flex: 1 ;
-text-align: right;
-margin-right: 150px;
-
-}
-.container nav ul li{
-    display: inline-block;
-    margin: 0 42px;
+.cover-discount .cover .logoMarriage{
+    flex: 1 1 250px;
+    padding: 25px;
+    text-align: center;
 }
 
-.container nav ul li a{
-    text-decoration: none;
-    color: #000;
-    font-weight: 500;
+.cover-discount .cover .logoMarriage img{
+    width:70% ;
+}
+
+.cover-discount .cover .contentDiscount{
+    flex: 1 1 250px;
+    text-align: center;
+    padding: 10px;
+    text-transform: uppercase;
+}
+
+.cover-discount .cover .contentDiscount span{
+    color: #eee;
+    font-size: 25px;
+}
+
+.cover-discount .cover .contentDiscount h3{
+    color: #fff;
+    font-size: 40px;
+}
+
+.cover-discount .cover .contentDiscount p{
+    color: #eee;
+    font-size: 20px;
+    padding: 10px 0;
+}
+
+.cover-discount .cover .contentDiscount .btnDiscount{
+    display: block;
+    height: 40px;
+    width: 150px;
+   line-height: 40px;
+   background: #fff;
+   color: #030303;
+   margin: 5px auto;
+   text-decoration: none;
+   cursor: pointer;
+   border-radius: 4px;
 }
 
 
-.left-col{
-    flex-basis: 62%;
-    padding: 10% 5% 0;
-    background-color: rgb(218, 18, 111);
-}
-
-.right-col{
-    flex-basis: 38%;
-    padding: 10% 3% 0;
-   
+.cover-discount .cover .wowDiscount{
     position: relative;
+    bottom: -33px;
+    padding: 10px;
+    flex: 1 1 250px;
+    
 }
 
-.back-video{
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: auto;
-   z-index: -100;
+.cover-discount .cover .wowDiscount img{
+    width:75%;
 }
 
 
-#carouselExampleControls{
-   position: relative !important;
-  
-  
-   min-height:100vh !important;
-  
-   overflow: hidden !important;
-   overflow-x: hidden !important;
-   overflow-y: hidden !important;
-   min-height: 100vh !important;
-   width: 100% !important;
-   display: flex !important;
-   flex-wrap: wrap !important;
-   position: relative !important;
+@media (max-width:768px) {
+    .cover-discount .cover .wowDiscount{
+        display: none;
+    }
 }
