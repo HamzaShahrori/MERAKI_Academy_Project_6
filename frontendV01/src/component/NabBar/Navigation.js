@@ -89,6 +89,18 @@ const Navigation = ({ setSearchHall, setPlace, setAllHalls, setNum }) => {
               </li>
 
               <li class="nav-item dropdown">
+
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Category
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+           
+            <li><a class="dropdown-item" href="#">Irbid</a></li>
+            <li><hr class="dropdown-divider"/></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+
                 <Link
                   to="all"
                   class="nav-link dropdown-toggle"
@@ -149,6 +161,7 @@ const Navigation = ({ setSearchHall, setPlace, setAllHalls, setNum }) => {
                   </li>
                 </ul>
               </li>
+
               {/* <li class="nav-item">
           <a class="nav-link disabled">Disabled</a>
         </li> */}
