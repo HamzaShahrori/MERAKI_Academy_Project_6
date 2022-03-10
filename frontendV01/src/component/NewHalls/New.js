@@ -110,7 +110,7 @@ const New = ({ num, setNum, search }) => {
             <option value="9">Tafila</option>
             <option value="10">Karak</option>
             <option value="11">Aqapa</option>
-            <option value="12">Gawr</option>
+            <option value="12">Ajlun</option>
           </select>
           <label for="floatingSelect">Select Address</label>
         </div>
