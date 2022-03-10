@@ -3,9 +3,9 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setHallsHasDiscount } from "../../reducer/halls/index";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const AllHallsWithDiscount = ({ num, setNum, searchHall }) => {
- 
   const state = useSelector((state) => {
     return {
       token: state.loginReducer.token,
@@ -32,7 +32,6 @@ const AllHallsWithDiscount = ({ num, setNum, searchHall }) => {
         }
       }
       if (res.data.success) {
-         
         dispatch(setHallsHasDiscount(res.data.result));
       }
     } catch (error) {
@@ -54,37 +53,58 @@ const AllHallsWithDiscount = ({ num, setNum, searchHall }) => {
     getAllHallsHasDiscount();
   });
 
-//   console.log(state.hallsWithDiscount);
+  //   console.log(state.hallsWithDiscount);
   return (
     <>
-    <br/>
-    <br/>
-      {state.hallsWithDiscount &&
-        state.hallsWithDiscount.filter((hallInfo) => {
-          if (searchHall == "") {
-            return hallInfo;
-          } else if (
-            hallInfo.hall_address
-              .toLowerCase()
-              .includes(searchHall.toLowerCase()) ||
-            hallInfo.hall_name.toLowerCase().includes(searchHall.toLowerCase())
-          ) {
-            
+      <br />
+      <br />
+      <br />
+      {/* <div className="container"> */}
+        <div className="row">
+          {state.hallsWithDiscount &&
+            state.hallsWithDiscount
+              .filter((hallInfo) => {
+                if (searchHall == "") {
+                  return hallInfo;
+                } else if (
+                  hallInfo.hall_address
+                    .toLowerCase()
+                    .includes(searchHall.toLowerCase()) ||
+                  hallInfo.hall_name
+                    .toLowerCase()
+                    .includes(searchHall.toLowerCase())
+                ) {
+                  return hallInfo;
+                }
+              })
+              .map((element, i) => (
+                <div
+                  key={i}
+                  className="card col-12 col-sm-6 col-md-4 col-lg-3 
 
-            return hallInfo;
-          }
-        }).map((element, i) => (
-          <div key={i}>
-            <img src={element.image}></img>
-            <p>{element.hall_name}</p>
-            <video>{element.video}</video>
-            <p>{element.hall_description}</p>
-            <p>{element.price}</p>
-            <p>{element.discount}%</p>
-            <p>{element.PriceBeforeDiscount}</p>
-          </div>
-        ))}
+              "
+                  style={{ width: "18rem" }}
+                >
+                  <img
+                    src={element.hall_image}
+                    class="card-img-top"
+                    alt="..."
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">{element.hall_name}</h5>
+                    <p class="card-text beforeDiscount">
+                      {element.PriceBeforeDiscount}
+                    </p>
+                    <p class="card-text">{element.price}</p>
 
+                    <Link to="/" class="btn btn-primary">
+                      Booking Now
+                    </Link>
+                  </div>
+                </div>
+              ))}
+        </div>
+      {/* </div> */}
       {num == 1 ? (
         <></>
       ) : (
