@@ -147,13 +147,16 @@ const AllHalls = ({ num, setNum, searchHall }) => {
             }
           })
           .map((element, i) => (
+           <>
+            <br/>
+            <br/>
             <div key={i}>
               <img src={element.image}></img>
               <p>{element.hall_name}</p>
               <video>{element.video}</video>
               <p>{element.hall_description}</p>
               <p>{element.price}</p>
-              <p>{element.discount}</p>
+              <p>{element.discount}%</p>
               <p>{element.PriceBeforeDiscount}</p>
               <input
                 type="text"
@@ -193,6 +196,7 @@ const AllHalls = ({ num, setNum, searchHall }) => {
                 update
               </button>
             </div>
+            </>
           ))}
 
       {num == 1 ? (

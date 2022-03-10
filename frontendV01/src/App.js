@@ -9,6 +9,8 @@ import New from "./component/NewHalls/New";
 import Home from "./component/Home/Home";
 import Login from "./component/login/Login";
 
+import AllHallsWithDiscount from "./component/Discount/Discount";
+
 import Register from "./component/register/Register";
 
 import AllHalls from "./component/allHalls/AllHalls";
@@ -24,6 +26,7 @@ function App() {
         <Route path="/new" element={<New />} />
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/discounts" element={<AllHallsWithDiscount num = {num} setNum={setNum} searchHall={searchHall} />} />
         <Route path="/login" element={<Login />} />
       
         <Route path="/all" element={<AllHalls num = {num} setNum={setNum} searchHall={searchHall} />} />

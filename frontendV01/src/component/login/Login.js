@@ -33,7 +33,7 @@ const Login = () => {
         dispatch(loginUser(result.data.token));
 
         localStorage.setItem("token", result.data.token);
-        navigate("/home");
+        navigate("/");
       })
 
       .catch((err) => {
