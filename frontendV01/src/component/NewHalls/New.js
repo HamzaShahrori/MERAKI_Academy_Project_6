@@ -56,12 +56,11 @@ const New = ({ num, setNum, search }) => {
   };
   return (
     <>
-    <br/>
-    <br/>
+      <br />
+      <br />
 
       <div>
-    
-        {/* <input
+        <input
           className="name"
           type="text"
           placeholder="name"
@@ -91,10 +90,10 @@ const New = ({ num, setNum, search }) => {
           onChange={(e) => {
             setVideo(e.target.value);
           }}
-        ></input> */}
-    
+        ></input>
         <div class="form-floating">
-          <select style={{width:"200px"}}
+          <select
+            style={{ width: "200px" }}
             class="form-select"
             id="floatingSelect"
             aria-label="Floating label select example"
