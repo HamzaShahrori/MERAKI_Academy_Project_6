@@ -17,11 +17,14 @@ import AllHalls from "./component/allHalls/AllHalls";
 function App() {
 
   const [num, setNum] = useState(1);
-  const [categoryNav,setCategory] = useState("")
+  const [allHalls,setALLHalls] = useState("")
+  const [place,setPlace] = useState("")
   const [searchHall,setSearchHall] = useState("")
+
+console.log(place);
   return (
     <>
-    <Navigation setSearchHall={setSearchHall}/>
+    <Navigation setSearchHall={setSearchHall} setALLHalls={setALLHalls} setPlace={setPlace} setNum={setNum}   />
       <Routes>
         <Route path="/new" element={<New />} />
         <Route path="/" element={<Home />} />
@@ -29,7 +32,7 @@ function App() {
         <Route path="/discounts" element={<AllHallsWithDiscount num = {num} setNum={setNum} searchHall={searchHall} />} />
         <Route path="/login" element={<Login />} />
       
-        <Route path="/all" element={<AllHalls num = {num} setNum={setNum} searchHall={searchHall} />} />
+        <Route path="/all" element={<AllHalls num = {num} setNum={setNum} searchHall={searchHall} allHalls={allHalls} place={place} />} />
       </Routes>
     </>
   );
