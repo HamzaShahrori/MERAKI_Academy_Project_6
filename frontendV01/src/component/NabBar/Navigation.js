@@ -73,7 +73,7 @@ const Navigation = ({ setSearchHall, setPlace, setAllHalls, setNum }) => {
                   </li>
                 </>
               )}
-              <li class="nav-item">
+              {/* <li class="nav-item">
                 <Link
                   to="/all"
                   class="nav-link active"
@@ -86,57 +86,60 @@ const Navigation = ({ setSearchHall, setPlace, setAllHalls, setNum }) => {
                 >
                   all
                 </Link>
-              </li>
+              </li> */}
 
               <li class="nav-item dropdown">
-
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Category
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-           
-            <li><a class="dropdown-item" href="#">Irbid</a></li>
-            <li><hr class="dropdown-divider"/></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-
                 <Link
-                  to="all"
+                  to="/all"
                   class="nav-link dropdown-toggle"
                   id="navbarDropdown"
                   role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
-                  // onClick={()=>{
-                  // setAllHalls(true);
-                  // setAddress(false);
-                  // setNum(1);
-                  // }}
                 >
                   Category
                 </Link>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+<li>
+                <Link
+                  to="/all"
+                  class="nav-link active"
+                  aria-current="page"
+                  onClick={() => {
+                    setAllHalls(true);
+                    setPlace(false);
+                    setNum(1);
+                  }}
+                > 
+                  all
+                </Link>
+                </li>
+
+
+
                   <li>
                     <Link
-                      to="/all"
-                      className="dropdown-item"
+                      to="/address"
+                      class="dropdown-item"
                       onClick={() => {
-                        setPlace(`Amman`);
                         setAllHalls(false);
+                        setPlace(`Amman`);
                         setNum(1);
                       }}
                     >
                       Amman
                     </Link>
                   </li>
+
                   <li>
                     <Link
                       to="/all"
                       class="dropdown-item"
                       onClick={() => {
-                        setPlace("Irbid");
                         setAllHalls(false);
+
+                        setPlace(`Irbid`);
                         setNum(1);
                       }}
                     >
@@ -151,16 +154,41 @@ const Navigation = ({ setSearchHall, setPlace, setAllHalls, setNum }) => {
                       to="/all"
                       class="dropdown-item"
                       onClick={() => {
-                        setPlace("Something else here");
                         setAllHalls(false);
+
+                        setPlace(`else`);
                         setNum(1);
                       }}
                     >
                       Something else here
                     </Link>
                   </li>
+
+
+                
+
+
+
+
+
                 </ul>
-            
+              </li>
+
+              <li>
+                    <Link
+                      to="/address"
+                      class="dropdown-item"
+                      onClick={() => {
+                        setAllHalls(false);
+
+                        setPlace(`else`);
+                        setNum(1);
+                      }}
+                    >
+Test                    </Link>
+                  </li>
+
+
 
               {/* <li class="nav-item">
           <a class="nav-link disabled">Disabled</a>
