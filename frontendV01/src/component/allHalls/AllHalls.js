@@ -164,6 +164,9 @@ const AllHalls = ({ num, setNum, searchHall }) => {
           })
 
           .map((element, i) => (
+           <>
+            <br/>
+            <br/>
             <div key={i}>
               {/* <img src={element.hall_image}></img>
               <p>{element.hall_name}</p>
@@ -173,8 +176,42 @@ const AllHalls = ({ num, setNum, searchHall }) => {
               </video>
               <p>{element.hall_description}</p>
               <p>{element.price}</p>
-              <p>{element.discount}</p>
-              <p>{element.priceBeforeDiscount}</p>
+
+              <p>{element.discount}%</p>
+              <p>{element.PriceBeforeDiscount}</p>
+              <input
+                type="text"
+                placeholder="image"
+                defaultValue={element.hall_image}
+                onChange={(e) => setHall_image(e.target.value)}
+              ></input>{" "}
+               <input
+                type="text"
+                placeholder="Video"
+                defaultValue={element.video}
+                onChange={(e) => setVideo(e.target.value)}
+              ></input>
+               <input
+                type="text"
+                placeholder="name"
+                defaultValue={element.hall_name}
+                onChange={(e) => setHall_name(e.target.value)}
+              ></input>
+               <input
+                type="text"
+                placeholder="description"
+                defaultValue={element.hall_description}
+                onChange={(e) => setHall_description(e.target.value)}
+              ></input>
+               <input
+                type="text"
+                placeholder="price"
+                defaultValue={element.price}
+                onChange={(e) => setPrice(e.target.value)}
+              ></input>
+
+           
+
               <button
                 onClick={() => {
                   updateHallById(element.id);
@@ -354,6 +391,7 @@ const AllHalls = ({ num, setNum, searchHall }) => {
               </div>
               <button onClick={() => deleteHallById(element.id)}>delete</button>
             </div>
+            </>
           ))}
 
       {num == 1 ? (

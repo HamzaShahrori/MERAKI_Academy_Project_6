@@ -56,6 +56,9 @@ const New = ({ num, setNum, search }) => {
   };
   return (
     <>
+    <br/>
+    <br/>
+
       <div>
     
         {/* <input

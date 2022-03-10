@@ -1,11 +1,15 @@
 const initialState = {
   halls: [],
+  hallsWithDiscount:[]
 };
 const hallsReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case "SET_HALLS":
       return { ...state, halls: payload };
 
+
+      case "SET_HALLSHasDiscount":
+        return { ...state.hallsWithDiscount, hallsWithDiscount: payload };
     case "ADD_HALLS":
       return { ...state, halls: [...state.halls, payload] };
 
@@ -53,4 +57,11 @@ export const updateHalls = (updateHall) => {
 
 export const deleteHalls = (id) => {
   return { type: "DELETE_HALLS", payload: id };
+};
+
+export const setHallsHasDiscount = (halls) => {
+  return {
+    type: "SET_HALLSHasDiscount",
+    payload: halls,
+  };
 };
