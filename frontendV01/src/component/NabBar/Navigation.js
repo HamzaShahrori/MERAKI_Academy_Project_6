@@ -24,9 +24,9 @@ const Navigation = ({ setSearchHall }) => {
   
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
-          <a className="navbar-brand" href="/">
-            Navbar
-          </a>
+          <Link to="/" className="navbar-brand" >
+           Happy Wedding
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
