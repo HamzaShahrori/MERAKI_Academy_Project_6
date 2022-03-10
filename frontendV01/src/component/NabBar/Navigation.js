@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../../reducer/login";
 import { useNavigate } from "react-router-dom";
 import "./Navigation.css";
-const Navigation = ({ setSearchHall }) => {
+const Navigation = ({ setSearchHall, setPlace, setAllHalls, setNum }) => {
   const dispatch = useDispatch();
   const state = useSelector((state) => {
     return {
@@ -12,20 +12,18 @@ const Navigation = ({ setSearchHall }) => {
       token: state.loginReducer.token,
     };
   });
-  const logout=()=>{
-    state.isLoggedIn=false
-    localStorage.removeItem('token')
-    dispatch(logoutUser())
-  }
+  const logout = () => {
+    state.isLoggedIn = false;
+    localStorage.removeItem("token");
+    dispatch(logoutUser());
+  };
   ////
   return (
     <>
-
-  
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
-          <Link to="/" className="navbar-brand" >
-           Happy Wedding
+          <Link to="/" className="navbar-brand">
+            Happy Wedding
           </Link>
           <button
             className="navbar-toggler"
@@ -50,43 +48,107 @@ const Navigation = ({ setSearchHall }) => {
                   Add Hall
                 </Link>
               </li>
-              {state.isLoggedIn?(<><li onClick={logout} className="nav-item">
-                <Link to="/" className="nav-link">
-                  {" "}
-                  Logout
-                </Link>
-              </li></>):( <><li className="nav-item">
-                <Link to="/register" className="nav-link">
-                  {" "}
-                  Register
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/login" className="nav-link">
-                  {" "}
-                  Login
-                </Link>
-       
-             
-
-              </li></>)}
+              {state.isLoggedIn ? (
+                <>
+                  <li onClick={logout} className="nav-item">
+                    <Link to="/" className="nav-link">
+                      {" "}
+                      Logout
+                    </Link>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li className="nav-item">
+                    <Link to="/register" className="nav-link">
+                      {" "}
+                      Register
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link to="/login" className="nav-link">
+                      {" "}
+                      Login
+                    </Link>
+                  </li>
+                </>
+              )}
               <li class="nav-item">
-                <Link to="/all" class="nav-link active" aria-current="page">
+                <Link
+                  to="/all"
+                  class="nav-link active"
+                  aria-current="page"
+                  onClick={() => {
+                    setAllHalls(true);
+                    setPlace(false);
+                    setNum(1);
+                  }}
+                >
                   all
                 </Link>
               </li>
-             
+
               <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Category
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Amman</a></li>
-            <li><a class="dropdown-item" href="#">Irbid</a></li>
-            <li><hr class="dropdown-divider"/></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
+                <Link
+                  to="all"
+                  class="nav-link dropdown-toggle"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  // onClick={()=>{
+                  // setAllHalls(true);
+                  // setAddress(false);
+                  // setNum(1);
+                  // }}
+                >
+                  Category
+                </Link>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li>
+                    <Link
+                      to="/all"
+                      className="dropdown-item"
+                      onClick={() => {
+                        setPlace(`Amman`);
+                        setAllHalls(false);
+                        setNum(1);
+                      }}
+                    >
+                      Amman
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/all"
+                      class="dropdown-item"
+                      onClick={() => {
+                        setPlace("Irbid");
+                        setAllHalls(false);
+                        setNum(1);
+                      }}
+                    >
+                      Irbid
+                    </Link>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
+                  <li>
+                    <Link
+                      to="/all"
+                      class="dropdown-item"
+                      onClick={() => {
+                        setPlace("Something else here");
+                        setAllHalls(false);
+                        setNum(1);
+                      }}
+                    >
+                      Something else here
+                    </Link>
+                  </li>
+                </ul>
+              </li>
               {/* <li class="nav-item">
           <a class="nav-link disabled">Disabled</a>
         </li> */}
@@ -101,7 +163,6 @@ const Navigation = ({ setSearchHall }) => {
                 placeholder="Search"
                 aria-label="Search"
               />
-              
             </form>
           </div>
         </div>

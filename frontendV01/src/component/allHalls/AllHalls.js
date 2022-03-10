@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setHalls, updateHalls, deleteHalls } from "../../reducer/halls/index";
 import { useNavigate } from "react-router-dom";
 
-const AllHalls = ({ num, setNum, searchHall }) => {
+const AllHalls = ({ num, setNum, searchHall,allHalls,place }) => {
   const [message, setMessage] = useState("");
   const [hallId, setHallId] = useState("");
   const [hall_image, setHall_image] = useState("");
@@ -67,9 +67,10 @@ const AllHalls = ({ num, setNum, searchHall }) => {
   };
 
   const getHallByAddress = async () => {
+    console.log("a");
     try {
       const res = await axios.get(
-        `http://localhost:5000/halls/page/hall_address/?page=1&hall_address=Amman`,
+        `http://localhost:5000/halls/page/hall_address/?page=${num}&hall_address=${place}`,
         { headers: { Authorization: `Bearer ${state.token}` } }
       );
 
@@ -83,6 +84,7 @@ const AllHalls = ({ num, setNum, searchHall }) => {
 
       if (res.data.success) {
         dispatch(setHalls(res.data.result));
+
       }
     } catch (error) {
       if (num == 0) {
@@ -135,11 +137,19 @@ const AllHalls = ({ num, setNum, searchHall }) => {
     }
   };
   //------------------------------------------------------------------------------
-  useEffect(() => {
-    getAllHalls();
-  });
 
-  useEffect(() => {});
+  useEffect(() => {
+if (place ){
+  getHallByAddress()
+} },[place]);
+
+console.log("halls",allHalls);
+  useEffect(() => {
+    if (allHalls){
+    getAllHalls();
+    }
+  },[allHalls]);
+
 
   // console.log(state.halls);
   return (
