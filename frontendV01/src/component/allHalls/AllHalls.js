@@ -4,7 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { setHalls, updateHalls, deleteHalls } from "../../reducer/halls/index";
 import { useNavigate } from "react-router-dom";
 
-const AllHalls = ({ num, setNum, searchHall,allHalls,place }) => {
+const AllHalls = ({
+  num,
+  setNum,
+  searchHall,
+  allHalls,
+  place,
+}) => {
   const [message, setMessage] = useState("");
   const [hallId, setHallId] = useState("");
   const [hall_image, setHall_image] = useState("");
@@ -84,7 +90,6 @@ const AllHalls = ({ num, setNum, searchHall,allHalls,place }) => {
 
       if (res.data.success) {
         dispatch(setHalls(res.data.result));
-
       }
     } catch (error) {
       if (num == 0) {
@@ -138,18 +143,17 @@ const AllHalls = ({ num, setNum, searchHall,allHalls,place }) => {
   };
   //------------------------------------------------------------------------------
 
-  useEffect(() => {
-if (place ){
-  getHallByAddress()
-} },[place]);
+  // useEffect (() => {
+  //   //if (place) {
+  //     getHallByAddress();
+  //   //} 
+  // }, [place]);
 
-console.log("halls",allHalls);
   useEffect(() => {
-    if (allHalls){
-    getAllHalls();
-    }
-  },[allHalls]);
-
+    //if (allHalls) {
+      getAllHalls();
+   // }
+  }, [allHalls]);
 
   // console.log(state.halls);
   return (
@@ -174,233 +178,233 @@ console.log("halls",allHalls);
           })
 
           .map((element, i) => (
-           <>
-            <br/>
-            <br/>
-            <div key={i}>
-              {/* <img src={element.hall_image}></img>
+            <>
+              <br />
+              <br />
+              <div key={i}>
+                {/* <img src={element.hall_image}></img>
               <p>{element.hall_name}</p>
               {/* <video src={element.video}></video> */}
-              <video width="320" height="240" controls>
-                <source src={element.video} type="video" />
-              </video>
-              <p>{element.hall_description}</p>
-              <p>{element.price}</p>
+                <video width="320" height="240" controls>
+                  <source src={element.video} type="video" />
+                </video>
+                <p>{element.hall_description}</p>
+                <p>{element.price}</p>
+                <p>{element.discount}%</p>
+                <p>{element.PriceBeforeDiscount}</p>
+                <input
+                  type="text"
+                  placeholder="image"
+                  defaultValue={element.hall_image}
+                  onChange={(e) => setHall_image(e.target.value)}
+                ></input>{" "}
+                <input
+                  type="text"
+                  placeholder="Video"
+                  defaultValue={element.video}
+                  onChange={(e) => setVideo(e.target.value)}
+                ></input>
+                <input
+                  type="text"
+                  placeholder="name"
+                  defaultValue={element.hall_name}
+                  onChange={(e) => setHall_name(e.target.value)}
+                ></input>
+                <input
+                  type="text"
+                  placeholder="description"
+                  defaultValue={element.hall_description}
+                  onChange={(e) => setHall_description(e.target.value)}
+                ></input>
+                <input
+                  type="text"
+                  placeholder="price"
+                  defaultValue={element.price}
+                  onChange={(e) => setPrice(e.target.value)}
+                ></input>
+                <button
+                  onClick={() => {
+                    updateHallById(element.id);
+                  }}
+                  type="button"
+                  class="btn btn-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                  data-bs-whatever="@getbootstrap"
+                >
+                  Update Hall
+                </button>
+                <div
+                  class="modal fade"
+                  id="exampleModal"
+                  tabindex="-1"
+                  aria-labelledby="exampleModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                          Update Hall
+                        </h5>
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>
 
-              <p>{element.discount}%</p>
-              <p>{element.PriceBeforeDiscount}</p>
-              <input
-                type="text"
-                placeholder="image"
-                defaultValue={element.hall_image}
-                onChange={(e) => setHall_image(e.target.value)}
-              ></input>{" "}
-               <input
-                type="text"
-                placeholder="Video"
-                defaultValue={element.video}
-                onChange={(e) => setVideo(e.target.value)}
-              ></input>
-               <input
-                type="text"
-                placeholder="name"
-                defaultValue={element.hall_name}
-                onChange={(e) => setHall_name(e.target.value)}
-              ></input>
-               <input
-                type="text"
-                placeholder="description"
-                defaultValue={element.hall_description}
-                onChange={(e) => setHall_description(e.target.value)}
-              ></input>
-               <input
-                type="text"
-                placeholder="price"
-                defaultValue={element.price}
-                onChange={(e) => setPrice(e.target.value)}
-              ></input>
+                      <div class="modal-body">
+                        <form>
+                          <form class="form-floating">
+                            <input
+                              onChange={(e) => setHall_image(e.target.value)}
+                              type="text"
+                              defaultValue={element.hall_image}
+                              class="form-control"
+                              id="floatingInputValue"
+                              placeholder="Image Link"
+                            />
+                            <label for="floatingInputValue">Image Link</label>
+                          </form>
 
-           
+                          <br />
+                          <form class="form-floating">
+                            <input
+                              onChange={(e) => setHall_name(e.target.value)}
+                              type="text"
+                              defaultValue={element.hall_name}
+                              class="form-control"
+                              id="floatingInputValue"
+                              placeholder="Hall Name"
+                            />
+                            <label for="floatingInputValue">Hall Name</label>
+                          </form>
 
-              <button
-                onClick={() => {
-                  updateHallById(element.id);
-                }}
-                type="button"
-                class="btn btn-primary"
-                data-bs-toggle="modal"
-                data-bs-target="#exampleModal"
-                data-bs-whatever="@getbootstrap"
-              >
-                Update Hall
-              </button>
-              <div
-                class="modal fade"
-                id="exampleModal"
-                tabindex="-1"
-                aria-labelledby="exampleModalLabel"
-                aria-hidden="true"
-              >
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">
-                        Update Hall
-                      </h5>
-                      <button
-                        type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                      ></button>
-                    </div>
+                          <br />
+                          <form class="form-floating">
+                            <input
+                              onChange={(e) => setVideo(e.target.value)}
+                              type="text"
+                              defaultValue={element.hall_name}
+                              class="form-control"
+                              id="floatingInputValue"
+                              placeholder="Video Link"
+                            />
+                            <label for="floatingInputValue">Video Link</label>
+                          </form>
 
-                    <div class="modal-body">
-                      <form>
-                        <form class="form-floating">
-                          <input
-                            onChange={(e) => setHall_image(e.target.value)}
-                            type="text"
-                            defaultValue={element.hall_image}
-                            class="form-control"
-                            id="floatingInputValue"
-                            placeholder="Image Link"
-                          />
-                          <label for="floatingInputValue">Image Link</label>
-                        </form>
-
-                        <br />
-                        <form class="form-floating">
-                          <input
-                            onChange={(e) => setHall_name(e.target.value)}
-                            type="text"
-                            defaultValue={element.hall_name}
-                            class="form-control"
-                            id="floatingInputValue"
-                            placeholder="Hall Name"
-                          />
-                          <label for="floatingInputValue">Hall Name</label>
-                        </form>
-
-                        <br />
-                        <form class="form-floating">
-                          <input
-                            onChange={(e) => setVideo(e.target.value)}
-                            type="text"
-                            defaultValue={element.hall_name}
-                            class="form-control"
-                            id="floatingInputValue"
-                            placeholder="Video Link"
-                          />
-                          <label for="floatingInputValue">Video Link</label>
-                        </form>
-
-                        <br />
-                        <div class="row g-2">
-                          <div class="col-md">
-                            <div class="form-floating">
-                              <input
-                                type="number"
-                                class="form-control"
-                                id="floatingInputGrid"
-                                placeholder="Hall Price"
-                                onChange={(e) => setPrice(e.target.value)}
-                              />
-                              <label for="floatingInputGrid">Hall Price</label>
+                          <br />
+                          <div class="row g-2">
+                            <div class="col-md">
+                              <div class="form-floating">
+                                <input
+                                  type="number"
+                                  class="form-control"
+                                  id="floatingInputGrid"
+                                  placeholder="Hall Price"
+                                  onChange={(e) => setPrice(e.target.value)}
+                                />
+                                <label for="floatingInputGrid">
+                                  Hall Price
+                                </label>
+                              </div>
+                            </div>
+                            <div class="col-md">
+                              <div class="form-floating">
+                                <input
+                                  type="number"
+                                  onChange={(e) => setDiscount(e.target.value)}
+                                  class="form-control"
+                                  id="floatingInputGrid"
+                                  placeholder="Discount"
+                                />
+                                <label for="floatingInputGrid">Discount</label>
+                              </div>
+                            </div>
+                            <div class="col-md">
+                              <div class="form-floating">
+                                <input
+                                  type="number"
+                                  class="form-control"
+                                  id="floatingInputGrid"
+                                  placeholder="Discount"
+                                  onChange={(e) =>
+                                    setPriceBeforeDiscount(e.target.value)
+                                  }
+                                />
+                                <label for="floatingInputGrid">
+                                  Price Before
+                                </label>
+                              </div>
                             </div>
                           </div>
-                          <div class="col-md">
-                            <div class="form-floating">
-                              <input
-                                type="number"
-                                onChange={(e) => setDiscount(e.target.value)}
-                                class="form-control"
-                                id="floatingInputGrid"
-                                placeholder="Discount"
-                              />
-                              <label for="floatingInputGrid">Discount</label>
-                            </div>
+
+                          <div class="form-floating">
+                            <select
+                              class="form-select"
+                              id="floatingSelect"
+                              aria-label="Floating label select example"
+                            >
+                              <option selected>Select Address</option>
+                              <option value="1">Amman</option>
+                              <option value="2">Irbid</option>
+                              <option value="3">Zarqa</option>
+                              <option value="4">Salt</option>
+                              <option value="5">Madaba</option>
+                              <option value="6">Mafraq</option>
+                              <option value="7">Jerash</option>
+                              <option value="8">Ma'an</option>
+                              <option value="9">Tafila</option>
+                              <option value="10">Karak</option>
+                              <option value="11">Aqapa</option>
+                              <option value="12">Gawr</option>
+                            </select>
+                            <label for="floatingSelect">Select Address</label>
                           </div>
-                          <div class="col-md">
-                            <div class="form-floating">
-                              <input
-                                type="number"
-                                class="form-control"
-                                id="floatingInputGrid"
-                                placeholder="Discount"
-                                onChange={(e) =>
-                                  setPriceBeforeDiscount(e.target.value)
-                                }
-                              />
-                              <label for="floatingInputGrid">
-                                Price Before
-                              </label>
-                            </div>
+                          <div class="mb-3">
+                            <label for="message-text" class="col-form-label">
+                              discription:
+                            </label>
+                            <textarea
+                              class="form-control"
+                              id="message-text"
+                            ></textarea>
                           </div>
-                        </div>
-                     
-                        <div class="form-floating">
-                          <select
-                            class="form-select"
-                            id="floatingSelect"
-                            aria-label="Floating label select example"
-                          >
-                            <option selected>Select Address</option>
-                            <option value="1">Amman</option>
-                            <option value="2">Irbid</option>
-                            <option value="3">Zarqa</option>
-                            <option value="4">Salt</option>
-                            <option value="5">Madaba</option>
-                            <option value="6">Mafraq</option>
-                            <option value="7">Jerash</option>
-                            <option value="8">Ma'an</option>
-                            <option value="9">Tafila</option>
-                            <option value="10">Karak</option>
-                            <option value="11">Aqapa</option>
-                            <option value="12">Gawr</option>
-                          </select>
-                          <label for="floatingSelect">Select Address</label>
-                        </div>
-                        <div class="mb-3">
-                          <label for="message-text" class="col-form-label">
-                            discription:
-                          </label>
-                          <textarea
-                            class="form-control"
-                            id="message-text"
-                          ></textarea>
-                        </div>
-                      </form>
-                    </div>
-                    <div class="modal-footer">
-                      <button
-                        type="button"
-                        class="btn btn-secondary"
-                        data-bs-dismiss="modal"
-                        onClick={() => {
-                          updateHallById(element.id);
-                        }}
-                      >
-                        Close
-                      </button>
-                      <button
-                        onClick={() => {
-                          updateHallById(element.id);
-                        }}
-                        type="button"
-                        class="btn btn-primary"
-                        data-bs-toggle="modal"
-                        data-bs-target="#exampleModal"
-                        data-bs-whatever="@getbootstrap"
-                      >
-                        Update
-                      </button>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          data-bs-dismiss="modal"
+                          onClick={() => {
+                            updateHallById(element.id);
+                          }}
+                        >
+                          Close
+                        </button>
+                        <button
+                          onClick={() => {
+                            updateHallById(element.id);
+                          }}
+                          type="button"
+                          class="btn btn-primary"
+                          data-bs-toggle="modal"
+                          data-bs-target="#exampleModal"
+                          data-bs-whatever="@getbootstrap"
+                        >
+                          Update
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
+                <button onClick={() => deleteHallById(element.id)}>
+                  delete
+                </button>
               </div>
-              <button onClick={() => deleteHallById(element.id)}>delete</button>
-            </div>
             </>
           ))}
 
