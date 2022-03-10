@@ -160,7 +160,7 @@ const Navigation = ({ setSearchHall, setPlace, setAllHalls, setNum }) => {
                     </Link>
                   </li>
                 </ul>
-              </li>
+            
 
               {/* <li class="nav-item">
           <a class="nav-link disabled">Disabled</a>
