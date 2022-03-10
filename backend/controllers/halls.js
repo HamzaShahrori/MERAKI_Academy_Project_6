@@ -9,7 +9,8 @@ const createNewHall = (req, res) => {
     hall_address,
     price,
   } = req.body;
-  const query = `INSERT INTO Halls (hall_image, hall_name,video, hall_description,hall_address,price) VALUES (?,?,?,?,?,?); `;
+  const query = `INSERT INTO Halls (hall_image, hall_name,video, hall_description,hall_address,price,user_id) VALUES (?,?,?,?,?,?,?) `;
+  const user_id = [req.params.user_id];
 
   const data = [
     hall_image,
@@ -18,6 +19,7 @@ const createNewHall = (req, res) => {
     hall_description,
     hall_address,
     price,
+    user_id,
   ];
 
   connection.query(query, data, (err, result) => {
@@ -36,13 +38,41 @@ const createNewHall = (req, res) => {
     });
   });
 };
+const getHallByUserId = (req, res) => {
+ const data = req.params.user_id; 
+ 
+  const query = `SELECT * FROM Halls right JOIN users ON Halls.user_id = ${data} WHERE Halls.is_deleted=0`;
+ 
 
+  connection.query(query, async (err, result) => {
+    if (err) {
+      console.log("err", err);
+      return res.status(500).json({
+        success: false,
+        message: `Server Error`,
+      });
+    }
+
+    if (!result[0]) {
+      return res.status(200).json({
+        success: false,
+        message: `No Hall Yet`,
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: `All halls`,
+      result: result,
+    });
+  });
+};
 const getAllHalls = (req, res) => {
   const limit = 4;
   const page = req.query.page;
   const offset = (page - 1) * limit;
 
-  const query = `SELECT * FROM Halls   WHERE Halls.is_deleted=0 limit ${limit} OFFSET ${offset}`;
+  const query = `SELECT * FROM Halls WHERE Halls.is_deleted=0 limit ${limit} OFFSET ${offset}`;
 
   connection.query(query, async (err, result) => {
     if (err) {
@@ -298,4 +328,5 @@ module.exports = {
   getHallsByAddress,
   updateThePriceAfterDiscount,
   getHallsByDiscount,
+  getHallByUserId,
 };
