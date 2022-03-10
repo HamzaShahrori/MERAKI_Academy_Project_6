@@ -81,7 +81,7 @@ const Navigation = ({ setSearchHall }) => {
             Category
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Amman</a></li>
+            <li><Link to="/login" class="dropdown-item">Amman</Link></li>
             <li><a class="dropdown-item" href="#">Irbid</a></li>
             <li><hr class="dropdown-divider"/></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
