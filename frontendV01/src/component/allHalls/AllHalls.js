@@ -151,7 +151,7 @@ console.log("halls",allHalls);
   },[allHalls]);
 
 
-  // console.log(state.halls);
+  
   return (
     <>
       {state.halls &&
