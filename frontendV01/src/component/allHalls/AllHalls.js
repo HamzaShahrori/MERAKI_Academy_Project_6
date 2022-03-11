@@ -4,13 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setHalls, updateHalls, deleteHalls } from "../../reducer/halls/index";
 import { useNavigate } from "react-router-dom";
 
-const AllHalls = ({
-  num,
-  setNum,
-  searchHall,
-  allHalls,
-  place,
-}) => {
+const AllHalls = ({ num, setNum, searchHall, allHalls, place }) => {
   const [message, setMessage] = useState("");
   const [hallId, setHallId] = useState("");
   const [hall_image, setHall_image] = useState("");
@@ -146,16 +140,15 @@ const AllHalls = ({
   // useEffect (() => {
   //   //if (place) {
   //     getHallByAddress();
-  //   //} 
+  //   //}
   // }, [place]);
 
   useEffect(() => {
     //if (allHalls) {
-      getAllHalls();
-   // }
+    getAllHalls();
+    // }
   }, [allHalls]);
 
-  
   return (
     <>
       {state.halls &&
@@ -182,17 +175,17 @@ const AllHalls = ({
               <br />
               <br />
               <div key={i}>
-                {/* <img src={element.hall_image}></img>
-              <p>{element.hall_name}</p>
-              {/* <video src={element.video}></video> */}
-                <video width="320" height="240" controls>
+                <img src={element.hall_image}></img>
+                <p>{element.hall_name}</p>
+                <video src={element.video}></video>
+                {/* <video width="320" height="240" controls>
                   <source src={element.video} type="video" />
-                </video>
+                </video> */}
                 <p>{element.hall_description}</p>
                 <p>{element.price}</p>
                 <p>{element.discount}%</p>
                 <p>{element.PriceBeforeDiscount}</p>
-                <input
+                {/* <input
                   type="text"
                   placeholder="image"
                   defaultValue={element.hall_image}
@@ -221,11 +214,8 @@ const AllHalls = ({
                   placeholder="price"
                   defaultValue={element.price}
                   onChange={(e) => setPrice(e.target.value)}
-                ></input>
+                ></input> */}
                 <button
-                  onClick={() => {
-                    updateHallById(element.id);
-                  }}
                   type="button"
                   class="btn btn-primary"
                   data-bs-toggle="modal"
@@ -261,7 +251,7 @@ const AllHalls = ({
                             <input
                               onChange={(e) => setHall_image(e.target.value)}
                               type="text"
-                              defaultValue={element.hall_image}
+                              // defaultValue={element.hall_image}
                               class="form-control"
                               id="floatingInputValue"
                               placeholder="Image Link"
@@ -274,7 +264,7 @@ const AllHalls = ({
                             <input
                               onChange={(e) => setHall_name(e.target.value)}
                               type="text"
-                              defaultValue={element.hall_name}
+                              // defaultValue={element.hall_name}
                               class="form-control"
                               id="floatingInputValue"
                               placeholder="Hall Name"
@@ -287,7 +277,7 @@ const AllHalls = ({
                             <input
                               onChange={(e) => setVideo(e.target.value)}
                               type="text"
-                              defaultValue={element.hall_name}
+                              // defaultValue={element.hall_name}
                               class="form-control"
                               id="floatingInputValue"
                               placeholder="Video Link"
@@ -347,7 +337,14 @@ const AllHalls = ({
                               id="floatingSelect"
                               aria-label="Floating label select example"
                             >
-                              <option selected>Select Address</option>
+                              <option
+                                selected
+                                onChange={(e) =>
+                                  setHall_address(e.target.value)
+                                }
+                              >
+                                Select Address
+                              </option>
                               <option value="1">Amman</option>
                               <option value="2">Irbid</option>
                               <option value="3">Zarqa</option>
@@ -368,6 +365,9 @@ const AllHalls = ({
                               discription:
                             </label>
                             <textarea
+                              onChange={(e) =>
+                                setHall_description(e.target.value)
+                              }
                               class="form-control"
                               id="message-text"
                             ></textarea>
@@ -379,9 +379,6 @@ const AllHalls = ({
                           type="button"
                           class="btn btn-secondary"
                           data-bs-dismiss="modal"
-                          onClick={() => {
-                            updateHallById(element.id);
-                          }}
                         >
                           Close
                         </button>
