@@ -11,9 +11,10 @@ app.use(express.json());
 //hamza 
 const hallsRouter = require("./routes/halls");
 app.use("/halls",hallsRouter)
+///countRouter
 
-
-
+const countRouter = require("./routes/count");
+app.use("/count",countRouter)
 
 
 
