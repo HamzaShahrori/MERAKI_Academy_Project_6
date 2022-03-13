@@ -119,11 +119,11 @@ const Register = () => {
       <br />
 
       <form   onSubmit={addNewUser}>
-        <div class="form-group">
+        <div className="form-group">
           <label for="exampleInputEmail1">First Name</label>
           <input
             type="text"
-            class="form-control"
+            className="form-control"
             id="exampleInputEmail1"
             placeholder="First Name"
             style={{ width: "20rem" }}
@@ -131,11 +131,11 @@ const Register = () => {
           />
         </div>
 
-        <div class="form-group">
+        <div className="form-group">
           <label for="exampleInputFirstName1">Last Name</label>
           <input
             type="text"
-            class="form-control"
+            className="form-control"
             id="exampleInputLastName1"
             placeholder="Last Name"
             style={{ width: "20rem" }}
@@ -143,11 +143,11 @@ const Register = () => {
           />
         </div>
 
-        <div class="form-group">
+        <div className="form-group">
           <label for="exampleInputCountry1">Country</label>
           <input
             type="text"
-            class="form-control"
+            className="form-control"
             id="exampleInputEmail1"
             placeholder="Country"
             style={{ width: "20rem" }}
@@ -155,22 +155,22 @@ const Register = () => {
           />
         </div>
 
-        <div class="form-group">
+        <div className="form-group">
           <label for="exampleInputEmail1">Email address</label>
           <input
             type="email"
-            class="form-control"
+            className="form-control"
             id="exampleInputEmail1"
             placeholder="Email"
             style={{ width: "20rem" }}
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        <div class="form-group">
+        <div className="form-group">
           <label for="exampleInputPassword1">Password</label>
           <input
             type="password"
-            class="form-control"
+            className="form-control"
             id="exampleInputPassword1"
             placeholder="Password"
             style={{ width: "20rem" }}
@@ -178,7 +178,7 @@ const Register = () => {
           />
         </div>
 
-        <div class="checkbox">
+        <div className="checkbox">
           <label>
             <input
               type="checkbox"
@@ -199,7 +199,7 @@ const Register = () => {
           </label>
         </div>
 
-        <button type="submit" class="btn btn-success">
+        <button type="submit" className="btn btn-success">
           Register
         </button>
       </form>
@@ -208,7 +208,7 @@ const Register = () => {
         ? message && <div className="SuccessMessage">{message}</div>
         : message && (
             <div
-              class="alert alert-danger"
+              className="alert alert-danger"
               role="alert"
               style={{ width: "20rem" }}
             >
