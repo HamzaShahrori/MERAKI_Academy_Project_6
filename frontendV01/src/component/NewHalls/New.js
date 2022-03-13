@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import "./New.css";
+import { AiOutlineCloudUpload } from "react-icons/ai";
+// AiOutlineCloudUpload
 // import { Image } from "cloudinary-react";
 import { useDispatch, useSelector } from "react-redux";
 import { AddHall, setHalls } from "../../reducer/halls/index";
@@ -17,6 +20,8 @@ const New = ({ num, setNum, search }) => {
   const [hall_address, setHall_address] = useState("");
   const [price, setPrice] = useState("");
   const dispatch = useDispatch();
+  const { user_id } = useParams();
+  
   const state = useSelector((state) => {
     return {
       token: state.loginReducer.token,
@@ -24,10 +29,10 @@ const New = ({ num, setNum, search }) => {
     };
   });
   const addNewHall = () => {
-    console.log("user");
+    console.log("user", user_id);
     axios
       .post(
-        `http://localhost:5000/halls/`,
+        `http://localhost:5000/halls/${user_id}`,
         {
           hall_image,
           hall_name,
@@ -71,7 +76,6 @@ const New = ({ num, setNum, search }) => {
       .then((result) => {
         console.log(result);
         setVideo(result.data.secure_url);
-        // setImage(result.data.secure_url);
       })
       .catch((err) => {
         console.log(err.response);
@@ -93,16 +97,53 @@ const New = ({ num, setNum, search }) => {
         console.log(err.response);
       });
   };
+  const getHallByUserId = () => {
+    console.log("user", user_id);
+    axios
+      .get(`http://localhost:5000/halls/add/${user_id}`, {
+        headers: { Authorization: `Bearer ${state.token}` },
+      })
+      .then((result) => {
+        dispatch(setHalls(result.data.result));
+        console.log(result.data.result);
+      });
+  };
+  useEffect(() => {
+    getHallByUserId();
+  }, []);
   return (
     <>
       <br />
       <br />
       <br />
       <br />
-      <div class="input-group">
-        <div class="input-group col-mb-3">
+      <div className="input-group">
+        {/* <div className="input-group col-mb-3" style={{ width: "300px", height:"50px" }} >
           <span
-            class="input-group-text"
+            className="input-group-text"
+            id="basic-addon1"
+            style={{ background: "rgb(0, 0, 49)", color: "white" }}
+          >
+          Video Link </span>
+          <input
+            type="file"
+            onChange={(e) => {
+              setImageSelected(e.target.files[0]);
+            }}
+            className="form-control"
+            placeholder=" Video Link"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+          />
+
+          <button type="button" class="btn btn-primary" onClick={() => uploadVideo(imageselected)}> <AiOutlineCloudUpload/> </button>
+        </div> */}
+        <div
+          className="input-group col-mb-3"
+          style={{ width: "300px", height: "50px" }}
+        >
+          <span
+            className="input-group-text"
             id="basic-addon1"
             style={{ background: "rgb(0, 0, 49)", color: "white" }}
           >
@@ -113,13 +154,27 @@ const New = ({ num, setNum, search }) => {
             onChange={(e) => {
               setImageSelected(e.target.files[0]);
             }}
-          ></input>
-          <button onClick={() => uploadImage(imageselected)}> upload </button>
+            className="form-control"
+            placeholder=" Video Link"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+          />
+
+          <button
+            type="button"
+            class="btn btn-primary"
+            onClick={() => uploadImage(imageselected)}
+          >
+            <AiOutlineCloudUpload />{" "}
+          </button>
         </div>
 
-        <div style={{ width: "300px" }} class="input-group col-mb-3">
+        <div
+          style={{ width: "300px", height: "50px" }}
+          className="input-group col-mb-3"
+        >
           <span
-            class="input-group-text"
+            className="input-group-text"
             id="basic-addon1"
             style={{ background: "rgb(0, 0, 49)", color: "white" }}
           >
@@ -130,41 +185,57 @@ const New = ({ num, setNum, search }) => {
               setHall_name(e.target.value);
             }}
             type="text"
-            class="form-control"
+            className="form-control"
             placeholder=" Hall Name"
             aria-label="Username"
             aria-describedby="basic-addon1"
           />
         </div>
-        <div class="input-group col-mb-3">
+
+        <div
+          className="input-group col-mb-3"
+          style={{ width: "300px", height: "50px" }}
+        >
           <span
-            class="input-group-text"
+            className="input-group-text"
             id="basic-addon1"
             style={{ background: "rgb(0, 0, 49)", color: "white" }}
-          />
-          Video Link{" "}
+          >
+            Video Link{" "}
+          </span>
           <input
             type="file"
             onChange={(e) => {
               setImageSelected(e.target.files[0]);
             }}
-            class="form-control"
+            className="form-control"
             placeholder=" Video Link"
             aria-label="Username"
             aria-describedby="basic-addon1"
           />
-          <button onClick={() => uploadVideo(imageselected)}> upload </button>
+
+          <button
+            type="button"
+            class="btn btn-primary"
+            onClick={() => uploadVideo(imageselected)}
+          >
+            {" "}
+            <AiOutlineCloudUpload />{" "}
+          </button>
         </div>
-        <div style={{ width: "300px" }} class="input-group col-mb-3">
+        <div
+          style={{ width: "300px", height: "50px" }}
+          className="input-group col-mb-3"
+        >
           <span
-            class="input-group-text"
+            className="input-group-text"
             id="basic-addon1"
             style={{ background: "rgb(0, 0, 49)", color: "white" }}
           >
             Description
           </span>
           <textarea
-            class="form-control"
+            className="form-control"
             placeholder="Description"
             id="floatingTextarea"
             type="text"
@@ -174,12 +245,12 @@ const New = ({ num, setNum, search }) => {
           ></textarea>{" "}
         </div>
       </div>
-      <div class="row g-1">
-        <div class="col-md">
-          <div class="form-floating" style={{ width: "300px" }}>
+      <div className="row g-1">
+        <div className="col-md">
+          <div className="form-floating" style={{ width: "300px" }}>
             <input
               type="number"
-              class="form-control"
+              className="form-control"
               id="floatingInputGrid"
               placeholder="Hall Price"
               onChange={(e) => setPrice(e.target.value)}
@@ -187,23 +258,23 @@ const New = ({ num, setNum, search }) => {
             <label for="floatingInputGrid">Hall Price</label>
           </div>
         </div>
-        <div class="col-md">
-          <div class="form-floating" style={{ width: "300px" }}>
+        <div className="col-md">
+          <div className="form-floating" style={{ width: "300px" }}>
             <input
               type="number"
               onChange={(e) => setDiscount(e.target.value)}
-              class="form-control"
+              className="form-control"
               id="floatingInputGrid"
               placeholder="Discount"
             />
             <label for="floatingInputGrid">Discount</label>
           </div>
         </div>
-        <div class="col-md">
-          <div class="form-floating" style={{ width: "300px" }}>
+        <div className="col-md">
+          <div className="form-floating" style={{ width: "300px" }}>
             <input
               type="number"
-              class="form-control"
+              className="form-control"
               id="floatingInputGrid"
               placeholder="Discount"
               onChange={(e) => setPriceBeforeDiscount(e.target.value)}
@@ -211,13 +282,13 @@ const New = ({ num, setNum, search }) => {
             <label for="floatingInputGrid">Price Before</label>
           </div>
         </div>{" "}
-        <div class="form-floating" style={{ width: "450px" }}>
+        <div className="form-floating" style={{ width: "450px" }}>
           <select
             onChange={(e) => {
               setHall_address(e.target.value);
             }}
             style={{ width: "200px" }}
-            class="form-select"
+            className="form-select"
             id="floatingSelect"
             aria-label="Floating label select example"
           >
@@ -239,43 +310,9 @@ const New = ({ num, setNum, search }) => {
         </div>
       </div>
 
-      <button onClick={() => addNewHall}>new hall</button>
-      {/* <button onClick={addNewHall} class="btn btn-primary">
+      <button type="button" class="btn btn-primary" onClick={addNewHall}>
         new hall
-      </button> */}
-
-      {/* <button className="new">
-          New Hall
-        </button> */}
-      {/* <input
-          placeholder="address"
-          type="text"
-          onChange={(e) => {
-            setHall_address(e.target.value);
-          }}
-        ></input>{" "} */}
-      {/* <textarea
-          className="description"
-          type="text"
-          placeholder="Description"
-          onChange={(e) => {
-            setHall_description(e.target.value);
-          }}
-        ></textarea> */}
-      {/* <input
-          placeholder="priceBeforeDiscount"
-          type="text"
-          onChange={(e) => {
-            setPriceBeforeDiscount(e.target.value);
-          }}
-        ></input> */}
-      {/* <input
-          placeholder="discount"
-          type="text"
-          onChange={(e) => {
-            setDiscount(e.target.value);
-          }}
-        ></input> */}
+      </button>
     </>
   );
 };
