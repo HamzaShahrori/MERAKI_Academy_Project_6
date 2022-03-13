@@ -40,31 +40,42 @@ const HallDetails = () => {
     <br/>
 
     <br/>
-
-      <div className="wrapperHall">
+<section>
+      <div className="content">
       {state.hallById &&
           state.hallById.map((element, i) => (
             <>
-
+<div className="detailsContainer">
+  <div className="detailImg">
               <img
                 className="leftSide"
                 src={element.hall_image}
                 alt="hallImage"
                 width="100%"
               />
+
+</div>
+
+              <div className="detailContent">
+                <p className="hallDetails">Hall</p>
               <p>{element.hall_name}</p>
+              <p className="hallDetails">Description</p>
               <p>{element.hall_description}</p>
+              <p className="hallDetails">Address</p>
               <p>{element.hall_address}</p>
+              <p className="hallDetails">Price</p>
               <p>{element.price}</p>
+              </div>
 
+              </div>
 
-            
             </>))}
           
           
           </div>
     
-    
+          </section>
+
     
     </>)
 };

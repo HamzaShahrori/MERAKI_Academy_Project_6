@@ -88,7 +88,7 @@ const Navigation = ({ setSearchHall, setPlace, setAllHalls, setNum }) => {
                 </Link>
               </li> */}
 
-              <li class="nav-item dropdown">
+              {/* <li class="nav-item dropdown">
                 <Link
                   to="/all"
                   class="nav-link dropdown-toggle"
@@ -101,24 +101,10 @@ const Navigation = ({ setSearchHall, setPlace, setAllHalls, setNum }) => {
                 </Link>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-<li>
-                <Link
-                  to="/all"
-                  class="nav-link active"
-                  aria-current="page"
-                  onClick={() => {
-                    setAllHalls(true);
-                    setPlace(false);
-                    setNum(1);
-                  }}
-                > 
-                  all
-                </Link>
-                </li>
 
+                </li> */}
 
-
-                  <li>
+              {/* <li>
                     <Link
                       to="/address"
                       class="dropdown-item"
@@ -130,9 +116,9 @@ const Navigation = ({ setSearchHall, setPlace, setAllHalls, setNum }) => {
                     >
                       Amman
                     </Link>
-                  </li>
+                  </li> */}
 
-                  <li>
+              {/* <li>
                     <Link
                       to="/all"
                       class="dropdown-item"
@@ -162,19 +148,28 @@ const Navigation = ({ setSearchHall, setPlace, setAllHalls, setNum }) => {
                     >
                       Something else here
                     </Link>
-                  </li>
+                  </li> */}
 
-
-                
-
-
-
-
-
+              {/* 
                 </ul>
-              </li>
+              </li> */}
 
               <li>
+                <Link
+                  to="/all"
+                  class="nav-link active"
+                  aria-current="page"
+                  onClick={() => {
+                    setAllHalls(true);
+                    setPlace(false);
+                    setNum(1);
+                  }}
+                >
+                  all
+                </Link>
+              </li>
+
+              {/* <li>
                     <Link
                       to="/address"
                       class="dropdown-item"
@@ -186,9 +181,7 @@ const Navigation = ({ setSearchHall, setPlace, setAllHalls, setNum }) => {
                       }}
                     >
 Test                    </Link>
-                  </li>
-
-
+                  </li> */}
 
               {/* <li class="nav-item">
           <a class="nav-link disabled">Disabled</a>
