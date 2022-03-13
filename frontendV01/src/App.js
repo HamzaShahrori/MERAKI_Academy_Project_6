@@ -16,7 +16,8 @@ import Register from "./component/register/Register";
 
 import AllHalls from "./component/allHalls/AllHalls";
 import Address from "./component/Address/Address";
-function App() {
+function App({}) {
+  const [userId, setUserId] = useState("");
   const [num, setNum] = useState(1);
   const [allHalls, setALLHalls] = useState("");
   const [place, setPlace] = useState("");
@@ -31,9 +32,10 @@ function App() {
         setALLHalls={setALLHalls}
         setPlace={setPlace}
         setNum={setNum}
+        userId={userId}
       />
       <Routes>
-        <Route path="/new" element={<New />} />
+        <Route path="/details-booking/:user_id" element={<New />} />
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route
@@ -46,7 +48,7 @@ function App() {
             />
           }
         />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login setUserId={setUserId} />} />
 
         <Route
           path="/all"
