@@ -1,1 +1,131 @@
 /*  */
+
+.containerAllHalls{
+    padding: 0 7%;
+}
+
+
+.list-container {
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.left-col-list {
+  flex-basis: 70%;
+}
+
+.right-col-list {
+  flex-basis: 25%;
+}
+
+.left-col-list h1 {
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+.left-col-list pre{
+    font-size: 20px;
+}
+
+.hall {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 30px 0;
+  border-top: 1px solid #ccc;
+}
+
+.hall-img {
+  flex-basis: 40%;
+}
+
+.hall-info {
+  flex-basis: 58%;
+  color: #555;
+}
+
+.hall-img img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.hall-info h3 {
+  font-weight: 600;
+  color: #333;
+  font-size: 22px;
+  margin: 4px 0;
+}
+
+.hall-price {
+  text-align: right;
+}
+
+.hall-price h4 {
+  font-size: 20px;
+}
+
+.hall-price h4 span {
+  font-size: 25px;
+  font-weight: 500;
+}
+
+/* .priceBeforeDiscount { */
+  /* text-decoration: line-through; */
+/* } */
+
+.price{
+    text-decoration: line-through;
+
+}
+
+.sidebar{
+    border: 1px solid #999;
+    padding: 20px 30px;
+    margin-top: 30px;
+}
+.sidebar h2{
+    font-weight: 500;
+}
+
+
+.sidebar h3{
+    font-weight: 500;
+    margin: 20px 0 10px;
+}
+
+.filter{
+    display: flex;
+    align-items: center;
+    color: #555;
+    margin-bottom:10px ;
+}
+
+.filter p{
+    flex: 1;
+   padding-top: 15px;
+}
+
+.filter input{
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+
+@media only screen and(max-width: 700px){
+    .list-container{
+       margin-top: 150px; 
+
+    }
+    .left-col-list,.right-col-list,.hall-img,.hall-info{
+        flex-basis: 100%;
+    }
+    .left-col-list h1{
+        font-size: 22px;
+    }
+    .hall-info h3{
+        font-size: 18px;
+    }
+}
