@@ -42,7 +42,9 @@ const getHallByUserId = (req, res) => {
   const data = req.params.user_id;
   // const query = `SELECT COUNT(id) AS "users" FROM Halls ON Halls.user_id = ${data}  WHERE  Halls.is_deleted=0`;
   // const query = `SELECT user_id FROM Halls LEFT JOIN users ON Halls.user_id = ${data} WHERE Halls.is_deleted = 0;`;
-  const query = `SELECT Halls.id,Halls.user_id, Halls.hall_name, Halls.hall_image,Halls.video,Halls.hall_description,Halls.hall_address,Halls.price, Halls.discount,Halls.PriceBeforeDiscount FROM users LEFT JOIN Halls ON Halls.user_id= ${data} WHERE Halls.is_deleted=0`;
+  const query = `SELECT halls.id,halls.user_id, halls.hall_name, halls.hall_image,halls.video,halls.hall_description,halls.hall_address,
+  halls.price, halls.discount,halls.PriceBeforeDiscount FROM  users LEFT JOIN halls  ON  halls.user_id= ${data} WHERE halls.is_deleted=0 
+  AND users.id = ${data} `;
 
   connection.query(query, (err, result) => {
     if (err) {
