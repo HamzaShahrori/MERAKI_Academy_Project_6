@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./New.css";
+// import { Image } from "cloudinary-react";
 import { useDispatch, useSelector } from "react-redux";
 import { AddHall, setHalls } from "../../reducer/halls/index";
 const New = ({ num, setNum, search }) => {
+  const [imageselected, setImageSelected] = useState("");
   const [message, setMessage] = useState("");
+  const [image, setImage] = useState("");
   const [hall_image, setHall_image] = useState("");
   const [hall_name, setHall_name] = useState("");
   const [video, setVideo] = useState("");
@@ -20,12 +23,11 @@ const New = ({ num, setNum, search }) => {
       halls: state.hallsReducer.halls,
     };
   });
-
-  const addNewHall = (user_id) => {
+  const addNewHall = () => {
     console.log("user");
     axios
       .post(
-        `http://localhost:5000/halls/${user_id}`,
+        `http://localhost:5000/halls/`,
         {
           hall_image,
           hall_name,
@@ -52,10 +54,44 @@ const New = ({ num, setNum, search }) => {
           })
         );
         setMessage("the hall has been created successfully");
+        console.log("res", result);
       })
       .catch((err) => {
         console.log("err", err);
-        setMessage(err.response.data.message);
+        // setMessage(err.response.data.message);
+      });
+  };
+  const uploadVideo = (videoFile) => {
+    const formData = new FormData();
+    formData.append("file", videoFile);
+    formData.append("upload_preset", "my-uploads");
+    axios
+      .post("https://api.cloudinary.com/v1_1/dnx1t4ulp/video/upload", formData)
+
+      .then((result) => {
+        
+        setVideo(result.data.secure_url);
+        setImage(result.data.secure_url);
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
+  };
+
+ 
+  const uploadImage = (imageFile) => {
+    const formData = new FormData();
+    formData.append("file", imageFile);
+    formData.append("upload_preset", "my-uploads");
+    axios
+      .post("https://api.cloudinary.com/v1_1/dnx1t4ulp/image/upload", formData)
+
+      .then((result) => {
+        setHall_image(result.data.secure_url);
+        setImage(result.data.secure_url);
+      })
+      .catch((err) => {
+        console.log(err.response);
       });
   };
   return (
@@ -65,7 +101,7 @@ const New = ({ num, setNum, search }) => {
       <br />
       <br />
       <div class="input-group">
-        <div class="input-group col-mb-3" style={{ width: "300px" }}>
+        <div class="input-group col-mb-3">
           <span
             class="input-group-text"
             id="basic-addon1"
@@ -74,16 +110,19 @@ const New = ({ num, setNum, search }) => {
             Image Link
           </span>
           <input
-            className="image"
+            type="file"
             onChange={(e) => {
-              setHall_image(e.target.value);
+              setImageSelected(e.target.files[0]);
             }}
-            type="text"
-            class="form-control"
-            placeholder=" Image Link"
-            aria-label="Username"
-            aria-describedby="basic-addon1"
-          />
+          ></input>
+          <button
+            onClick={() => uploadImage(imageselected)}
+          >
+            {" "}
+          upload </button>
+       
+       
+          
         </div>
 
         <div style={{ width: "300px" }} class="input-group col-mb-3">
@@ -94,7 +133,9 @@ const New = ({ num, setNum, search }) => {
           >
             Hall Name
           </span>
-          <input
+          <input onChange={(e) => {
+            setHall_name(e.target.value)
+          }}
             type="text"
             class="form-control"
             placeholder=" Hall Name"
@@ -102,24 +143,30 @@ const New = ({ num, setNum, search }) => {
             aria-describedby="basic-addon1"
           />
         </div>
-        <div style={{ width: "300px" }} class="input-group col-mb-3">
+        <div class="input-group col-mb-3">
           <span
             class="input-group-text"
             id="basic-addon1"
             style={{ background: "rgb(0, 0, 49)", color: "white" }}
-          >
+         />
             Video Link
-          </span>
+      
+            {" "}
           <input
-            type="Video"
+
+            type="file"
             onChange={(e) => {
-              setVideo(e.target.value);
+              setImageSelected(e.target.files[0]);
             }}
             class="form-control"
             placeholder=" Video Link"
             aria-label="Username"
             aria-describedby="basic-addon1"
           />
+           <button
+            onClick={() => uploadImage(imageselected)}
+          >          </button>
+
         </div>
         <div style={{ width: "300px" }} class="input-group col-mb-3">
           <span
