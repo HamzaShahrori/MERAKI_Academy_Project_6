@@ -40,12 +40,11 @@ const createNewHall = (req, res) => {
 };
 const getHallByUserId = (req, res) => {
   const data = req.params.user_id;
-  // const query = `SELECT * COUNT(users.user_id) AS * FROM Halls LEFT JOIN users ON Halls.user_id = ${data} GROUP BY hall_name;`;
-  const query = `SELECT user_id FROM Halls LEFT JOIN users ON Halls.user_id = ${data} WHERE Halls.is_deleted = 0;`;
+  // const query = `SELECT COUNT(id) AS "users" FROM Halls ON Halls.user_id = ${data}  WHERE  Halls.is_deleted=0`;
+  // const query = `SELECT user_id FROM Halls LEFT JOIN users ON Halls.user_id = ${data} WHERE Halls.is_deleted = 0;`;
+  const query = `SELECT Halls.id,Halls.user_id, Halls.hall_name, Halls.hall_image,Halls.video,Halls.hall_description,Halls.hall_address,Halls.price, Halls.discount,Halls.PriceBeforeDiscount FROM users LEFT JOIN Halls ON Halls.user_id= ${data} WHERE Halls.is_deleted=0`;
 
-  // const query = `SELECT * FROM Halls LEFT JOIN users ON ${data} = Halls.user_id WHERE Halls.is_deleted=0`;
-
-  connection.query(query, async (err, result) => {
+  connection.query(query, (err, result) => {
     if (err) {
       console.log("err", err);
       return res.status(500).json({
