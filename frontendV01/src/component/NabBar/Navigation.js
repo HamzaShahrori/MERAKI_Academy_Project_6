@@ -4,14 +4,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../../reducer/login";
 import { useNavigate } from "react-router-dom";
 import "./Navigation.css";
-const Navigation = ({ setSearchHall, setPlace, setAllHalls, setNum }) => {
+const Navigation = ({ setSearchHall, setPlace, setAllHalls, setNum,userId }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const state = useSelector((state) => {
     return {
       isLoggedIn: state.loginReducer.isLoggedIn,
       token: state.loginReducer.token,
+      halls: state.hallsReducer.halls,
+
     };
   });
+  const detailsBookiing = (id) => {
+    navigate(`/details-booking/${id}`);
+  };
+console.log("userid",userId);
   const logout = () => {
     state.isLoggedIn = false;
     localStorage.removeItem("token");
@@ -22,6 +29,9 @@ const Navigation = ({ setSearchHall, setPlace, setAllHalls, setNum }) => {
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
+        <img className="navbar-brand" src="https://i.pinimg.com/564x/99/c4/ac/99c4acbc22f2e573abe7465364d9799f.jpg" alt="logo"style={{width:"100px"}}/>
+          {/* <img src="https://i.pinimg.com/564x/99/c4/ac/99c4acbc22f2e573abe7465364d9799f.jpg" ></img> */}
+        {/*  */}
           <Link to="/" className="navbar-brand">
             Happy Wedding
           </Link>
@@ -43,11 +53,16 @@ const Navigation = ({ setSearchHall, setPlace, setAllHalls, setNum }) => {
                   Home
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to="/new" className="nav-link">
+
+              {/* {state.token && state.halls == "publishing" != 0 ? ( */}
+                   <li className="nav-item" onClick={() => detailsBookiing(userId)}>
+                <a  className="nav-link" >
                   Add Hall
-                </Link>
+                </a>
               </li>
+        {/* ) : (
+          <></>
+        )} */}
               {state.isLoggedIn ? (
                 <>
                   <li onClick={logout} className="nav-item">
