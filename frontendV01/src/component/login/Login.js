@@ -6,14 +6,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../reducer/login";
 import "./Login.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-const Login = () => {
+const Login = ({setUserId}) => {
   const state = useSelector((state) => {
     return {
       isLoggedIn: state.loginReducer.isLoggedIn,
       token: state.loginReducer.token,
     };
   });
-////
+  ////
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -25,17 +25,19 @@ const Login = () => {
 
   const login = (e) => {
     e.preventDefault();
-
+    console.log("e", e);
     axios
       .post("http://localhost:5000/login", userLogin)
-
       .then(async (result) => {
         dispatch(loginUser(result.data.token));
 
         localStorage.setItem("token", result.data.token);
         navigate("/");
-      })
 
+        setUserId(result.data.result[0].id)
+        console.log(result.data.result[0].id);
+        console.log(result.data);
+      })
       .catch((err) => {
         console.log(err.response.data.message);
 
@@ -94,8 +96,6 @@ const Login = () => {
             Submit
           </button>
         </form>
-
-    
       </div>
     </>
   );
