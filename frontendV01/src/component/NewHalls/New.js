@@ -69,16 +69,15 @@ const New = ({ num, setNum, search }) => {
       .post("https://api.cloudinary.com/v1_1/dnx1t4ulp/video/upload", formData)
 
       .then((result) => {
-        
+        console.log(result);
         setVideo(result.data.secure_url);
-        setImage(result.data.secure_url);
+        // setImage(result.data.secure_url);
       })
       .catch((err) => {
         console.log(err.response);
       });
   };
 
- 
   const uploadImage = (imageFile) => {
     const formData = new FormData();
     formData.append("file", imageFile);
@@ -115,14 +114,7 @@ const New = ({ num, setNum, search }) => {
               setImageSelected(e.target.files[0]);
             }}
           ></input>
-          <button
-            onClick={() => uploadImage(imageselected)}
-          >
-            {" "}
-          upload </button>
-       
-       
-          
+          <button onClick={() => uploadImage(imageselected)}> upload </button>
         </div>
 
         <div style={{ width: "300px" }} class="input-group col-mb-3">
@@ -133,9 +125,10 @@ const New = ({ num, setNum, search }) => {
           >
             Hall Name
           </span>
-          <input onChange={(e) => {
-            setHall_name(e.target.value)
-          }}
+          <input
+            onChange={(e) => {
+              setHall_name(e.target.value);
+            }}
             type="text"
             class="form-control"
             placeholder=" Hall Name"
@@ -148,12 +141,9 @@ const New = ({ num, setNum, search }) => {
             class="input-group-text"
             id="basic-addon1"
             style={{ background: "rgb(0, 0, 49)", color: "white" }}
-         />
-            Video Link
-      
-            {" "}
+          />
+          Video Link{" "}
           <input
-
             type="file"
             onChange={(e) => {
               setImageSelected(e.target.files[0]);
@@ -163,10 +153,7 @@ const New = ({ num, setNum, search }) => {
             aria-label="Username"
             aria-describedby="basic-addon1"
           />
-           <button
-            onClick={() => uploadImage(imageselected)}
-          >          </button>
-
+          <button onClick={() => uploadVideo(imageselected)}> upload </button>
         </div>
         <div style={{ width: "300px" }} class="input-group col-mb-3">
           <span
