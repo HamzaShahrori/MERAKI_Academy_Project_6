@@ -85,15 +85,15 @@ const AllHallsWithDiscount = ({ num, setNum, searchHall }) => {
               "
                 style={{ width: "18rem" }}
               >
-                <img src={element.hall_image} class="card-img-top" alt="..." />
-                <div class="card-body">
-                  <h5 class="card-title">{element.hall_name}</h5>
-                  <p class="card-text beforeDiscount">
+                <img src={element.hall_image} className="card-img-top" alt="..." />
+                <div className="card-body">
+                  <h5 className="card-title">{element.hall_name}</h5>
+                  <p className="card-text beforeDiscount">
                     {element.PriceBeforeDiscount}
                   </p>
-                  <p class="card-text">{element.price}</p>
+                  <p className="card-text">{element.price}</p>
 
-                  <Link to="/" class="btn btn-primary">
+                  <Link to="/" className="btn btn-primary">
                     Booking Now
                   </Link>
                 </div>
