@@ -18,8 +18,7 @@ const Register = () => {
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState(false);
 
-const navigate = useNavigate()
-
+  const navigate = useNavigate();
 
   const addNewUser = async (e) => {
     e.preventDefault();
@@ -37,8 +36,7 @@ const navigate = useNavigate()
       if (result.data.success) {
         setStatus(true);
         setMessage("The user has been created successfully");
-        navigate("/login")
-
+        navigate("/login");
       } else throw Error;
     } catch (error) {
       setStatus(false);
@@ -118,103 +116,112 @@ const navigate = useNavigate()
             <br />
           </form> */}
 
-          <form onSubmit={addNewUser}>
-            <div class="form-group">
-              <label for="exampleInputEmail1">First Name</label>
-              <input
-                type="text"
-                class="form-control"
-                id="exampleInputEmail1"
-                placeholder="First Name"
-                onChange={(e) => setFirstName(e.target.value)}
-              />
+      <br />
+
+      <form   onSubmit={addNewUser}>
+        <div class="form-group">
+          <label for="exampleInputEmail1">First Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleInputEmail1"
+            placeholder="First Name"
+            style={{ width: "20rem" }}
+            onChange={(e) => setFirstName(e.target.value)}
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputFirstName1">Last Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleInputLastName1"
+            placeholder="Last Name"
+            style={{ width: "20rem" }}
+            onChange={(e) => setLastName(e.target.value)}
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputCountry1">Country</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleInputEmail1"
+            placeholder="Country"
+            style={{ width: "20rem" }}
+            onChange={(e) => setCountry(e.target.value)}
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input
+            type="email"
+            class="form-control"
+            id="exampleInputEmail1"
+            placeholder="Email"
+            style={{ width: "20rem" }}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="exampleInputPassword1"
+            placeholder="Password"
+            style={{ width: "20rem" }}
+            onChange={(e) => setPass(e.target.value)}
+          />
+        </div>
+
+        <div class="checkbox">
+          <label>
+            <input
+              type="checkbox"
+              onClick={() => {
+                setPublishing(1);
+              }} 
+            />{" "}
+            as a publisher
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              onClick={() => {
+                setReservation(1);
+              }} 
+            />{" "}
+            for reservations
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-success">
+          Register
+        </button>
+      </form>
+
+      {status
+        ? message && <div className="SuccessMessage">{message}</div>
+        : message && (
+            <div
+              class="alert alert-danger"
+              role="alert"
+              style={{ width: "20rem" }}
+            >
+              {message}
             </div>
+          )}
 
-            <div class="form-group">
-              <label for="exampleInputFirstName1">Last Name</label>
-              <input
-                type="text"
-                class="form-control"
-                id="exampleInputLastName1"
-                placeholder="Last Name"
-                onChange={(e) => setLastName(e.target.value)}
-              />
-            </div>
-
-            <div class="form-group">
-              <label for="exampleInputCountry1">Country</label>
-              <input
-                type="text"
-                class="form-control"
-                id="exampleInputEmail1"
-                placeholder="Country"
-                onChange={(e) => setCountry(e.target.value)}
-              />
-            </div>
-
-            <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
-              <input
-                type="email"
-                class="form-control"
-                id="exampleInputEmail1"
-                placeholder="Email"
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input
-                type="password"
-                class="form-control"
-                id="exampleInputPassword1"
-                placeholder="Password"
-                onChange={(e) => setPass(e.target.value)}
-              />
-            </div>
-
-            <div class="checkbox">
-              <label>
-                <input
-                  type="checkbox"
-                  onClick={() => {
-                    setPublishing(1);
-                  }}
-                />{" "}
-                as a publisher
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  onClick={() => {
-                    setReservation(1);
-                  }}
-                />{" "}
-                for reservations
-              </label>
-            </div>
-
-            <button type="submit"class="btn btn-success" >
-              Register
-            </button>
-
-          </form>
-
-          {status
-            ? message && <div className="SuccessMessage">{message}</div>
-            : message && <div className="ErrorMessage">{message}</div>} 
-
-
-
-
-
-
-{/* 
+      {/* 
           {status
             ? message && <div className="SuccessMessage">{message}</div>
             : message && <div className="ErrorMessage">{message}</div>} */}
-        </>
-      // </div>
+    </>
+    // </div>
     // </>
   );
 };
