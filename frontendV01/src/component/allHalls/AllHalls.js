@@ -17,9 +17,6 @@ const AllHalls = ({
   const [numAmman, setNumAmman] = useState(0);
   const [numIrbid, setNumIrbid] = useState(0);
   const [numAll, setNumAll] = useState(0);
-
-
-
   const [message, setMessage] = useState("");
   const [hallId, setHallId] = useState("");
   const [hall_image, setHall_image] = useState("");
@@ -39,14 +36,6 @@ const AllHalls = ({
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  //hall_image
-  // hall_name
-  // video
-  // hall_description
-  // hall_address
-  // price
-  // discount
-  // PriceBeforeDiscount
 
   const getAllHalls = async () => {
     try {
@@ -181,8 +170,8 @@ const AllHalls = ({
     }
   };
   // ------
-   // ------------------------------------------------------------------------------
-   const countNumAll = async () => {
+  // ------------------------------------------------------------------------------
+  const countNumAll = async () => {
     try {
       const res = await axios.get(
         `http://localhost:5000/count/all
@@ -206,7 +195,7 @@ const AllHalls = ({
   useEffect(() => {
     countNumAmman();
     countNumIrbid();
-    countNumAll()
+    countNumAll();
   }, []);
   useEffect(() => {
     // if (allHalls) {
@@ -224,7 +213,7 @@ const AllHalls = ({
       <div className="containerAllHalls">
         <div className="list-container">
           <div className="left-col-list">
-            <pre>{numAll-1}+ options</pre>
+            <pre>{numAll - 1}+ options</pre>
             <h1>Recommended Halls In Jordan</h1>
             {/* <div key={i} className="hall">
            
@@ -276,7 +265,7 @@ const AllHalls = ({
                       </div>
                       <button
                         type="button"
-                        class="btn btn-primary"
+                        className="btn btn-primary"
                         data-bs-toggle="modal"
                         data-bs-target="#exampleModal"
                         data-bs-whatever="@getbootstrap"
@@ -284,36 +273,36 @@ const AllHalls = ({
                         Update Hall
                       </button>
                       <div
-                        class="modal fade"
+                        className="modal fade"
                         id="exampleModal"
                         tabindex="-1"
                         aria-labelledby="exampleModalLabel"
                         aria-hidden="true"
                       >
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel">
+                        <div className="modal-dialog">
+                          <div className="modal-content">
+                            <div className="modal-header">
+                              <h5 className="modal-title" id="exampleModalLabel">
                                 Update Hall
                               </h5>
                               <button
                                 type="button"
-                                class="btn-close"
+                                className="btn-close"
                                 data-bs-dismiss="modal"
                                 aria-label="Close"
                               ></button>
                             </div>
 
-                            <div class="modal-body">
+                            <div className="modal-body">
                               <form>
-                                <form class="form-floating">
+                                <form className="form-floating">
                                   <input
                                     onChange={(e) =>
                                       setHall_image(e.target.value)
                                     }
                                     type="text"
                                     // defaultValue={element.hall_image}
-                                    class="form-control"
+                                    className="form-control"
                                     id="floatingInputValue"
                                     placeholder="Image Link"
                                   />
@@ -323,14 +312,14 @@ const AllHalls = ({
                                 </form>
 
                                 <br />
-                                <form class="form-floating">
+                                <form className="form-floating">
                                   <input
                                     onChange={(e) =>
                                       setHall_name(e.target.value)
                                     }
                                     type="text"
                                     // defaultValue={element.hall_name}
-                                    class="form-control"
+                                    className="form-control"
                                     id="floatingInputValue"
                                     placeholder="Hall Name"
                                   />
@@ -340,12 +329,12 @@ const AllHalls = ({
                                 </form>
 
                                 <br />
-                                <form class="form-floating">
+                                <form className="form-floating">
                                   <input
                                     onChange={(e) => setVideo(e.target.value)}
                                     type="text"
                                     // defaultValue={element.hall_name}
-                                    class="form-control"
+                                    className="form-control"
                                     id="floatingInputValue"
                                     placeholder="Video Link"
                                   />
@@ -355,12 +344,12 @@ const AllHalls = ({
                                 </form>
 
                                 <br />
-                                <div class="row g-2">
-                                  <div class="col-md">
-                                    <div class="form-floating">
+                                <div className="row g-2">
+                                  <div className="col-md">
+                                    <div className="form-floating">
                                       <input
                                         type="number"
-                                        class="form-control"
+                                        className="form-control"
                                         id="floatingInputGrid"
                                         placeholder="Hall Price"
                                         onChange={(e) =>
@@ -372,14 +361,14 @@ const AllHalls = ({
                                       </label>
                                     </div>
                                   </div>
-                                  <div class="col-md">
-                                    <div class="form-floating">
+                                  <div className="col-md">
+                                    <div className="form-floating">
                                       <input
                                         type="number"
                                         onChange={(e) =>
                                           setDiscount(e.target.value)
                                         }
-                                        class="form-control"
+                                        className="form-control"
                                         id="floatingInputGrid"
                                         placeholder="Discount"
                                       />
@@ -388,11 +377,11 @@ const AllHalls = ({
                                       </label>
                                     </div>
                                   </div>
-                                  <div class="col-md">
-                                    <div class="form-floating">
+                                  <div className="col-md">
+                                    <div className="form-floating">
                                       <input
                                         type="number"
-                                        class="form-control"
+                                        className="form-control"
                                         id="floatingInputGrid"
                                         placeholder="Discount"
                                         onChange={(e) =>
@@ -406,9 +395,9 @@ const AllHalls = ({
                                   </div>
                                 </div>
 
-                                <div class="form-floating">
+                                <div className="form-floating">
                                   <select
-                                    class="form-select"
+                                    className="form-select"
                                     id="floatingSelect"
                                     aria-label="Floating label select example"
                                   >
@@ -437,10 +426,10 @@ const AllHalls = ({
                                     Select Address
                                   </label>
                                 </div>
-                                <div class="mb-3">
+                                <div className="mb-3">
                                   <label
                                     for="message-text"
-                                    class="col-form-label"
+                                    className="col-form-label"
                                   >
                                     discription:
                                   </label>
@@ -448,16 +437,16 @@ const AllHalls = ({
                                     onChange={(e) =>
                                       setHall_description(e.target.value)
                                     }
-                                    class="form-control"
+                                    className="form-control"
                                     id="message-text"
                                   ></textarea>
                                 </div>
                               </form>
                             </div>
-                            <div class="modal-footer">
+                            <div className="modal-footer">
                               <button
                                 type="button"
-                                class="btn btn-secondary"
+                                className="btn btn-secondary"
                                 data-bs-dismiss="modal"
                               >
                                 Close
@@ -467,7 +456,7 @@ const AllHalls = ({
                                   updateHallById(element.id);
                                 }}
                                 type="button"
-                                class="btn btn-primary"
+                                className="btn btn-primary"
                                 data-bs-toggle="modal"
                                 data-bs-target="#exampleModal"
                                 data-bs-whatever="@getbootstrap"
