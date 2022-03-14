@@ -35,8 +35,7 @@ const Login = ({setUserId}) => {
         navigate("/");
 
         setUserId(result.data.result[0].id)
-        console.log(result.data.result[0].id);
-        console.log(result.data);
+        localStorage.setItem("userId", result.data.result[0].id);
       })
       .catch((err) => {
         console.log(err.response.data.message);
