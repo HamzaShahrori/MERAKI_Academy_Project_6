@@ -38,8 +38,8 @@ const HallDetails = () => {
     <>
     <br/>
     <br/>
-
     <br/>
+    
 <section>
       <div className="content">
       {state.hallById &&
