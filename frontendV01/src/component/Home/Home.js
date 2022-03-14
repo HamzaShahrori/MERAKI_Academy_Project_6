@@ -73,23 +73,48 @@ const Home = () => {
                   <div className="Small-img-row">
                     <div className="small-img">
                       <img src={element.hall_image} />
-                      <img src="./image/play.png" className="btnPlay" />
+                      <img src="./image/play.png"    type="button"
+                        className="btn btn-primary btnPlay"
+                        data-bs-toggle="modal"
+                        data-bs-target="#exampleModal"
+                        data-bs-whatever="@getbootstrap" />
                     </div>
                     <p>{element.hall_description}</p>
                   </div>
+                  <div
+                        className="modal fade"
+                        id="exampleModal"
+                        tabindex="-1"
+                        aria-labelledby="exampleModalLabel"
+                        aria-hidden="true"
+                      >
+                        <div className="modal-dialog">
+                          <div className="modal-content">
+                            <div className="modal-headera">
+                            <div className="video-player" id="videoPlayer">
+  <video width="100%" controls  autoPlay id="video">
+    
+    <source src={element.video} type="video/mp4"/>
+    </video> 
+    <img src="./image/play.png" className="btnClose"/>
+  </div>
+                         
+                          </div>
+                        </div>
+                      </div>
+                      </div>
                 </>
               ))}
           </div>
         </div>
       </div>
 
-      {/* <div className="video-player" id="videoPlayer">
-  <video width="100%" controls  autoPlay id="video">
+
     
-    <source src="./image/Project6.mp4" type="video/mp4"/>
-    </video> 
-    <img src="./image/play.png" className="btnClose"/>
-  </div>
+  
+
+
+      {/* 
 
 
   <script>
