@@ -1,0 +1,32 @@
+.container{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 8rem;
+    /* background-color: red; */
+
+/* border: 1px solid;
+height: 50vh; */
+
+}
+
+.right-login {
+    flex: 1;
+    font-weight: 700;
+    margin-top: 2rem;
+}
+
+.left-login {
+    flex:1.5
+}
+
+
+input {
+    padding: 1px;
+}
+
+.link{
+    text-decoration: none;
+    color: white;
+}
