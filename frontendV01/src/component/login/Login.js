@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../reducer/login";
 import "./Login.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-const Login = ({setUserId}) => {
+const Login = ({ setUserId }) => {
   const state = useSelector((state) => {
     return {
       isLoggedIn: state.loginReducer.isLoggedIn,
@@ -34,7 +34,7 @@ const Login = ({setUserId}) => {
         localStorage.setItem("token", result.data.token);
         navigate("/");
 
-        setUserId(result.data.result[0].id)
+        setUserId(result.data.result[0].id);
         localStorage.setItem("userId", result.data.result[0].id);
       })
       .catch((err) => {
@@ -47,41 +47,65 @@ const Login = ({setUserId}) => {
   return (
     <>
       <br />
-      <br />
-      <br />
-      <div className="container">
-        <form>
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">
-              Email address
-            </label>
-            <input
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-              type="email"
-              class="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
-            />
-            <div id="emailHelp" class="form-text">
-              We'll never share your email with anyone else.
+      {/* <br /> 
+     <br />  */}
+      <div className="container" >
+
+      <div className="right-login">
+
+<p className="newhere">Be Part of Our Family</p>
+  <p className="wordSign">
+   We will be very pleased to join us
+  </p>
+
+
+  <button type="button" class="btn btn-success">
+
+  <Link to="/register" className="link">
+      Sign Up
+    </Link>
+  </button>
+
+
+</div>
+
+
+
+
+
+        <div className="left-login">
+          <form>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">
+                Email address
+              </label>
+              <input
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+                type="email"
+                class="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+              />
+              <div id="emailHelp" class="form-text">
+                We'll never share your email with anyone else.
+              </div>
             </div>
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">
-              Password
-            </label>
-            <input
-              onChange={(e) => {
-                setPass(e.target.value);
-              }}
-              type="password"
-              class="form-control"
-              id="exampleInputPassword1"
-            />
-          </div>
-          <div class="mb-3 form-check">
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">
+                Password
+              </label>
+              <input
+                onChange={(e) => {
+                  setPass(e.target.value);
+                }}
+                type="password"
+                class="form-control"
+                id="exampleInputPassword1"
+              />
+            </div>
+            {/* <div class="mb-3 form-check">
             <input
               type="checkbox"
               class="form-check-input"
@@ -90,11 +114,13 @@ const Login = ({setUserId}) => {
             <label class="form-check-label" for="exampleCheck1">
               Check me out
             </label>
-          </div>
-          <button onClick={login} type="submit" class="btn btn-primary">
-            Submit
-          </button>
-        </form>
+          </div> */}
+            <button onClick={login} type="submit" class="btn btn-primary">
+              Sign In
+            </button>
+          </form>
+        </div>
+       
       </div>
     </>
   );
