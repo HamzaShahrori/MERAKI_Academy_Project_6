@@ -29,10 +29,11 @@ const New = ({ num, setNum, search }) => {
     };
   });
   const addNewHall = () => {
-    console.log("user", user_id);
+   
     axios
       .post(
-        `http://localhost:5000/halls/${user_id}`,
+        `http://localhost:5000/halls/${localStorage.getItem('userId')
+      }`,
         {
           hall_image,
           hall_name,
@@ -100,12 +101,12 @@ const New = ({ num, setNum, search }) => {
   const getHallByUserId = () => {
     console.log("user", user_id);
     axios
-      .get(`http://localhost:5000/halls/add/${user_id}`, {
+      .get(`http://localhost:5000/halls/add/${localStorage.getItem('userId')}`, {
         headers: { Authorization: `Bearer ${state.token}` },
       })
       .then((result) => {
         dispatch(setHalls(result.data.result));
-        console.log(result.data.result);
+       
       });
   };
   useEffect(() => {
@@ -293,26 +294,27 @@ const New = ({ num, setNum, search }) => {
             aria-label="Floating label select example"
           >
             <option selected>Select Address</option>
-            <option value="1">Amman</option>
-            <option value="2">Irbid</option>
-            <option value="3">Zarqa</option>
-            <option value="4">Salt</option>
-            <option value="5">Madaba</option>
-            <option value="6">Mafraq</option>
-            <option value="7">Jerash</option>
-            <option value="8">Ma'an</option>
-            <option value="9">Tafila</option>
-            <option value="10">Karak</option>
-            <option value="11">Aqapa</option>
-            <option value="12">Ajlun</option>
+            <option value="Amman">Amman</option>
+            <option value="Irbid">Irbid</option>
+            <option value="Zarqa">Zarqa</option>
+            <option value="Salt">Salt</option>
+            <option value="Madaba">Madaba</option>
+            <option value="Mafraq">Mafraq</option>
+            <option value="Jerash">Jerash</option>
+            <option value="Ma'an">Ma'an</option>
+            <option value="Tafila">Tafila</option>
+            <option value="Karak">Karak</option>
+            <option value="Aqapa">Aqapa</option>
+            <option value="Ajlun">Ajlun</option>
           </select>
           <label for="floatingSelect">Select Address</label>
         </div>
       </div>
 
-      <button type="button" class="btn btn-primary" onClick={addNewHall}>
+      <button  type="button" class="btn btn-primary" onClick={addNewHall}>
         new hall
       </button>
+     
     </>
   );
 };
