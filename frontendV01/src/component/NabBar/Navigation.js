@@ -58,7 +58,7 @@ const Navigation = ({ setSearchHall, setPlace, setAllHalls, setNum,userId }) => 
 
               {/* {state.token && state.halls == "publishing" != 0 ? ( */}
                    <li className="nav-item" onClick={() => detailsBooking(localStorage.getItem('userId'))}>
-                <a  className="nav-link" >
+                <a  className="nav-link" style={{cursor:"pointer"}} >
                   Add Hall
                 </a>
               </li>
