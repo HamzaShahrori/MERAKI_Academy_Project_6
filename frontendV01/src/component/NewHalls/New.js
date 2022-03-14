@@ -21,7 +21,7 @@ const New = ({ num, setNum, search }) => {
   const [price, setPrice] = useState("");
   const dispatch = useDispatch();
   const { user_id } = useParams();
-  
+
   const state = useSelector((state) => {
     return {
       token: state.loginReducer.token,
@@ -29,11 +29,9 @@ const New = ({ num, setNum, search }) => {
     };
   });
   const addNewHall = () => {
-   
     axios
       .post(
-        `http://localhost:5000/halls/${localStorage.getItem('userId')
-      }`,
+        `http://localhost:5000/halls/${localStorage.getItem("userId")}`,
         {
           hall_image,
           hall_name,
@@ -101,12 +99,15 @@ const New = ({ num, setNum, search }) => {
   const getHallByUserId = () => {
     console.log("user", user_id);
     axios
-      .get(`http://localhost:5000/halls/add/${localStorage.getItem('userId')}`, {
-        headers: { Authorization: `Bearer ${state.token}` },
-      })
+      .get(
+        `http://localhost:5000/halls/add/${localStorage.getItem("userId")}`,
+        {
+          headers: { Authorization: `Bearer ${state.token}` },
+        }
+      )
       .then((result) => {
+        console.log(result.data.result);
         dispatch(setHalls(result.data.result));
-       
       });
   };
   useEffect(() => {
@@ -118,6 +119,52 @@ const New = ({ num, setNum, search }) => {
       <br />
       <br />
       <br />
+      {state.halls &&
+        state.halls.map((element, i) => (
+          // <div key={i}>
+          <div class="card" style={{ width: "25rem" , marginLeft:"5%", marginTop:"2%", overflowX:"hidden"}}>
+            <img
+              class="card-img-top"
+              // width="50%"
+              src={element.hall_image}
+            ></img>
+            <video
+              class="card-img-top"
+              controls
+              autoPlay
+              id="video"
+              style={{ width: "100%" }}
+            >
+              <source src={element.video} type="video/mp4" />
+            </video>{" "}
+            <h5 class="card-title">Name:{element.hall_name}</h5>
+            <p class="card-text">Description: {element.hall_description}</p>
+            <p class="card-text">Address: {element.hall_address}</p>
+            <p class="card-text">Price: {element.price}$</p>
+            <p class="card-text">Discount: {element.discount}%</p>
+            <p class="card-text">PriceBefore: {element.priceBeforeDiscount}$</p>
+            <div class="card-body">
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <a href="#" class="btn btn-primary">
+                Go somewhere
+              </a>
+            </div>
+          </div>
+        ))}
+
+      {/* hall_image,
+            hall_name,
+            video,
+            hall_description,
+            hall_address,
+            price,
+            discount,
+            priceBeforeDiscount, */}
+      {/* // </div> */}
+
       <div className="input-group">
         {/* <div className="input-group col-mb-3" style={{ width: "300px", height:"50px" }} >
           <span
@@ -311,10 +358,9 @@ const New = ({ num, setNum, search }) => {
         </div>
       </div>
 
-      <button  type="button" class="btn btn-primary" onClick={addNewHall}>
+      <button type="button" class="btn btn-primary" onClick={addNewHall}>
         new hall
       </button>
-     
     </>
   );
 };

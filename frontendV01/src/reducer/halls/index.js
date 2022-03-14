@@ -1,20 +1,18 @@
 const initialState = {
   halls: [],
-  hallsWithDiscount:[],
- hallById: [],
-
+  hallsWithDiscount: [],
+  hallById: [],
 };
 const hallsReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case "SET_HALLS":
       return { ...state, halls: payload };
 
+    case "SET_HALLSHasDiscount":
+      return { ...state.hallsWithDiscount, hallsWithDiscount: payload };
 
-      case "SET_HALLSHasDiscount":
-        return { ...state.hallsWithDiscount, hallsWithDiscount: payload };
-
-        case "SET_Hall":
-          return { ...state.hallById, hallById: payload };
+    case "SET_Hall":
+      return { ...state.hallById, hallById: payload };
 
     case "ADD_HALLS":
       return { ...state, halls: [...state.halls, payload] };
@@ -42,7 +40,7 @@ const hallsReducer = (state = initialState, { type, payload }) => {
       return state;
   }
 };
-// 
+//
 
 export default hallsReducer;
 
@@ -71,7 +69,6 @@ export const setHallsHasDiscount = (halls) => {
     payload: halls,
   };
 };
-
 
 export const setHall = (hallById) => {
   return {
