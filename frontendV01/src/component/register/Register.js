@@ -117,7 +117,8 @@ const Register = () => {
           </form> */}
 
       <br />
-
+      <div className="registerContainer">
+        <div className="left-register">
       <form   onSubmit={addNewUser}>
         <div className="form-group">
           <label for="exampleInputEmail1">First Name</label>
@@ -190,7 +191,7 @@ const Register = () => {
           </label>
           <label>
             <input
-              type="checkbox"
+              type="checkbox" style={{marginLeft:"1rem" ,marginTop: "1rem"}}
               onClick={() => {
                 setReservation(1);
               }} 
@@ -199,27 +200,56 @@ const Register = () => {
           </label>
         </div>
 
-        <button type="submit" className="btn btn-success">
-          Register
+        <button type="submit" className="btn btn-success" style={{marginTop:"1rem"}}>
+         Sign Up 
         </button>
       </form>
 
       {status
         ? message && <div className="SuccessMessage">{message}</div>
         : message && (
-            <div
+            <div 
               className="alert alert-danger"
               role="alert"
-              style={{ width: "20rem" }}
+              style={{ width: "20rem",marginTop:"1rem" }}
             >
               {message}
             </div>
           )}
+</div>
+
+
+<div className="right-register">
+
+<p className="newhere">Login and discover our website</p>
+  {/* <p className="wordSign">
+   
+  </p> */}
+
+
+  <button type="submit" class="btn btn-primary">
+
+  <Link to="/login" className="link">
+      Sign In
+    </Link>
+  </button>
+
+
+
+
+
+</div>
+
+
+
+
+
 
       {/* 
           {status
             ? message && <div className="SuccessMessage">{message}</div>
             : message && <div className="ErrorMessage">{message}</div>} */}
+            </div>
     </>
     // </div>
     // </>
