@@ -15,13 +15,15 @@ const Navigation = ({ setSearchHall, setPlace, setAllHalls, setNum,userId }) => 
 
     };
   });
-  const detailsBookiing = (id) => {
+  const detailsBooking = (id=userId) => {
     navigate(`/details-booking/${id}`);
   };
-console.log("userid",userId);
+
   const logout = () => {
     state.isLoggedIn = false;
     localStorage.removeItem("token");
+    localStorage.removeItem("userId");
+
     dispatch(logoutUser());
   };
   ////
@@ -29,7 +31,7 @@ console.log("userid",userId);
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
-        <img className="navbar-brand" src="https://i.pinimg.com/564x/99/c4/ac/99c4acbc22f2e573abe7465364d9799f.jpg" alt="logo"style={{width:"100px"}}/>
+        {/* <img className="navbar-brand" src="https://i.pinimg.com/564x/99/c4/ac/99c4acbc22f2e573abe7465364d9799f.jpg" alt="logo"style={{width:"100px"}}/> */}
           {/* <img src="https://i.pinimg.com/564x/99/c4/ac/99c4acbc22f2e573abe7465364d9799f.jpg" ></img> */}
         {/*  */}
           <Link to="/" className="navbar-brand">
@@ -55,7 +57,7 @@ console.log("userid",userId);
               </li>
 
               {/* {state.token && state.halls == "publishing" != 0 ? ( */}
-                   <li className="nav-item" onClick={() => detailsBookiing(userId)}>
+                   <li className="nav-item" onClick={() => detailsBooking(localStorage.getItem('userId'))}>
                 <a  className="nav-link" >
                   Add Hall
                 </a>
