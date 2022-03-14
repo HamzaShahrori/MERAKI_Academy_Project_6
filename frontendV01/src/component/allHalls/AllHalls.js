@@ -282,7 +282,10 @@ const AllHalls = ({
                         <div className="modal-dialog">
                           <div className="modal-content">
                             <div className="modal-header">
-                              <h5 className="modal-title" id="exampleModalLabel">
+                              <h5
+                                className="modal-title"
+                                id="exampleModalLabel"
+                              >
                                 Update Hall
                               </h5>
                               <button
@@ -409,18 +412,18 @@ const AllHalls = ({
                                     >
                                       Select Address
                                     </option>
-                                    <option value="1">Amman</option>
-                                    <option value="2">Irbid</option>
-                                    <option value="3">Zarqa</option>
-                                    <option value="4">Salt</option>
-                                    <option value="5">Madaba</option>
-                                    <option value="6">Mafraq</option>
-                                    <option value="7">Jerash</option>
-                                    <option value="8">Ma'an</option>
-                                    <option value="9">Tafila</option>
-                                    <option value="10">Karak</option>
-                                    <option value="11">Aqapa</option>
-                                    <option value="12">Gawr</option>
+                                    <option value="Amman">Amman</option>
+                                    <option value="Irbid">Irbid</option>
+                                    <option value="Zarqa">Zarqa</option>
+                                    <option value="Salt">Salt</option>
+                                    <option value="Madaba">Madaba</option>
+                                    <option value="Mafraq">Mafraq</option>
+                                    <option value="Jerash">Jerash</option>
+                                    <option value="Ma'an">Ma'an</option>
+                                    <option value="Tafila">Tafila</option>
+                                    <option value="Karak">Karak</option>
+                                    <option value="Aqapa">Aqapa</option>
+                                    <option value="Gawr">Gawr</option>
                                   </select>
                                   <label for="floatingSelect">
                                     Select Address
