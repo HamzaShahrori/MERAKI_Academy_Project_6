@@ -5,8 +5,8 @@ import { useParams } from "react-router-dom";
 import "./HallDetails.css";
 import { useNavigate } from "react-router-dom";
 import { setHall } from "../../reducer/halls/index";
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
+// import Calendar from 'react-calendar';
+// import 'react-calendar/dist/Calendar.css';
 const HallDetails = () => {
   const state = useSelector((state) => {
     return {
