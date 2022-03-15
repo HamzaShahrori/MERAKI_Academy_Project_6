@@ -61,3 +61,17 @@ FOREIGN KEY (user_id) REFERENCES users(id),
 is_deleted TINYINT DEFAULT 0,
 PRIMARY KEY (id)
 );
+
+
+
+CREATE TABLE Rating (
+    id INT AUTO_INCREMENT NOT NULL,
+    hall_rating INT,
+    user_id INT,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    halls_id INT,
+    FOREIGN KEY (halls_id) REFERENCES halls(id),
+    is_deleted TINYINT DEFAULT 0,
+    PRIMARY KEY (id)
+
+);
