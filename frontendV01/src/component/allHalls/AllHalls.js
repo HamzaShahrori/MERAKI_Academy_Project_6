@@ -553,6 +553,7 @@ const AllHalls = ({
         </div>
       </div>
 
+    
       {num == 1 ? (
         <></>
       ) : (
