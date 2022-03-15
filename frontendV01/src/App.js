@@ -11,7 +11,8 @@ import Login from "./component/login/Login";
 //HallDetails
 import AllHallsWithDiscount from "./component/Discount/Discount";
 import HallDetails from "./component/hallDetails/HallDetails";
-
+// HallBooking
+import HallBooking from "./component/Booking/Booking";
 import Register from "./component/register/Register";
 
 import AllHalls from "./component/allHalls/AllHalls";
@@ -81,9 +82,10 @@ function App({}) {
         />
 
         <Route path="/Hall-Details/:id" element={<HallDetails />} />
+        <Route path="/Hall-Booking/:id" element={<HallBooking />} />
       </Routes>
     </>
   );
 }
-
+//
 export default App;
