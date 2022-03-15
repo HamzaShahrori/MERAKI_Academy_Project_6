@@ -23,7 +23,7 @@ const Home = () => {
           </h1>
           <div className="btuHeroBook">
             <Link to="/all">
-              <button>Booking Mow</button>
+              <button>Booking Now</button>
             </Link>
           </div>
         </div>
