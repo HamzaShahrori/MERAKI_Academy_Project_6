@@ -4,18 +4,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../../reducer/login";
 import { useNavigate } from "react-router-dom";
 import "./Navigation.css";
-const Navigation = ({ setSearchHall, setPlace, setAllHalls, setNum,userId }) => {
+const Navigation = ({
+  setSearchHall,
+  setPlace,
+  setAllHalls,
+  setNum,
+  userId,
+}) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const state = useSelector((state) => {
     return {
       isLoggedIn: state.loginReducer.isLoggedIn,
       token: state.loginReducer.token,
       halls: state.hallsReducer.halls,
-
     };
   });
-  const detailsBooking = (id=userId) => {
+  const detailsBooking = (id = userId) => {
     navigate(`/details-booking/${id}`);
   };
 
@@ -31,9 +36,9 @@ const Navigation = ({ setSearchHall, setPlace, setAllHalls, setNum,userId }) => 
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
-        {/* <img className="navbar-brand" src="https://i.pinimg.com/564x/99/c4/ac/99c4acbc22f2e573abe7465364d9799f.jpg" alt="logo"style={{width:"100px"}}/> */}
+          {/* <img className="navbar-brand" src="https://i.pinimg.com/564x/99/c4/ac/99c4acbc22f2e573abe7465364d9799f.jpg" alt="logo"style={{width:"100px"}}/> */}
           {/* <img src="https://i.pinimg.com/564x/99/c4/ac/99c4acbc22f2e573abe7465364d9799f.jpg" ></img> */}
-        {/*  */}
+          {/*  */}
           <Link to="/" className="navbar-brand">
             Happy Wedding
           </Link>
@@ -57,39 +62,32 @@ const Navigation = ({ setSearchHall, setPlace, setAllHalls, setNum,userId }) => 
               </li>
 
               {/* {state.token && state.halls == "publishing" != 0 ? ( */}
-                   <li className="nav-item" onClick={() => detailsBooking(localStorage.getItem('userId'))}>
-                <a  className="nav-link" style={{cursor:"pointer"}} >
-                  Add Hall
+              {/* <li
+                className="nav-item"
+                onClick={() => detailsBooking(localStorage.getItem("userId"))}
+              >
+                <a className="nav-link" style={{ cursor: "pointer" }}>
+                  Profile{" "}
                 </a>
-              </li>
-        {/* ) : (
+              </li> */}
+              {/* ) : (
           <></>
         )} */}
-              {state.isLoggedIn ? (
-                <>
-                  <li onClick={logout} className="nav-item">
-                    <Link to="/" className="nav-link">
-                      {" "}
-                      Logout
-                    </Link>
-                  </li>
-                </>
-              ) : (
-                <>
-                  <li className="nav-item">
-                    <Link to="/register" className="nav-link">
-                      {" "}
-                      Register
-                    </Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link to="/login" className="nav-link">
-                      {" "}
-                      Login
-                    </Link>
-                  </li>
-                </>
-              )}
+              <li>
+                <Link
+                  to="/all"
+                  class="nav-link active"
+                  aria-current="page"
+                  onClick={() => {
+                    setAllHalls(true);
+                    setPlace(false);
+                    setNum(1);
+                  }}
+                >
+                  Wedding Halls
+                </Link>
+              </li>
+
               {/* <li class="nav-item">
                 <Link
                   to="/all"
@@ -185,16 +183,6 @@ const Navigation = ({ setSearchHall, setPlace, setAllHalls, setNum,userId }) => 
                   all
                 </Link>
               </li>
-
-
-<li>
-
-<Link to="all/rating">Rating</Link>
-
-</li>
-
-
-
               {/* <li>
                     <Link
                       to="/address"
@@ -224,6 +212,44 @@ Test                    </Link>
                 aria-label="Search"
               />
             </form>
+            <li
+              className="nav-item"
+              style={{ listStyle: "none" }}
+              onClick={() => detailsBooking(localStorage.getItem("userId"))}
+            >
+              <a className="nav-link" style={{ cursor: "pointer" }} id="link">
+                Profile
+              </a>
+            </li>
+            {state.isLoggedIn ? (
+              <>
+                <li
+                  onClick={logout}
+                  className="nav-item"
+                  style={{ listStyle: "none" }}
+                >
+                  <Link to="/" className="nav-link" id="link">
+                    {" "}
+                    Logout
+                  </Link>
+                </li>
+              </>
+            ) : (
+              <>
+                <li className="nav-item" style={{ listStyle: "none" }}>
+                  <Link to="/register" className="nav-link" id="link">
+                    {" "}
+                    Register
+                  </Link>
+                </li>
+                <li className="nav-item" style={{ listStyle: "none" }}>
+                  <Link to="/login" className="nav-link" id="link">
+                    {" "}
+                    Login
+                  </Link>
+                </li>
+              </>
+            )}
           </div>
         </div>
       </nav>
