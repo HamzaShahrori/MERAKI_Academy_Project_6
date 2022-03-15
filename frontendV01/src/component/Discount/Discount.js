@@ -49,6 +49,12 @@ const AllHallsWithDiscount = ({ num, setNum, searchHall }) => {
     }
   };
 
+
+
+  const convertToDetailsHall = (id) => {
+    navigate(`/Hall-Details/${id}`);
+  };
+
   useEffect(() => {
     getAllHallsHasDiscount();
   });
@@ -59,48 +65,143 @@ const AllHallsWithDiscount = ({ num, setNum, searchHall }) => {
       <br />
       <br />
       <br />
-      {/* <div className="container"> */}
-      <div className="row">
-        {state.hallsWithDiscount &&
-          state.hallsWithDiscount
-            .filter((hallInfo) => {
-              if (searchHall == "") {
-                return hallInfo;
-              } else if (
-                hallInfo.hall_address
-                  .toLowerCase()
-                  .includes(searchHall.toLowerCase()) ||
-                hallInfo.hall_name
-                  .toLowerCase()
-                  .includes(searchHall.toLowerCase())
-              ) {
-                return hallInfo;
-              }
-            })
-            .map((element, i) => (
-              <div
-                key={i}
-                className="card col-12 col-sm-6 col-md-4 col-lg-3 
+      <br />
+      <div className="containerAllHalls">
+        <div className="list-container">
+          <div className="left-col-list">
+            {/* <pre>{numAll - 1}+ options</pre> */}
+            <h1>Recommended Halls In Jordan</h1>
+            {/* <div key={i} className="hall">
+           
+          </div> */}
 
-              "
-                style={{ width: "18rem" }}
-              >
-                <img src={element.hall_image} className="card-img-top" alt="..." />
-                <div className="card-body">
-                  <h5 className="card-title">{element.hall_name}</h5>
-                  <p className="card-text beforeDiscount">
-                    {element.PriceBeforeDiscount}
-                  </p>
-                  <p className="card-text">{element.price}</p>
+            {state.hallsWithDiscount &&
+              state.hallsWithDiscount
+                .filter((hallInfo) => {
+                  if (searchHall == "") {
+                    return hallInfo;
+                  } else if (
+                    hallInfo.hall_address
+                      .toLowerCase()
+                      .includes(searchHall.toLowerCase()) ||
+                      hallInfo.hall_name
+                      .toLowerCase()
+                      .includes(searchHall.toLowerCase())
+                  ) {
+                    console.log("after", searchHall); //
 
-                  <Link to="/" className="btn btn-primary">
-                    Booking Now
-                  </Link>
-                </div>
+                    return hallInfo;
+                  }
+                })
+
+                .map((element, i) => (
+                  <>
+                    <div key={i} className="hall">
+                      <div className="hall-img">
+                        <img
+                          src={element.hall_image}
+                          onClick={() => {
+                            convertToDetailsHall(element.id);
+                          }}
+                        />
+                      </div>
+                      <div className="hall-info">
+                        <p>name Hall</p>
+                        <h3>{element.hall_name}</h3>
+                        <p>{element.hall_description}</p>
+                        <div className="hall-price">
+                          {/* <p>2 Guest</p> */}
+                          <h4 className="priceBeforeDiscount">
+                            ${element.price}
+                            <span className="price">
+                              ${element.PriceBeforeDiscount}
+                            </span>
+                          </h4>
+                        </div>
+                      </div>
+                      
+                    
+                   
+                    </div>
+                  </>
+                ))}
+          </div>
+          {/* <div className="right-col-list">
+            <div className="sidebar">
+              <h2>Select Filters</h2>
+              <h3>Choose the province</h3>
+              <div className="filter">
+                <input
+                  type="checkbox"
+                  onClick={() => {
+                    setALLHalls(true);
+                    setPlace(false);
+                    setNum(1);
+                  }}
+                />{" "}
+                <p>All Halls</p> <span>({numAll})</span>
               </div>
-            ))}
+              <div className="filter">
+                <input
+                  type="checkbox"
+                  onClick={() => {
+                    setALLHalls(false);
+
+                    setPlace(`amman`);
+                    setNum(1);
+                  }}
+                />{" "}
+                <p>Amman</p> <span>({numAmman})</span>
+              </div>
+              <div className="filter">
+                <input
+                  type="checkbox"
+                  onClick={() => {
+                    setALLHalls(false);
+
+                    setPlace(`Irbid`);
+                    setNum(1);
+                  }}
+                />{" "}
+                <p>Irbid</p> <span>({numIrbid})</span>
+              </div>
+              <div className="filter">
+                <input type="checkbox" /> <p>Zarqa</p> <span>(0)</span>
+              </div>
+              <div className="filter">
+                <input type="checkbox" /> <p>Salt</p> <span>(0)</span>
+              </div>
+              <div className="filter">
+                <input type="checkbox" /> <p>Ma'an</p> <span>(0)</span>
+              </div>
+              <div className="filter">
+                <input type="checkbox" /> <p>Jerash</p> <span>(0)</span>
+              </div>
+              <div className="filter">
+                <input type="checkbox" /> <p>Mafraq</p> <span>(0)</span>
+              </div>
+              <div className="filter">
+                <input type="checkbox" /> <p>Madaba</p> <span>(0)</span>
+              </div>
+
+              <h3>Additional options</h3>
+              <div className="filter">
+                <input type="checkbox" /> <p>Tafila</p> <span>(0)</span>
+              </div>
+              <div className="filter">
+                <input type="checkbox" /> <p>Karak</p> <span>(0)</span>
+              </div>
+              <div className="filter">
+                <input type="checkbox" /> <p>Aqapa</p> <span>(0)</span>
+              </div>
+              <div className="filter">
+                <input type="checkbox" /> <p>Gawr</p> <span>(0)</span>
+              </div>
+            </div>
+          </div> */}
+        </div>
       </div>
-      {/* </div> */}
+
       {num == 1 ? (
         <></>
       ) : (
