@@ -186,6 +186,15 @@ const Navigation = ({ setSearchHall, setPlace, setAllHalls, setNum,userId }) => 
                 </Link>
               </li>
 
+
+<li>
+
+<Link to="all/rating">Rating</Link>
+
+</li>
+
+
+
               {/* <li>
                     <Link
                       to="/address"
