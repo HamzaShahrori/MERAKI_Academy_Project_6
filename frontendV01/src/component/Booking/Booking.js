@@ -14,9 +14,47 @@ const HallBooking = () => {
   //     hallById: state.hallsReducer.hallById,
   //   };
   // });
-  const navigate = useNavigate();
 
-  const { id } = useParams();
+  //   booking_day VARCHAR(255),
+  // date_booking DATE,
+  // booking_time VARCHAR(255),
+  // phone VARCHAR(255),
+  // Payment INT
+  const navigate = useNavigate();
+  const [reserver, setReserver] = useState("");
+  const [phone, setPhone] = useState("");
+
+  const [date_booking, setDate_booking] = useState("");
+
+  const [booking_day, setBooking_day] = useState("");
+  const [booking_time, setBooking_time] = useState("");
+  const [Payment, setPayment] = useState("");
+  const [message, setMessage] = useState("");
+  const { halls_id } = useParams();
+console.log(halls_id);
+
+  const addBooking = async (e) => {
+    e.preventDefault();
+
+    try {
+      const result = await axios.post(`http://localhost:5000/booking/${halls_id}`, {
+        reserver,
+        phone,
+        date_booking,
+        booking_day,
+        booking_time,
+        Payment,
+      });
+
+
+      if (result.data.success) {
+   
+        setMessage("Booking done")
+      } else throw Error;
+
+    } catch {}
+  };
+
   const dispatch = useDispatch();
 
   //   /-------
@@ -24,7 +62,6 @@ const HallBooking = () => {
   return (
     <>
       <br />
-      
 
       <div className="container-booking">
         <div className="container-info">
@@ -52,27 +89,50 @@ const HallBooking = () => {
 
             <div className="form-filed">
               <p>Your Name</p>
-              <input type="text" placeholder="your name" />
+              <input
+                type="text"
+                placeholder="your name"
+                onChange={(e) => setReserver(e.target.value)}
+              />
+            </div>
+            <div className="form-filed">
+              <p>Your Phone</p>
+              <input
+                type="text"
+                placeholder="your phone"
+                onChange={(e) => setPhone(e.target.value)}
+              />
             </div>
 
             <div className="form-filed">
               <p>Booking Day</p>
-              <input type="text" placeholder="booking day" />
+              <input
+                type="text"
+                placeholder="booking day"
+                onChange={(e) => setBooking_day(e.target.value)}
+              />
             </div>
 
             <div className="form-filed">
               <p>booking Date</p>
-              <input type="date" />
+              <input
+                type="date"
+                onChange={(e) => setDate_booking(e.target.value)}
+              />
             </div>
 
             <div className="form-filed">
               <p>booking Time</p>
-              <input type="time" />
+              <input
+                type="time"
+                onChange={(e) => setBooking_time(e.target.value)}
+              />
             </div>
 
             <div className="form-filed">
               <p>Payment value</p>
-              <select name="select" id="#">
+              <input type="text" onChange={(e) => setPayment(e.target.value)} />
+              {/* <select name="select" id="#">
                 <option value="10%">10%</option>
                 <option value="20%">20%</option>
                 <option value="30%">30%</option>
@@ -83,12 +143,13 @@ const HallBooking = () => {
                 <option value="80%">80%</option>
                 <option value="90%">90%</option>
                 <option value="100%">100%</option>
-              </select>
+              </select> */}
             </div>
-            <button className="btn-Booking">SUBMIT</button>
+            <button className="btn-Booking" onClick={addBooking} >SUBMIT</button>
           </form>
         </div>
       </div>
+      {setMessage}
     </>
   );
 };

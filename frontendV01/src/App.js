@@ -82,7 +82,7 @@ function App({}) {
         />
 
         <Route path="/Hall-Details/:id" element={<HallDetails />} />
-        <Route path="/Hall-Booking/:id" element={<HallBooking />} />
+        <Route path="/Hall-Booking/:halls_id" element={<HallBooking />} />
       </Routes>
     </>
   );
