@@ -53,7 +53,9 @@ const Login = ({ setUserId }) => {
 
       <div className="right-login">
 
-<p className="newhere">Be Part of Our Family</p>
+        <img src="./image/log.png" className="loginImg"/>
+
+{/* <p className="newhere">Be Part of Our Family</p>
   <p className="wordSign">
    We will be very pleased to join us
   </p>
@@ -64,7 +66,7 @@ const Login = ({ setUserId }) => {
   <Link to="/register" className="link">
       Sign Up
     </Link>
-  </button>
+  </button> */}
 
 
 </div>
