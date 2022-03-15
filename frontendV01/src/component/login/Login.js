@@ -49,13 +49,11 @@ const Login = ({ setUserId }) => {
       <br />
       {/* <br /> 
      <br />  */}
-      <div className="container" >
+      <div className="container">
+        <div className="right-login">
+          <img src="./image/log.png" className="loginImg" />
 
-      <div className="right-login">
-
-        <img src="./image/log.png" className="loginImg"/>
-
-{/* <p className="newhere">Be Part of Our Family</p>
+          {/* <p className="newhere">Be Part of Our Family</p>
   <p className="wordSign">
    We will be very pleased to join us
   </p>
@@ -67,16 +65,10 @@ const Login = ({ setUserId }) => {
       Sign Up
     </Link>
   </button> */}
-
-
-</div>
-
-
-
-
+        </div>
 
         <div className="left-login">
-          <form>
+          <form style={{ width: "20rem" }}>
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">
                 Email address
@@ -122,7 +114,6 @@ const Login = ({ setUserId }) => {
             </button>
           </form>
         </div>
-       
       </div>
     </>
   );
