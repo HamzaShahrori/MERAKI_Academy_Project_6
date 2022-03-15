@@ -1,8 +1,18 @@
 const connection = require("../database/db");
 const createNewBooking = (req, res) => {
-  const { booking_day, date_booking, booking_time, Payment } = req.body;
-  const query = `INSERT INTO booking (booking_day, date_booking, booking_time, Payment) VALUES (?,?,?,?)`;
-  const data = [booking_day, date_booking, booking_time, Payment];
+  const { reserver, phone, booking_day, date_booking, booking_time, Payment } =
+    req.body;
+  const halls_id = [req.params.halls_id];
+  const query = `INSERT INTO booking (reserver,phone,booking_day, date_booking, booking_time, Payment,halls_id) VALUES (?,?,?,?,?,?,?)`;
+  const data = [
+    reserver,
+    phone,
+    booking_day,
+    date_booking,
+    booking_time,
+    Payment,
+    halls_id,
+  ];
   connection.query(query, data, (err, result) => {
     if (err) {
       return res.status(500).json({
