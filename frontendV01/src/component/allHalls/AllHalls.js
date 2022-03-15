@@ -207,6 +207,18 @@ const AllHalls = ({
     navigate(`/Hall-Details/${id}`);
   };
 
+
+
+
+
+
+
+
+
+
+
+
+
   return (
     <>
       <br />
