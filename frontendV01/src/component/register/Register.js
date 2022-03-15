@@ -221,18 +221,19 @@ const Register = () => {
 
 <div className="right-register">
 
-<p className="newhere">Login and discover our website</p>
+{/* <p className="newhere">Login and discover our website</p> */}
   {/* <p className="wordSign">
    
   </p> */}
 
+<img src= "./image/reg.png" className="registerImg"/>
 
-  <button type="submit" class="btn btn-primary">
+  {/* <button type="submit" class="btn btn-primary">
 
   <Link to="/login" className="link">
       Sign In
     </Link>
-  </button>
+  </button> */}
 
 
 
