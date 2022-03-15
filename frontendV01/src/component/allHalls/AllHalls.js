@@ -100,45 +100,6 @@ const AllHalls = ({
       }
     }
   };
-  //---------------------------------------------------------------------------
-  const updateHallById = async (id) => {
-    console.log("id", id);
-    axios
-      .put(
-        `http://localhost:5000/halls/${id}`,
-        {
-          hall_image,
-          hall_name,
-          video,
-          hall_description,
-          hall_address,
-          price,
-          discount,
-          priceBeforeDiscount,
-        },
-        { headers: { Authorization: `Bearer ${state.token}` } }
-      )
-      .then((result) => {
-        console.log("result", result.data);
-        dispatch(updateHalls(result.data));
-        getAllHalls();
-      })
-      .catch((err) => {
-        console.log("err", err);
-      });
-  };
-  //------------------------------------------------------------------------------
-  const deleteHallById = async (id) => {
-    console.log("id", id);
-    try {
-      await axios.delete(`http://localhost:5000/halls/${id}`);
-      dispatch(deleteHalls(id));
-      getAllHalls();
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  //------------------------------------------------------------------------------
   const countNumAmman = async () => {
     try {
       const res = await axios.get(
@@ -466,25 +427,12 @@ const AllHalls = ({
                               >
                                 Close
                               </button>
-                              <button
-                                onClick={() => {
-                                  updateHallById(element.id);
-                                }}
-                                type="button"
-                                className="btn btn-primary"
-                                data-bs-toggle="modal"
-                                data-bs-target="#exampleModal"
-                                data-bs-whatever="@getbootstrap"
-                              >
-                                Update
-                              </button>
+                             
                             </div>
                           </div>
                         </div>
                       </div>
-                      <button onClick={() => deleteHallById(element.id)}>
-                        delete
-                      </button>
+                    
                     </div>
                   </>
                 ))}
