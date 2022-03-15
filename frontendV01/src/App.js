@@ -17,7 +17,8 @@ import Register from "./component/register/Register";
 
 import AllHalls from "./component/allHalls/AllHalls";
 import Address from "./component/Address/Address";
-function App({}) {
+import StarRating from "./component/StarRating/StarRating";
+function App() {
   const [userId, setUserId] = useState("");
   const [num, setNum] = useState(1);
   const [allHalls, setALLHalls] = useState("");
@@ -83,6 +84,11 @@ function App({}) {
 
         <Route path="/Hall-Details/:id" element={<HallDetails />} />
         <Route path="/Hall-Booking/:halls_id" element={<HallBooking />} />
+
+        <Route path="/all/rating" element={<StarRating />} />
+
+
+
       </Routes>
     </>
   );

@@ -169,6 +169,20 @@ const Navigation = ({
                 </ul>
               </li> */}
 
+              <li>
+                <Link
+                  to="/all"
+                  class="nav-link active"
+                  aria-current="page"
+                  onClick={() => {
+                    setAllHalls(true);
+                    setPlace(false);
+                    setNum(1);
+                  }}
+                >
+                  all
+                </Link>
+              </li>
               {/* <li>
                     <Link
                       to="/address"
