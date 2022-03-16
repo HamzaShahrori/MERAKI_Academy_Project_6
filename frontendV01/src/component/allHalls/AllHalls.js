@@ -236,7 +236,7 @@ const AllHalls = ({
                           </h4>
                         </div>
                       </div>
-                      <button
+                      {/* <button
                         type="button"
                         className="btn btn-primary"
                         data-bs-toggle="modal"
@@ -244,7 +244,7 @@ const AllHalls = ({
                         data-bs-whatever="@getbootstrap"
                       >
                         Update Hall
-                      </button>
+                      </button> */}
                       <div
                         className="modal fade"
                         id="exampleModal"
