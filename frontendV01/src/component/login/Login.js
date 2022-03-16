@@ -25,13 +25,14 @@ const Login = ({ setUserId }) => {
 
   const login = (e) => {
     e.preventDefault();
-    console.log("e", e);
+  
     axios
       .post("http://localhost:5000/login", userLogin)
       .then(async (result) => {
         dispatch(loginUser(result.data.token));
 
         localStorage.setItem("token", result.data.token);
+        localStorage.setItem("publishing", result.data.result[0].publishing);
         navigate("/");
 
         setUserId(result.data.result[0].id);
