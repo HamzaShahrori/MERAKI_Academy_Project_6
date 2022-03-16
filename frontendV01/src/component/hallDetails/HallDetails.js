@@ -7,7 +7,12 @@ import { useNavigate } from "react-router-dom";
 import { setHall } from "../../reducer/halls/index";
 // import Calendar from 'react-calendar';
 // import 'react-calendar/dist/Calendar.css';
+import ReactStars from "react-rating-stars-component";
+
 const HallDetails = () => {
+  // const [hall_rating, setHall_Rating] = useState(0);
+  const [message,setMessage] = useState("")
+
   const state = useSelector((state) => {
     return {
       token: state.loginReducer.token,
@@ -37,6 +42,67 @@ const HallDetails = () => {
     getHallById();
   }, []);
 
+  // const starRating = () => {
+  //   axios
+  //     .post(
+  //       `http://localhost:5000/halls/rating/${halls_id}`,
+  //       { hall_rating },
+  //       { headers: { Authorization: `Bearer ${state.token}` } }
+  //     )
+  //     .then((result) => {
+  //       setMessage("done");
+  //     })
+
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
+
+//   const getStarRating = () => {
+    // axios.get(`http://localhost:5000/halls/rating/${halls_id}`, {
+    //   headers: { Authorization: `Bearer ${state.token}` },
+    // }).then((result)=>{
+    //   setHall_Rating(result.data)
+    // }) .catch((err)=>{
+    //   console.log(err);
+    // })
+//   };
+
+
+// useEffect(()=>{
+//   getStarRating()
+// },[])
+console.log(id);
+
+  const thirdExample = {
+    size: 40,
+    count: 5,
+    isHalf: false,
+    value: 0,
+    color: "black",
+    activeColor: "yellow",
+    onChange: (newValue) => {
+      const hall_rating = newValue
+      console.log(newValue);
+      console.log(`Example 3: new value is ${newValue}`);
+      axios
+      .post(
+        `http://localhost:5000/halls/rating/${id}`,
+        { hall_rating },
+        { headers: { Authorization: `Bearer ${state.token}` } }
+      )
+      .then((result) => {
+        console.log(result);
+        setMessage("done");
+      })
+
+      .catch((err) => {
+        console.log("sooso");
+        console.log("err",err);
+      });
+    },
+  };
+
   return (
     <>
       <div className="hall_details">
@@ -54,10 +120,16 @@ const HallDetails = () => {
 
               <div className="gallery_hallDetails">
                 <div className="gallery_hallDetails-video">
-                <video width="100%" controls  autoPlay id="video">
-    
-    <source src={element.video} type="video/mp4"/>
-    </video> 
+                  <video width="100%" controls autoPlay id="video">
+                    <source src={element.video} type="video/mp4" />
+                  </video>
+                  <div className="starRating">
+                  <ReactStars {...thirdExample} />
+                  {/* <ReactStars {...thirdExample}  /> */}
+                  {/* <ReactStars {...thirdExample}  />
+                  <ReactStars {...thirdExample}  />
+                  <ReactStars {...thirdExample}  /> */}
+                  </div>
                 </div>
                 <div>
                   <img src={element.hall_image} />
@@ -68,7 +140,10 @@ const HallDetails = () => {
               </div>
               <div className="small-details">
                 <h2>{element.price}$</h2>
-                <button className="btnDetails" onClick={() => convertToBookingHall(element.id)}>
+                <button
+                  className="btnDetails"
+                  onClick={() => convertToBookingHall(element.id)}
+                >
                   Booking
                 </button>
               </div>
@@ -95,6 +170,9 @@ const HallDetails = () => {
             </>
           ))}
       </div>
+
+      
+
     </>
   );
 };
