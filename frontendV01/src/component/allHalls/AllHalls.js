@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setHalls, updateHalls, deleteHalls } from "../../reducer/halls/index";
 import { useNavigate } from "react-router-dom";
 import "./AllHalls.css";
+import { useParams } from "react-router-dom";
 
 const AllHalls = ({
   num,
@@ -27,6 +28,10 @@ const AllHalls = ({
   const [hall_description, setHall_description] = useState("");
   const [hall_address, setHall_address] = useState("");
   const [price, setPrice] = useState("");
+  const [hall_rating, setHall_Rating] = useState("");
+
+  const { halls_id } = useParams();
+
   const state = useSelector((state) => {
     return {
       token: state.loginReducer.token,
@@ -166,6 +171,28 @@ const AllHalls = ({
     navigate(`/Hall-Details/${id}`);
   };
 
+  // const thirdExample = {
+  //   size: 40,
+  //   count: 5,
+  //   isHalf: false,
+  //   value: 4,
+  //   color: "blue",
+  //   activeColor: "red",
+  //   onChange: (newValue) => {
+  //     console.log(`Example 3: new value is ${newValue}`);
+  //     const getStarRating = () => {
+  //       axios.get(`http://localhost:5000/halls/rating/${halls_id}`, {
+  //         headers: { Authorization: `Bearer ${state.token}` },
+  //       }).then((result)=>{
+  //         setHall_Rating(result.data)
+  //       }) .catch((err)=>{
+  //         console.log(err);
+  //       })
+  //     };
+
+  //   },
+  // };
+
   return (
     <>
       <br />
@@ -216,11 +243,13 @@ const AllHalls = ({
                           {/* <p>2 Guest</p> */}
                           <h4 className="priceBeforeDiscount">
                             ${element.price}
-                            {element.PriceBeforeDiscount==null?(<></>):( <span className="price">
-                              ${element.PriceBeforeDiscount}
-                            </span>)}
-
-                           
+                            {element.PriceBeforeDiscount == null ? (
+                              <></>
+                            ) : (
+                              <span className="price">
+                                ${element.PriceBeforeDiscount}
+                              </span>
+                            )}
                           </h4>
                         </div>
                       </div>
@@ -423,6 +452,14 @@ const AllHalls = ({
                   </>
                 ))}
           </div>
+
+          <div>
+            {hall_rating &&
+              hall_rating.map((element) => {
+                return <p>{element.hall_rating}</p>;
+              })}
+          </div>
+
           <div className="right-col-list">
             <div className="sidebar">
               <h2>Select Filters</h2>
@@ -512,7 +549,7 @@ const AllHalls = ({
             <span>BACK</span>
           </a>
         )}
-        {num == 1 && state.halls&&state.halls.length == 4 ? (
+        {num == 1 && state.halls && state.halls.length == 4 ? (
           <a
             onClick={() => {
               setNum(num + 1);
