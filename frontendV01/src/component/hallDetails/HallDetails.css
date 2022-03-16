@@ -115,3 +115,6 @@ float: right;
 
 
 
+.starRating{
+  display: flex;
+}
