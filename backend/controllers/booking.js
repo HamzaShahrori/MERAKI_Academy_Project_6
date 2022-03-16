@@ -41,7 +41,7 @@ const getAllBooking = (req, res) => {
 
   const data = [req.params.halls_id]
 
-const query = `SELECT booking.* FROM halls LEFT JOIN booking ON booking.halls_id = ${data} WHERE booking.is_deleted =0 `
+const query = `SELECT booking.* FROM halls LEFT JOIN booking ON booking.halls_id = ${data} WHERE booking.is_deleted =0  AND halls.id=${data}`
 
 
 
