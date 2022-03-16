@@ -16,18 +16,18 @@ import {
 } from "../../reducer/halls/index";
 
 const Wedding = ({ num, setNum, search }) => {
-    const [imageselected, setImageSelected] = useState("");
-    const [message, setMessage] = useState("");
-    const [image, setImage] = useState("");
-    const [hall_image, setHall_image] = useState("");
-    const [hall_name, setHall_name] = useState("");
-    const [video, setVideo] = useState("");
-    const [discount, setDiscount] = useState("");
-    const [priceBeforeDiscount, setPriceBeforeDiscount] = useState("");
-    const [hall_description, setHall_description] = useState("");
-    const [hall_address, setHall_address] = useState("");
-    const [price, setPrice] = useState("");
-  
+  const [imageselected, setImageSelected] = useState("");
+  const [message, setMessage] = useState("");
+  const [image, setImage] = useState("");
+  const [hall_image, setHall_image] = useState("");
+  const [hall_name, setHall_name] = useState("");
+  const [video, setVideo] = useState("");
+  const [discount, setDiscount] = useState("");
+  const [priceBeforeDiscount, setPriceBeforeDiscount] = useState("");
+  const [hall_description, setHall_description] = useState("");
+  const [hall_address, setHall_address] = useState("");
+  const [price, setPrice] = useState("");
+
   const state = useSelector((state) => {
     return {
       token: state.loginReducer.token,
@@ -45,15 +45,10 @@ const Wedding = ({ num, setNum, search }) => {
           headers: { Authorization: `Bearer ${state.token}` },
         }
       );
-   
-     
     } catch (error) {
       console.log(error);
-
-      
     }
   };
-
 
   //------------------------------------------------------------------------------
 
@@ -115,59 +110,112 @@ const Wedding = ({ num, setNum, search }) => {
   //------------------------------------------------------------------------------
   return (
     <>
-    <div className="div">
-      <menu
-        className="main-menu"
-        style={{ marginTop: "10%", marginLeft: "3%" }}
-      >
-        <div className="main-menu__top">
-          {/* <SiBitdefender className="logo"></SiBitdefender> */}
-        </div>
-        <br /> <br />
-        <nav className="main-menu_nav" id="menu">
-          <NavLink className="link1" to="/details-booking/:user_id">
-            New Hall
-          </NavLink>
-          <br />
+       <div className="div">
+        <menu
+          className="main-menu"
+          // style={{ marginTop: "10%", marginLeft: "3%" }}
+        >
+          <div className="main-menu__top"></div>
           <br /> <br />
-          <NavLink className="link1" to="/wedding-Hall">
-            Wedding Halls
-          </NavLink>
-          <br />
-          <br />
-          <br />
-          <NavLink className="link1" to="/contact">
-            Booking Tables
-          </NavLink>
-          <br />
-          <br />
-        </nav>
-      </menu></div>
-      {state.halls &&
-        state.halls.map((element, i) => (
-          <>
-            <div key={i}>
-              <div class="card" style={{}}>
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">
-                    This is a wider card with supporting text below as a natural
-                    lead-in to additional content. This content is a little bit
-                    longer.
-                  </p>
-                  <p class="card-text">
-                    <small class="text-muted">Last updated 3 mins ago</small>
-                  </p>
-                </div>
-                <img
-                  src={element.hall_image}
-                  class="card-img-bottom"
-                  alt="hall"
-                  style={{ width: "50%" }}
-                />
-              </div>
+          <nav className="main-menu_nav" id="menu">
+            <NavLink className="link1" to="/details-booking/:user_id">
+              New Hall
+            </NavLink>
+            <br />
+            <br /> <br />
+            <NavLink className="link1" to="/wedding-Hall">
+              Wedding Halls
+            </NavLink>
+            <br />
+            <br />
+            <br />
+            <NavLink className="link1" to="/contact">
+              Booking Tables
+            </NavLink>
+            <br />
+            <br />
+          </nav>
+        </menu>
+      </div>
+      
+      <div className="iii" >
 
-              <div
+
+        {state.halls &&
+          state.halls.map((element, i) => (
+            <>
+              <div key={i}>
+                <div >
+                  <div class="card-body" id="hall">
+                    <img
+                      src={element.hall_image}
+                      class="card-img-bottom"
+                      alt="hall"
+                      style={{ width: "60%", height:"250px", borderRadius:"5px" }}
+                    />{" "}<br/><br/>
+                    <h5 class="card-title"><span style={{ color: "black", fontWeight: "bold" }}>
+                        Name:
+                      </span> {element.hall_name}</h5>{" "}
+                    <p class="card-text">
+                      <span style={{ color: "black", fontWeight: "bold" }}>
+                        Address:
+                      </span> {element.hall_address}
+                    </p>
+                    <p class="card-text" id="price">
+                      <span style={{ color: "black", fontWeight: "bold" }}>
+                        Price:
+                      </span>{" "}
+                      {element.price}$
+                    </p>
+                    <p class="card-text">
+                      <span style={{ color: "black", fontWeight: "bold" }}>
+                        Discount:
+                      </span>{" "}
+                      {element.discount}%
+                    </p>
+                    <p class="card-text">
+                      <span style={{ color: "black", fontWeight: "bold" }}>
+                        PriceBefore:
+                      </span>{" "}
+                      {element.priceBeforeDiscount}$
+                    </p>
+                    <p class="card-text" style={{ width: "50%" }}>
+                      <span style={{ color: "black", fontWeight: "bold" }}>
+                        Description:
+                      </span>
+                      {element.hall_description}
+                    </p>
+                    <button
+                      type="button"
+                      className="btn btn-primary"
+                      data-bs-toggle="modal"
+                      id="button-delete"
+                      data-bs-target="#exampleModal"
+                      data-bs-whatever="@getbootstrap"
+                      onClick={() => deleteHallById(element.id)}
+                    >
+                      delete
+                    </button>{" "}
+                    <button
+                      id="button-update"
+                      type="button"
+                      className="btn btn-primary"
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal"
+                      data-bs-whatever="@getbootstrap"
+                    >
+                      Update Hall
+                    </button>
+                    {/*  */}
+                    {/* <h5 class="card-title"> {element.hall_name}</h5> */}
+                    {/* <p class="card-text">
+                   {element.hall_address}
+                  </p> */}
+                    <p class="card-text"></p>
+                  </div>
+                </div>
+
+                {/* <div
                 class="card"
                 style={{
                   width: "40rem",
@@ -176,11 +224,7 @@ const Wedding = ({ num, setNum, search }) => {
                   overflowX: "hidden",
                 }}
               >
-                {/* <img
-                  class="card-img-top"
-                  // width="50%"
-                  src={element.hall_image}
-                ></img> */}
+              
                 <video
                   class="card-img-top"
                   controls
@@ -210,199 +254,197 @@ const Wedding = ({ num, setNum, search }) => {
                     Go somewhere
                   </a>
                 </div>
-              </div>
+              </div>  */}
 
-              <div>
-                <button
-                  type="button"
-                  className="btn btn-primary"
-                  data-bs-toggle="modal"
-                  data-bs-target="#exampleModal"
-                  data-bs-whatever="@getbootstrap"
-                >
-                  Update Hall
-                </button>
-                <div
-                  className="modal fade"
-                  id="exampleModal"
-                  tabindex="-1"
-                  aria-labelledby="exampleModalLabel"
-                  aria-hidden="true"
-                >
-                  <div className="modal-dialog">
-                    <div className="modal-content">
-                      <div className="modal-header">
-                        <h5 className="modal-title" id="exampleModalLabel">
-                          Update Hall
-                        </h5>
-                        <button
-                          type="button"
-                          className="btn-close"
-                          data-bs-dismiss="modal"
-                          aria-label="Close"
-                        ></button>
-                      </div>
+                <div>
+                  <div
+                    className="modal fade"
+                    id="exampleModal"
+                    tabindex="-1"
+                    aria-labelledby="exampleModalLabel"
+                    aria-hidden="true"
+                  >
+                    <div className="modal-dialog">
+                      <div className="modal-content">
+                        <div className="modal-header">
+                          <h5 className="modal-title" id="exampleModalLabel">
+                            Update Hall
+                          </h5>
+                          <button
+                            type="button"
+                            className="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                          ></button>
+                        </div>
 
-                      <div className="modal-body">
-                        <form>
-                          <form className="form-floating">
-                            <input
-                              onChange={(e) => setHall_image(e.target.value)}
-                              type="text"
-                              // defaultValue={element.hall_image}
-                              className="form-control"
-                              id="floatingInputValue"
-                              placeholder="Image Link"
-                            />
-                            <label for="floatingInputValue">Image Link</label>
-                          </form>
+                        <div className="modal-body">
+                          <form>
+                            <form className="form-floating">
+                              <input
+                                onChange={(e) => setHall_image(e.target.value)}
+                                type="text"
+                                // defaultValue={element.hall_image}
+                                className="form-control"
+                                id="floatingInputValue"
+                                placeholder="Image Link"
+                              />
+                              <label for="floatingInputValue">Image Link</label>
+                            </form>
 
-                          <br />
-                          <form className="form-floating">
-                            <input
-                              onChange={(e) => setHall_name(e.target.value)}
-                              type="text"
-                              // defaultValue={element.hall_name}
-                              className="form-control"
-                              id="floatingInputValue"
-                              placeholder="Hall Name"
-                            />
-                            <label for="floatingInputValue">Hall Name</label>
-                          </form>
+                            <br />
+                            <form className="form-floating">
+                              <input
+                                onChange={(e) => setHall_name(e.target.value)}
+                                type="text"
+                                // defaultValue={element.hall_name}
+                                className="form-control"
+                                id="floatingInputValue"
+                                placeholder="Hall Name"
+                              />
+                              <label for="floatingInputValue">Hall Name</label>
+                            </form>
 
-                          <br />
-                          <form className="form-floating">
-                            <input
-                              onChange={(e) => setVideo(e.target.value)}
-                              type="text"
-                              // defaultValue={element.hall_name}
-                              className="form-control"
-                              id="floatingInputValue"
-                              placeholder="Video Link"
-                            />
-                            <label for="floatingInputValue">Video Link</label>
-                          </form>
+                            <br />
+                            <form className="form-floating">
+                              <input
+                                onChange={(e) => setVideo(e.target.value)}
+                                type="text"
+                                // defaultValue={element.hall_name}
+                                className="form-control"
+                                id="floatingInputValue"
+                                placeholder="Video Link"
+                              />
+                              <label for="floatingInputValue">Video Link</label>
+                            </form>
 
-                          <br />
-                          <div className="row g-2">
-                            <div className="col-md">
-                              <div className="form-floating">
-                                <input
-                                  type="number"
-                                  className="form-control"
-                                  id="floatingInputGrid"
-                                  placeholder="Hall Price"
-                                  onChange={(e) => setPrice(e.target.value)}
-                                />
-                                <label for="floatingInputGrid">
-                                  Hall Price
-                                </label>
+                            <br />
+                            <div className="row g-2">
+                              <div className="col-md">
+                                <div className="form-floating">
+                                  <input
+                                    type="number"
+                                    className="form-control"
+                                    id="floatingInputGrid"
+                                    placeholder="Hall Price"
+                                    onChange={(e) => setPrice(e.target.value)}
+                                  />
+                                  <label for="floatingInputGrid">
+                                    Hall Price
+                                  </label>
+                                </div>
+                              </div>
+                              <div className="col-md">
+                                <div className="form-floating">
+                                  <input
+                                    type="number"
+                                    onChange={(e) =>
+                                      setDiscount(e.target.value)
+                                    }
+                                    className="form-control"
+                                    id="floatingInputGrid"
+                                    placeholder="Discount"
+                                  />
+                                  <label for="floatingInputGrid">
+                                    Discount
+                                  </label>
+                                </div>
+                              </div>
+                              <div className="col-md">
+                                <div className="form-floating">
+                                  <input
+                                    type="number"
+                                    className="form-control"
+                                    id="floatingInputGrid"
+                                    placeholder="Discount"
+                                    onChange={(e) =>
+                                      setPriceBeforeDiscount(e.target.value)
+                                    }
+                                  />
+                                  <label for="floatingInputGrid">
+                                    Price Before
+                                  </label>
+                                </div>
                               </div>
                             </div>
-                            <div className="col-md">
-                              <div className="form-floating">
-                                <input
-                                  type="number"
-                                  onChange={(e) => setDiscount(e.target.value)}
-                                  className="form-control"
-                                  id="floatingInputGrid"
-                                  placeholder="Discount"
-                                />
-                                <label for="floatingInputGrid">Discount</label>
-                              </div>
-                            </div>
-                            <div className="col-md">
-                              <div className="form-floating">
-                                <input
-                                  type="number"
-                                  className="form-control"
-                                  id="floatingInputGrid"
-                                  placeholder="Discount"
-                                  onChange={(e) =>
-                                    setPriceBeforeDiscount(e.target.value)
-                                  }
-                                />
-                                <label for="floatingInputGrid">
-                                  Price Before
-                                </label>
-                              </div>
-                            </div>
-                          </div>
 
-                          <div className="form-floating">
-                            <select
-                              className="form-select"
-                              id="floatingSelect"
-                              aria-label="Floating label select example"
-                            >
-                              <option
-                                selected
-                                onChange={(e) =>
-                                  setHall_address(e.target.value)
-                                }
+                            <div className="form-floating">
+                              <select
+                                className="form-select"
+                                id="floatingSelect"
+                                aria-label="Floating label select example"
                               >
-                                Select Address
-                              </option>
-                              <option value="Amman">Amman</option>
-                              <option value="Irbid">Irbid</option>
-                              <option value="Zarqa">Zarqa</option>
-                              <option value="Salt">Salt</option>
-                              <option value="Madaba">Madaba</option>
-                              <option value="Mafraq">Mafraq</option>
-                              <option value="Jerash">Jerash</option>
-                              <option value="Ma'an">Ma'an</option>
-                              <option value="Tafila">Tafila</option>
-                              <option value="Karak">Karak</option>
-                              <option value="Aqapa">Aqapa</option>
-                              <option value="Gawr">Gawr</option>
-                            </select>
-                            <label for="floatingSelect">Select Address</label>
-                          </div>
-                          <div className="mb-3">
-                            <label
-                              for="message-text"
-                              className="col-form-label"
-                            >
-                              discription:
-                            </label>
-                            <textarea
-                              onChange={(e) =>
-                                setHall_description(e.target.value)
-                              }
-                              className="form-control"
-                              id="message-text"
-                            ></textarea>
-                          </div>
-                        </form>
-                      </div>
-                      <div className="modal-footer">
-                        <button
-                          type="button"
-                          className="btn btn-secondary"
-                          data-bs-dismiss="modal"
-                        >
-                          Close
-                        </button>
-                        <button
-                          onClick={() => {
-                            updateHallById(element.id);
-                          }}
-                          type="button"
-                          className="btn btn-primary"
-                          data-bs-toggle="modal"
-                          data-bs-target="#exampleModal"
-                          data-bs-whatever="@getbootstrap"
-                        >
-                          Update
-                        </button>
+                                <option
+                                  selected
+                                  onChange={(e) =>
+                                    setHall_address(e.target.value)
+                                  }
+                                >
+                                  Select Address
+                                </option>
+                                <option value="Amman">Amman</option>
+                                <option value="Irbid">Irbid</option>
+                                <option value="Zarqa">Zarqa</option>
+                                <option value="Salt">Salt</option>
+                                <option value="Madaba">Madaba</option>
+                                <option value="Mafraq">Mafraq</option>
+                                <option value="Jerash">Jerash</option>
+                                <option value="Ma'an">Ma'an</option>
+                                <option value="Tafila">Tafila</option>
+                                <option value="Karak">Karak</option>
+                                <option value="Aqapa">Aqapa</option>
+                                <option value="Gawr">Gawr</option>
+                              </select>
+                              <label for="floatingSelect">Select Address</label>
+                            </div>
+                            <div className="mb-3">
+                              <label
+                                for="message-text"
+                                className="col-form-label"
+                              >
+                                discription:
+                              </label>
+                              <textarea
+                                onChange={(e) =>
+                                  setHall_description(e.target.value)
+                                }
+                                className="form-control"
+                                id="message-text"
+                              ></textarea>
+                            </div>
+                          </form>
+                        </div>
+                        <div className="modal-footer">
+                          <button
+                            type="button"
+                            className="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                          >
+                            Close
+                          </button>
+                          <button
+                            onClick={() => {
+                              updateHallById(element.id);
+                            }}
+                            type="button"
+                            style={{backgroundColor: "rgba(184, 19, 206, 0.404)", border:"1px solid rgba(184, 19, 206, 0.404)", color:"black"}}
+                            className="btn btn-primary"
+                            data-bs-toggle="modal"
+                            data-bs-target="#exampleModal"
+                            data-bs-whatever="@getbootstrap"
+                          >
+                            Update
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </>
-        ))}
+            </>
+          ))}              </div>
+
+       
     </>
   );
 };
