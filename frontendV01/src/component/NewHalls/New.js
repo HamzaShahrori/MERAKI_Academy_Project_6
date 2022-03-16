@@ -122,44 +122,11 @@ const New = ({ num, setNum, search }) => {
     getHallByUserId();
   }, []);
   return (
-    <div style={{overflow:"hidden"}}>
-    <div className="div1">
-      <menu
-        className="main-menu"
-        style={{ marginTop: "10%", marginLeft: "3%" }}
-      >
-        <div className="main-menu__top">
-          {/* <SiBitdefender className="logo"></SiBitdefender> */}
-        </div>
-        <br />  <br />
-        <nav className="main-menu_nav" id="menu">
-          <NavLink className="link1" to="/details-booking/:user_id">
-            New Hall
-          </NavLink>
-          <br />
-          <br />
-          <br />
-          <NavLink className="link1" to="/wedding-Hall">
-            Wedding Halls
-          </NavLink>
-          <br />
-          <br />
-          <br />
-
-          <NavLink className="link1" to="/contact">
-            Booking Tables
-          </NavLink>
-          <br />
-          <br />
-          <br />
-          {/* <NavLink className="blog" to="/blog">
-            
-            </NavLink> */}
-        </nav>
-      </menu></div>
+    <div id="all">
+   
 
       {/*--- create new hall --- */}
-      <div className="form">
+      <div className="div2">
       <form style={{ marginLeft: "30%" }}>
         <fieldset>
           <div className="mb-3">
@@ -264,12 +231,47 @@ const New = ({ num, setNum, search }) => {
             </button>
           </div>{" "}
           <br></br>
-          <div
+         
+          </div>
+          <br></br>
+          <div class="mb-3" id="select" >
+            <div className="form-floating" style={{ width: "700px" }}>
+              <select
+                onChange={(e) => {
+                  setHall_address(e.target.value);
+                }}
+                style={{ marginTop: "6%", width: "300px" }}
+                className="form-select"
+                id="floatingSelect"
+                aria-label="Floating label select example"
+              >
+                <option selected>Select Address</option>
+                <option value="Amman">Amman</option>
+                <option value="Irbid">Irbid</option>
+                <option value="Zarqa">Zarqa</option>
+                <option value="Salt">Salt</option>
+                <option value="Madaba">Madaba</option>
+                <option value="Mafraq">Mafraq</option>
+                <option value="Jerash">Jerash</option>
+                <option value="Ma'an">Ma'an</option>
+                <option value="Tafila">Tafila</option>
+                <option value="Karak">Karak</option>
+                <option value="Aqapa">Aqapa</option>
+                <option value="Ajlun">Ajlun</option>
+              </select>
+              {/* <label for="floatingSelect">Select Address</label> */}
+            </div>
+          </div>
+         
+          {/* <button type="button" btn-lg">New Hall</button> */}
+        </fieldset>
+        <br></br>
+        <div
             className="input-group col-mb-3"
             style={{
               width: "300px",
               height: "50px",
-              marginTop: "0%",
+              marginTop: "-10%",
               marginLeft: "40%",
             }}
           >
@@ -293,43 +295,46 @@ const New = ({ num, setNum, search }) => {
               <AiOutlineCloudUpload title="upload Video"/>{" "}
             </button>
           </div>
-          </div>
-          <br></br>
-          <div class="mb-3" id="select">
-            <div className="form-floating" style={{ width: "700px" }}>
-              <select
-                onChange={(e) => {
-                  setHall_address(e.target.value);
-                }}
-                style={{ marginTop: "0%", width: "300px" }}
-                className="form-select"
-                id="floatingSelect"
-                aria-label="Floating label select example"
-              >
-                <option selected>Select Address</option>
-                <option value="Amman">Amman</option>
-                <option value="Irbid">Irbid</option>
-                <option value="Zarqa">Zarqa</option>
-                <option value="Salt">Salt</option>
-                <option value="Madaba">Madaba</option>
-                <option value="Mafraq">Mafraq</option>
-                <option value="Jerash">Jerash</option>
-                <option value="Ma'an">Ma'an</option>
-                <option value="Tafila">Tafila</option>
-                <option value="Karak">Karak</option>
-                <option value="Aqapa">Aqapa</option>
-                <option value="Ajlun">Ajlun</option>
-              </select>
-              <label for="floatingSelect">Select Address</label>
-            </div>
-          </div>
+          <br></br> <br></br>
           <button type="button"  id="button"  onClick={addNewHall}>
             New Hall
           </button>
-          {/* <button type="button" btn-lg">New Hall</button> */}
-        </fieldset>
       </form>
       </div>
+      <div className="div1">
+      <menu
+        className="main-menu"
+        style={{ marginTop: "10%", marginLeft: "3%" }}
+      >
+        <div className="main-menu__top">
+          {/* <SiBitdefender className="logo"></SiBitdefender> */}
+        </div>
+        <br />  
+        <nav className="main-menu_nav" id="menu">
+          <NavLink className="link1" to="/details-booking/:user_id">
+            New Hall
+          </NavLink>
+          <br />
+          <br />
+          <br />
+          <NavLink className="link1" to="/wedding-Hall">
+            Wedding Halls
+          </NavLink>
+          <br />
+          <br />
+          <br />
+
+          <NavLink className="link1" to="/contact">
+            Booking Tables
+          </NavLink>
+          <br />
+          <br />
+          <br />
+          {/* <NavLink className="blog" to="/blog">
+            
+            </NavLink> */}
+        </nav>
+      </menu></div>
     </div>
   );
 };
