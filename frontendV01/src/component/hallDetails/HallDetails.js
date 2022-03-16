@@ -35,59 +35,68 @@ const HallDetails = () => {
 
   useEffect(() => {
     getHallById();
-    
   }, []);
-
 
   return (
     <>
-    <br/>
-    <br/>
-    <br/>
-    
-<section>
-      <div className="content">
-      {state.hallById &&
+      <div className="hall_details">
+        {state.hallById &&
           state.hallById.map((element, i) => (
             <>
-<div className="detailsContainer">
-  <div className="detailImg">
-              <img
-                className="leftSide"
-                src={element.hall_image}
-                alt="hallImage"
-                width="100%"
-              />
-
-</div>
-
-              <div className="detailContent">
-                <p className="hallDetails">Hall</p>
-              <p>{element.hall_name}</p>
-              <p className="hallDetails">Description</p>
-              <p>{element.hall_description}</p>
-              <p className="hallDetails">Address</p>
-              <p>{element.hall_address}</p>
-              <p className="hallDetails">Price</p>
-              <p>{element.price}</p>
+              <div className="hall_title">
+                <h1>{element.hall_name}</h1>
+                <div className="row_hallDetails">
+                  <div>
+                    <p>{element.hall_address}</p>
+                  </div>
+                </div>
               </div>
-              {/* <div>
-      <Calendar onChange={onChange} value={value} />
-    </div>
-    {value.toDateString()} */}
-<button onClick={()=>convertToBookingHall(element.id)}>Booking</button>
+
+              <div className="gallery_hallDetails">
+                <div className="gallery_hallDetails-video">
+                <video width="100%" controls  autoPlay id="video">
+    
+    <source src={element.video} type="video/mp4"/>
+    </video> 
+                </div>
+                <div>
+                  <img src={element.hall_image} />
+                </div>
+                <div>{element.hall_description}</div>
+                {/* <div><img src={element.hall_image}/></div>
+  <div><img src={element.hall_image}/></div>  */}
               </div>
-            </>))}
-          
-          
-          </div>
-    
-          </section>
+              <div className="small-details">
+                <h2>{element.price}$</h2>
+                <button className="btnDetails" onClick={() => convertToBookingHall(element.id)}>
+                  Booking
+                </button>
+              </div>
 
+              <hr className="lineDetails" />
 
-    
-    </>)
+              {/* <div className="detailImg">
+                    <img
+                      className="leftSide"
+                      src={element.hall_image}
+                      alt="hallImage"
+                      width="100%"
+                    />
+                  </div> */}
+
+              {/* <p className="hallDetails">Hall</p> */}
+              {/* <p>{element.hall_name}</p> */}
+              {/* <p className="hallDetails">Description</p> */}
+              {/* <p>{element.hall_description}</p> */}
+              {/* <p className="hallDetails">Address</p> */}
+              {/* <p>{element.hall_address}</p> */}
+              {/* <p className="hallDetails">Price</p> */}
+              {/* <p>{element.price}</p> */}
+            </>
+          ))}
+      </div>
+    </>
+  );
 };
-
 
 export default HallDetails;
