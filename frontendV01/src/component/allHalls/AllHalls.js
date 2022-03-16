@@ -149,9 +149,9 @@ const AllHalls = ({
   // ------
 
   useEffect(() => {
-    //if (place) {
-    getHallByAddress();
-    //}
+    if (place) {
+      getHallByAddress();
+    }
   }, [place]);
   useEffect(() => {
     countNumAmman();
@@ -159,26 +159,14 @@ const AllHalls = ({
     countNumAll();
   }, []);
   useEffect(() => {
-    // if (allHalls) {
-    getAllHalls();
-    // }
-  }, [allHalls]);
+
+      getAllHalls();
+  
+  }, [num, allHalls]);
 
   const convertToDetailsHall = (id) => {
     navigate(`/Hall-Details/${id}`);
   };
-
-
-
-
-
-
-
-
-
-
-
-
 
   return (
     <>
@@ -427,12 +415,10 @@ const AllHalls = ({
                               >
                                 Close
                               </button>
-                             
                             </div>
                           </div>
                         </div>
                       </div>
-                    
                     </div>
                   </>
                 ))}
@@ -513,7 +499,6 @@ const AllHalls = ({
         </div>
       </div>
 
-    
       {num == 1 ? (
         <></>
       ) : (
