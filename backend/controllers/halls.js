@@ -323,10 +323,10 @@ const createRating = (req, res) => {
   const { hall_rating } = req.body;
 
   const user_id = req.token.userId;
-  console.log("user_id", user_id);
+  // console.log("user_id", user_id);
 
   const halls_id = req.params.halls_id;
-  console.log("halls_id", halls_id);
+  // console.log("halls_id", halls_id);
 
   const query = `INSERT INTO Rating (hall_rating, user_id, halls_id) VALUES(?,?,?)`;
 
