@@ -115,6 +115,8 @@ font-size: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
+ margin: 75px;
+
     
 
 }
@@ -296,4 +298,22 @@ video:focus{
   right: 10px;
   width: 30px;
   cursor: pointer;
+}
+
+.page-footer {
+  /* border: 1px rgb(22, 22, 21) solid !important; */
+  background-color: rgb(177,177,178) !important;
+}
+
+
+.list-unstyled li a{
+text-decoration: none;
+color: crimson !important;
+}
+
+.footer-copyright a{
+text-decoration: none;
+color: crimson !important;
+
+
 }
