@@ -1,0 +1,9 @@
+.link1{
+text-decoration: none;
+font-size: 1.3rem;
+color: rgb(0, 0, 0);
+}
+.link1:hover{
+    color: rgb(150, 25, 62);
+   
+}
