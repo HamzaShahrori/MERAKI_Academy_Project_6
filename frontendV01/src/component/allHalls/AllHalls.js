@@ -159,9 +159,7 @@ const AllHalls = ({
     countNumAll();
   }, []);
   useEffect(() => {
-
-      getAllHalls();
-  
+    getAllHalls();
   }, [num, allHalls]);
 
   const convertToDetailsHall = (id) => {
@@ -218,9 +216,11 @@ const AllHalls = ({
                           {/* <p>2 Guest</p> */}
                           <h4 className="priceBeforeDiscount">
                             ${element.price}
-                            <span className="price">
+                            {element.PriceBeforeDiscount==null?(<></>):( <span className="price">
                               ${element.PriceBeforeDiscount}
-                            </span>
+                            </span>)}
+
+                           
                           </h4>
                         </div>
                       </div>
@@ -499,29 +499,31 @@ const AllHalls = ({
         </div>
       </div>
 
-      {num == 1 ? (
-        <></>
-      ) : (
-        <a
-          onClick={() => {
-            setNum(num - 1);
-          }}
-        >
-          <span>BACK</span>
-        </a>
-      )}
-
-      {num == 1 ? (
-        <a
-          onClick={() => {
-            setNum(num + 1);
-          }}
-        >
-          <span>Next</span>
-        </a>
-      ) : (
-        <> </>
-      )}
+      <div className="containerPag">
+        {" "}
+        {num == 1 ? (
+          <></>
+        ) : (
+          <a
+            onClick={() => {
+              setNum(num - 1);
+            }}
+          >
+            <span>BACK</span>
+          </a>
+        )}
+        {num == 1 && state.halls&&state.halls.length == 4 ? (
+          <a
+            onClick={() => {
+              setNum(num + 1);
+            }}
+          >
+            <span>Next</span>
+          </a>
+        ) : (
+          <> </>
+        )}
+      </div>
     </>
   );
 };
