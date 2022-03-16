@@ -201,7 +201,7 @@ Test                    </Link>
           <a class="nav-link disabled">Disabled</a>
         </li> */}
             </ul>
-            <form class="d-flex">
+            <form class="d-flex" >
               <input
                 onChange={(e) => {
                   setSearchHall(e.target.value);
