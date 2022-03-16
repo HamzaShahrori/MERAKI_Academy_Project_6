@@ -181,14 +181,14 @@ const AllHalls = ({
   //   onChange: (newValue) => {
   //     console.log(`Example 3: new value is ${newValue}`);
   //     const getStarRating = () => {
-  //       axios.get(`http://localhost:5000/halls/rating/${halls_id}`, {
-  //         headers: { Authorization: `Bearer ${state.token}` },
-  //       }).then((result)=>{
-  //         setHall_Rating(result.data)
-  //       }) .catch((err)=>{
-  //         console.log(err);
-  //       })
-  //     };
+      //   axios.get(`http://localhost:5000/halls/rating/${halls_id}`, {
+      //     headers: { Authorization: `Bearer ${state.token}` },
+      //   }).then((result)=>{
+      //     setHall_Rating(result.data)
+      //   }) .catch((err)=>{
+      //     console.log(err);
+      //   })
+      // };
 
   //   },
   // };

@@ -10,7 +10,7 @@ import { setHall } from "../../reducer/halls/index";
 import ReactStars from "react-rating-stars-component";
 
 const HallDetails = () => {
-  // const [hall_rating, setHall_Rating] = useState(0);
+  const [hall_rating, setHall_Rating] = useState(0);
   const [message,setMessage] = useState("")
 
   const state = useSelector((state) => {
@@ -42,36 +42,22 @@ const HallDetails = () => {
     getHallById();
   }, []);
 
-  // const starRating = () => {
-  //   axios
-  //     .post(
-  //       `http://localhost:5000/halls/rating/${halls_id}`,
-  //       { hall_rating },
-  //       { headers: { Authorization: `Bearer ${state.token}` } }
-  //     )
-  //     .then((result) => {
-  //       setMessage("done");
-  //     })
-
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
-
-//   const getStarRating = () => {
-    // axios.get(`http://localhost:5000/halls/rating/${halls_id}`, {
-    //   headers: { Authorization: `Bearer ${state.token}` },
-    // }).then((result)=>{
-    //   setHall_Rating(result.data)
-    // }) .catch((err)=>{
-    //   console.log(err);
-    // })
-//   };
+ 
+  const getStarRating = () => {
+    axios.get(`http://localhost:5000/halls/rating/${id}`, {
+      headers: { Authorization: `Bearer ${state.token}` },
+    }).then((result)=>{
+      setHall_Rating(result.data.result[0].AverageRating)
+      getStarRating()
+    }) .catch((err)=>{
+      console.log(err);
+    })
+  };
 
 
-// useEffect(()=>{
-//   getStarRating()
-// },[])
+useEffect(()=>{
+  getStarRating()
+},[])
 console.log(id);
 
   const thirdExample = {
@@ -125,10 +111,12 @@ console.log(id);
                   </video>
                   <div className="starRating">
                   <ReactStars {...thirdExample} />
+                  <p>{hall_rating}/5</p>
                   {/* <ReactStars {...thirdExample}  /> */}
                   {/* <ReactStars {...thirdExample}  />
                   <ReactStars {...thirdExample}  />
                   <ReactStars {...thirdExample}  /> */}
+                  
                   </div>
                 </div>
                 <div>
