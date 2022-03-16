@@ -131,7 +131,7 @@ console.log(halls_id);
 
             <div className="form-filed">
               <p>Payment value</p>
-              <input type="text" onChange={(e) => setPayment(e.target.value)} />
+              <input type="text"  placeholder="payment value" onChange={(e) => setPayment(e.target.value)} />
               {/* <select name="select" id="#">
                 <option value="10%">10%</option>
                 <option value="20%">20%</option>
@@ -145,7 +145,7 @@ console.log(halls_id);
                 <option value="100%">100%</option>
               </select> */}
             </div>
-            <button className="btn-Booking" onClick={addBooking} >SUBMIT</button>
+           <div className="Co-btn-Booking"> <button className="btn-Booking" onClick={addBooking} >SUBMIT</button></div>
           </form>
         </div>
       </div>
