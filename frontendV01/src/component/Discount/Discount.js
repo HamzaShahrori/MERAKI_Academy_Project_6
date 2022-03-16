@@ -201,7 +201,7 @@ const AllHallsWithDiscount = ({ num, setNum, searchHall }) => {
           </div> */}
         </div>
       </div>
-
+      <div className="containerPag">
       {num == 1 ? (
         <></>
       ) : (
@@ -225,6 +225,7 @@ const AllHallsWithDiscount = ({ num, setNum, searchHall }) => {
       ) : (
         <> </>
       )}
+      </div>
     </>
   );
 };
