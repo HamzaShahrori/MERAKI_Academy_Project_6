@@ -1,9 +1,19 @@
 .link1{
 text-decoration: none;
 font-size: 1.3rem;
-color: rgb(0, 0, 0);
+margin-left: 8%;
+transform: translate(0em,2em);
+color: rgba(0, 0, 0);
 }
 .link1:hover{
-    color: rgb(150, 25, 62);
+    color: rgba(0, 0, 0);
    
+}
+.div{
+    background-color: rgba(184, 19, 206, 0.404);
+    width: 20%;
+   
+    height: 759px;
+    margin-top: 4%;
+    margin-left: 1%;
 }

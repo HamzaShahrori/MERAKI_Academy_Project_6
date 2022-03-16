@@ -115,6 +115,7 @@ const Wedding = ({ num, setNum, search }) => {
   //------------------------------------------------------------------------------
   return (
     <>
+    <div className="div">
       <menu
         className="main-menu"
         style={{ marginTop: "10%", marginLeft: "3%" }}
@@ -122,6 +123,7 @@ const Wedding = ({ num, setNum, search }) => {
         <div className="main-menu__top">
           {/* <SiBitdefender className="logo"></SiBitdefender> */}
         </div>
+        <br /> <br />
         <nav className="main-menu_nav" id="menu">
           <NavLink className="link1" to="/details-booking/:user_id">
             New Hall
@@ -140,7 +142,7 @@ const Wedding = ({ num, setNum, search }) => {
           <br />
           <br />
         </nav>
-      </menu>
+      </menu></div>
       {state.halls &&
         state.halls.map((element, i) => (
           <>
