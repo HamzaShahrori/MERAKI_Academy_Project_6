@@ -49,7 +49,7 @@
 
 .hall-img img {
   width: 100%;
-  border-radius: 12px;
+  border-radius: 4px;
 }
 
 .hall-info h3 {
@@ -136,4 +136,20 @@
 .modal fade{
   margin-top: 50rem !important;
   
+}
+
+
+
+.containerPag{
+  /* display: flex; */
+  margin-top: 30px;
+  align-items: center !important;
+  text-align: center !important;
+  cursor: pointer;
+}
+
+
+.containerPag a{
+  border: 2px dashed rgba(0, 0, 0, 0.404);
+padding:0px 10px 0px;
 }
