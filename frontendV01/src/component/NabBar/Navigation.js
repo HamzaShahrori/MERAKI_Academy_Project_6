@@ -169,7 +169,7 @@ const Navigation = ({
                 </ul>
               </li> */}
 
-              <li>
+              {/* <li>
                 <Link
                   to="/all"
                   class="nav-link active"
@@ -182,7 +182,7 @@ const Navigation = ({
                 >
                   all
                 </Link>
-              </li>
+              </li> */}
               {/* <li>
                     <Link
                       to="/address"
