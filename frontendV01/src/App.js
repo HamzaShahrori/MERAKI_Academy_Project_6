@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import "./App.css";
 //
+
 import { Routes, Route } from "react-router-dom";
 import Navigation from "./component/NabBar/Navigation";
 //
 import "bootstrap/dist/css/bootstrap.min.css";
+
 import New from "./component/NewHalls/New";
 import Home from "./component/Home/Home";
 import Login from "./component/login/Login";
+import Wedding from "./component/wediingTable/Wedding";
 //HallDetails
 import AllHallsWithDiscount from "./component/Discount/Discount";
 import HallDetails from "./component/hallDetails/HallDetails";
@@ -51,6 +54,7 @@ function App() {
           }
         />
         <Route path="/login" element={<Login setUserId={setUserId} />} />
+        <Route path="/wedding-Hall" element={<Wedding  />} />
 
         <Route
           path="/all"
