@@ -28,6 +28,8 @@ const Navigation = ({
     state.isLoggedIn = false;
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
+    localStorage.removeItem("publishing");
+
 
     dispatch(logoutUser());
   };
@@ -212,7 +214,7 @@ Test                    </Link>
                 aria-label="Search"
               />
             </form>
-            <li
+          {localStorage.getItem('publishing')==1?(<li
               className="nav-item"
               style={{ listStyle: "none" }}
               onClick={() => detailsBooking(localStorage.getItem("userId"))}
@@ -220,7 +222,7 @@ Test                    </Link>
               <a className="nav-link" style={{ cursor: "pointer" }} id="link">
                 Profile
               </a>
-            </li>
+            </li>):(<></>)}  
             {state.isLoggedIn ? (
               <>
                 <li
