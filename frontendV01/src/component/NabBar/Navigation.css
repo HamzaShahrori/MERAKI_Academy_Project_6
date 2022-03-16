@@ -15,3 +15,8 @@
     color: black;
     background-color: rgba(184, 19, 206, 0.404);
 }
+
+
+.form-control{
+  border: 1px black solid !important;
+}
