@@ -122,7 +122,8 @@ const New = ({ num, setNum, search }) => {
     getHallByUserId();
   }, []);
   return (
-    <>
+    <div style={{overflow:"hidden"}}>
+    <div className="div1">
       <menu
         className="main-menu"
         style={{ marginTop: "10%", marginLeft: "3%" }}
@@ -130,6 +131,7 @@ const New = ({ num, setNum, search }) => {
         <div className="main-menu__top">
           {/* <SiBitdefender className="logo"></SiBitdefender> */}
         </div>
+        <br />  <br />
         <nav className="main-menu_nav" id="menu">
           <NavLink className="link1" to="/details-booking/:user_id">
             New Hall
@@ -154,10 +156,11 @@ const New = ({ num, setNum, search }) => {
             
             </NavLink> */}
         </nav>
-      </menu>
+      </menu></div>
 
       {/*--- create new hall --- */}
-      <form style={{ marginLeft: "30%", marginTop: "-17%" }}>
+      <div className="form">
+      <form style={{ marginLeft: "30%" }}>
         <fieldset>
           <div className="mb-3">
             <div className="form-floating" style={{ width: "300px" }}>
@@ -197,11 +200,12 @@ const New = ({ num, setNum, search }) => {
               </div>
             </div>
           </div>
-          <br></br>
+          <br></br> <div className="dis">
           <div
             className="col-md"
-            style={{marginLeft:"380px", width:"300px", marginTop:"0%"}}
+            style={{marginLeft:"380px", width:"300px"}}
           >
+           
             <div className="form-floating">
               <input
                 type="number"
@@ -216,7 +220,7 @@ const New = ({ num, setNum, search }) => {
           <br></br>
           <div
             className="col-md"
-            style={{ marginTop: "-32.5%", marginLeft: "40%" }}
+            style={{ marginLeft: "40%" }}
           >
             <div className="form-floating" style={{ width: "300px" }}>
               <input
@@ -289,8 +293,9 @@ const New = ({ num, setNum, search }) => {
               <AiOutlineCloudUpload title="upload Video"/>{" "}
             </button>
           </div>
+          </div>
           <br></br>
-          <div class="mb-3">
+          <div class="mb-3" id="select">
             <div className="form-floating" style={{ width: "700px" }}>
               <select
                 onChange={(e) => {
@@ -324,7 +329,8 @@ const New = ({ num, setNum, search }) => {
           {/* <button type="button" btn-lg">New Hall</button> */}
         </fieldset>
       </form>
-    </>
+      </div>
+    </div>
   );
 };
 export default New;
