@@ -1,24 +1,39 @@
-.link1{
-    text-decoration: none;
-    font-size: 1.3rem;
-    color: rgb(0, 0, 0);
-    }
-    .link1:hover{
-        color: rgb(150, 25, 62);
-       
-    }
+.link1 {
+  text-decoration: none;
+  font-size: 1.3rem;
+  color: rgb(0, 0, 0);
+}
+.link1:hover {
+  color: black;
+}
 
-    #button{
-      background-color: rgba(184, 19, 206, 0.404);  
-        /* background-color: rgb(228, 126, 157); */
-        font-size: 1.2rem;
-        width: 20%;
-        height: 50px;
-        margin-left: 25%;
-        /* transform: translate(0em,0.2em); */
-        border-radius: 5px;
-        /* margin-top: 50%; */
-    }
-    #upload{
-        background-color: rgba(184, 19, 206, 0.404) !important;  
-    }
+.div1 {
+  background-color: rgba(184, 19, 206, 0.404);
+  width: 20%;
+  margin-bottom: 10px;
+  height: 567px;
+  margin-top: 4%;
+
+  margin-left: 1%;
+}
+
+#button {
+  background-color: rgba(184, 19, 206, 0.404);
+  font-size: 1.2rem;
+  width: 20%;
+  height: 50px;
+  margin-left: 25%;
+  border-radius: 5px;
+}
+#upload {
+  background-color: rgba(184, 19, 206, 0.404) !important;
+}
+.dis {
+  margin-top: -230px;
+}
+#select {
+  margin-top: -80px;
+}
+/* .mb-3{
+        border:1px solid black !important;
+    } */
