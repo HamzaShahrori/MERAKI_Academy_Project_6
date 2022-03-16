@@ -9,19 +9,23 @@
 
 .div1 {
   background-color: rgba(184, 19, 206, 0.404);
-  width: 20%;
-  margin-bottom: 10px;
-  height: 567px;
-  margin-top: 4%;
+  width: 16%;
+  /* margin-bottom: 10px; */
+  height: 558px;
+  margin-top: -29%;
 
   margin-left: 1%;
 }
-
+.div2 {
+  margin-top: 100px;
+}
 #button {
-  background-color: rgba(184, 19, 206, 0.404);
   font-size: 1.2rem;
-  width: 20%;
+  background-color: rgba(184, 19, 206, 0.404);
+
+  width: 120px;
   height: 50px;
+transform: translate(2em,0em);
   margin-left: 25%;
   border-radius: 5px;
 }
