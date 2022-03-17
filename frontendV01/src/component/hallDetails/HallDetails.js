@@ -21,7 +21,6 @@ const HallDetails = () => {
     };
   });
   const navigate = useNavigate();
-  const [value, onChange] = useState(new Date());
   const convertToBookingHall = (id) => {
     navigate(`/Hall-Booking/${id}`);
   };
@@ -109,14 +108,21 @@ console.log(id);
                   <video width="100%" controls autoPlay id="video">
                     <source src={element.video} type="video/mp4" />
                   </video>
+
+<div className="divstar">
+
                   <div className="starRating">
                   <ReactStars {...thirdExample} />
-                  <p>{hall_rating}/5</p>
+                 
                   {/* <ReactStars {...thirdExample}  /> */}
                   {/* <ReactStars {...thirdExample}  />
                   <ReactStars {...thirdExample}  />
                   <ReactStars {...thirdExample}  /> */}
                   
+                  </div>
+                  <div className="hall_ratingDiv">
+                  <p>({hall_rating}/5)</p>
+                  </div>
                   </div>
                 </div>
                 <div>
@@ -157,6 +163,7 @@ console.log(id);
               {/* <p>{element.price}</p> */}
             </>
           ))}
+          {message}
       </div>
 
       
