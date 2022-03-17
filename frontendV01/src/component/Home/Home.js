@@ -91,6 +91,8 @@ const Home = () => {
               </>
             ))}
 
+            
+
           <div className="colVideo">
             {state.hallsWithDiscount &&
               state.hallsWithDiscount.slice(1, 4).map((element, i) => (
