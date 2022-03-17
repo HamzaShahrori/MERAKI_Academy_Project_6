@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./Register.css";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Register = () => {
@@ -226,7 +224,7 @@ const Register = () => {
    
   </p> */}
 
-<img src= "./image/reg.png" className="registerImg"/>
+<img src= "./image/reg.png" className="registerImg" alt="logo"/>
 
   {/* <button type="submit" class="btn btn-primary">
 
