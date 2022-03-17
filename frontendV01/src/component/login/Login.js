@@ -1,18 +1,17 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { loginUser } from "../../reducer/login";
 import "./Login.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 const Login = ({ setUserId }) => {
-  const state = useSelector((state) => {
-    return {
-      isLoggedIn: state.loginReducer.isLoggedIn,
-      token: state.loginReducer.token,
-    };
-  });
+  // const state = useSelector((state) => {
+  //   return {
+  //     isLoggedIn: state.loginReducer.isLoggedIn,
+  //     token: state.loginReducer.token,
+  //   };
+  // });
   ////
   const dispatch = useDispatch();
 
@@ -52,7 +51,7 @@ const Login = ({ setUserId }) => {
      <br />  */}
       <div className="container">
         <div className="right-login">
-          <img src="./image/log.png" className="loginImg" />
+          <img src="./image/log.png" className="loginImg" alt="logo"/>
 
           {/* <p className="newhere">Be Part of Our Family</p>
   <p className="wordSign">
@@ -114,6 +113,15 @@ const Login = ({ setUserId }) => {
               Sign In
             </button>
           </form>
+          {message ? (<div 
+              className="alert alert-danger"
+              role="alert"
+              style={{ width: "20rem",marginTop:"1rem" }}
+            >
+              {message}
+            </div>):(
+              <></>
+            )}
         </div>
       </div>
     </>
