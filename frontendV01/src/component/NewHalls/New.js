@@ -324,7 +324,7 @@ const New = ({ num, setNum, search }) => {
           <br />
           <br />
 
-          <NavLink className="link1" to="/contact">
+          <NavLink className="link1" to="/details/:halls_id">
             Booking Tables
           </NavLink>
           <br />
