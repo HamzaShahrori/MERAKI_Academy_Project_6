@@ -17,7 +17,7 @@ import HallDetails from "./component/hallDetails/HallDetails";
 // HallBooking
 import HallBooking from "./component/Booking/Booking";
 import Register from "./component/register/Register";
-
+import BookingTable from "./component/bookingTable/Booking"
 import AllHalls from "./component/allHalls/AllHalls";
 import Address from "./component/Address/Address";
 // import StarRating from "./component/StarRating/StarRating";
@@ -43,6 +43,8 @@ function App() {
       />
       <Routes>
         <Route path="/details-booking/:user_id" element={<New />} />
+        <Route path="/details/:halls_id" element={<BookingTable />} />
+
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route
