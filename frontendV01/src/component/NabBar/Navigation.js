@@ -78,7 +78,7 @@ const Navigation = ({
               <li>
                 <Link
                   to="/all"
-                  class="nav-link active"
+                  className="nav-link active"
                   aria-current="page"
                   onClick={() => {
                     setAllHalls(true);
@@ -203,12 +203,12 @@ Test                    </Link>
           <a class="nav-link disabled">Disabled</a>
         </li> */}
             </ul>
-            <form class="d-flex" >
+            <form className="d-flex" >
               <input
                 onChange={(e) => {
                   setSearchHall(e.target.value);
                 }}
-                class="form-control me-2"
+                className="form-control me-2"
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
