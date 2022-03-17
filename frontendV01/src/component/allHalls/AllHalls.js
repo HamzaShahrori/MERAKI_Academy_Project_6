@@ -235,7 +235,7 @@ const AllHalls = ({
                           }}
                         />
                       </div>
-                      {/* <div className="hall-info">
+                      <div className="hall-info">
                         <p>name Hall</p>
                         <h3>{element.hall_name}</h3>
                         <p>{element.hall_description}</p>
@@ -251,7 +251,7 @@ const AllHalls = ({
                             )}
                           </h4>
                         </div>
-                      </div> */}
+                      </div>
                       {/* <button
                         type="button"
                         className="btn btn-primary"
