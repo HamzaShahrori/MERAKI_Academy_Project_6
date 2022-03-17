@@ -27,7 +27,7 @@
 - [Guided By](#guided_by)
 
 ## 🧐 About <a name = "about"></a>
-
+A website that delivers halls and user can publish or reserve a hall for a wedding
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
