@@ -9,8 +9,8 @@
   color: rgba(0, 0, 0);
 }
 #hall {
-  
-  margin-top: 60px;
+ 
+  margin-top: 55px;
 }
 .iii {
   margin-top: -1050px;
@@ -19,7 +19,7 @@
 .div {
   background-color: rgba(184, 19, 206, 0.404);
   width: 16%;
-  height: 1035px;
+  height: 990px;
   margin-top: 4%;
   margin-left: 1%;
   /* background-color: rgba(184, 19, 206, 0.404);
@@ -41,16 +41,18 @@
   color: rgba(203, 15, 228, 0.404);
 }
 #button-delete {
-  transform: translate(20.5em, -14em);
+  transform: translate(15em, -8em);
   color: black;
+  height: 40px;
   width: 14%;
   background-color: rgba(184, 19, 206, 0.404);
   border: 1px solid rgba(184, 19, 206, 0.404);
 }
 #button-update {
-  transform: translate(13em, -10em);
+  transform: translate(22.2em, -14em);
   color: black;
   width: 14%;
+ 
 
   background-color: rgba(184, 19, 206, 0.404);
   border: 1px solid rgba(184, 19, 206, 0.404);

@@ -17,15 +17,14 @@
   margin-left: 1%;
 }
 .div2 {
-  margin-top: 100px;
+  margin-top: 90px;
 }
 #button {
   font-size: 1.2rem;
   background-color: rgba(184, 19, 206, 0.404);
-
   width: 120px;
   height: 50px;
-transform: translate(2em,0em);
+  transform: translate(2em, 0em);
   margin-left: 25%;
   border-radius: 5px;
 }
