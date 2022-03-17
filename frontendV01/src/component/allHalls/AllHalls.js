@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { setHalls, updateHalls, deleteHalls } from "../../reducer/halls/index";
+import { setHalls } from "../../reducer/halls/index";
 import { useNavigate } from "react-router-dom";
 import "./AllHalls.css";
 import { useParams } from "react-router-dom";
@@ -19,18 +19,7 @@ const AllHalls = ({
   const [numIrbid, setNumIrbid] = useState(0);
   const [numAll, setNumAll] = useState(0);
   const [message, setMessage] = useState("");
-  const [hallId, setHallId] = useState("");
-  const [hall_image, setHall_image] = useState("");
-  const [hall_name, setHall_name] = useState("");
-  const [video, setVideo] = useState("");
-  const [discount, setDiscount] = useState("");
-  const [priceBeforeDiscount, setPriceBeforeDiscount] = useState("");
-  const [hall_description, setHall_description] = useState("");
-  const [hall_address, setHall_address] = useState("");
-  const [price, setPrice] = useState("");
   const [hall_rating, setHall_Rating] = useState("");
-
-  const { halls_id } = useParams();
 
   const state = useSelector((state) => {
     return {
@@ -181,14 +170,14 @@ const AllHalls = ({
   //   onChange: (newValue) => {
   //     console.log(`Example 3: new value is ${newValue}`);
   //     const getStarRating = () => {
-      //   axios.get(`http://localhost:5000/halls/rating/${halls_id}`, {
-      //     headers: { Authorization: `Bearer ${state.token}` },
-      //   }).then((result)=>{
-      //     setHall_Rating(result.data)
-      //   }) .catch((err)=>{
-      //     console.log(err);
-      //   })
-      // };
+  //   axios.get(`http://localhost:5000/halls/rating/${halls_id}`, {
+  //     headers: { Authorization: `Bearer ${state.token}` },
+  //   }).then((result)=>{
+  //     setHall_Rating(result.data)
+  //   }) .catch((err)=>{
+  //     console.log(err);
+  //   })
+  // };
 
   //   },
   // };
@@ -250,201 +239,6 @@ const AllHalls = ({
                               </span>
                             )}
                           </h4>
-                        </div>
-                      </div>
-                      {/* <button
-                        type="button"
-                        className="btn btn-primary"
-                        data-bs-toggle="modal"
-                        data-bs-target="#exampleModal"
-                        data-bs-whatever="@getbootstrap"
-                      >
-                        Update Hall
-                      </button> */}
-                      <div
-                        className="modal fade"
-                        id="exampleModal"
-                        tabindex="-1"
-                        aria-labelledby="exampleModalLabel"
-                        aria-hidden="true"
-                      >
-                        <div className="modal-dialog">
-                          <div className="modal-content">
-                            <div className="modal-header">
-                              <h5
-                                className="modal-title"
-                                id="exampleModalLabel"
-                              >
-                                Update Hall
-                              </h5>
-                              <button
-                                type="button"
-                                className="btn-close"
-                                data-bs-dismiss="modal"
-                                aria-label="Close"
-                              ></button>
-                            </div>
-
-                            <div className="modal-body">
-                              <form>
-                                <form className="form-floating">
-                                  <input
-                                    onChange={(e) =>
-                                      setHall_image(e.target.value)
-                                    }
-                                    type="text"
-                                    // defaultValue={element.hall_image}
-                                    className="form-control"
-                                    id="floatingInputValue"
-                                    placeholder="Image Link"
-                                  />
-                                  <label for="floatingInputValue">
-                                    Image Link
-                                  </label>
-                                </form>
-
-                                <br />
-                                <form className="form-floating">
-                                  <input
-                                    onChange={(e) =>
-                                      setHall_name(e.target.value)
-                                    }
-                                    type="text"
-                                    // defaultValue={element.hall_name}
-                                    className="form-control"
-                                    id="floatingInputValue"
-                                    placeholder="Hall Name"
-                                  />
-                                  <label for="floatingInputValue">
-                                    Hall Name
-                                  </label>
-                                </form>
-
-                                <br />
-                                <form className="form-floating">
-                                  <input
-                                    onChange={(e) => setVideo(e.target.value)}
-                                    type="text"
-                                    // defaultValue={element.hall_name}
-                                    className="form-control"
-                                    id="floatingInputValue"
-                                    placeholder="Video Link"
-                                  />
-                                  <label for="floatingInputValue">
-                                    Video Link
-                                  </label>
-                                </form>
-
-                                <br />
-                                <div className="row g-2">
-                                  <div className="col-md">
-                                    <div className="form-floating">
-                                      <input
-                                        type="number"
-                                        className="form-control"
-                                        id="floatingInputGrid"
-                                        placeholder="Hall Price"
-                                        onChange={(e) =>
-                                          setPrice(e.target.value)
-                                        }
-                                      />
-                                      <label for="floatingInputGrid">
-                                        Hall Price
-                                      </label>
-                                    </div>
-                                  </div>
-                                  <div className="col-md">
-                                    <div className="form-floating">
-                                      <input
-                                        type="number"
-                                        onChange={(e) =>
-                                          setDiscount(e.target.value)
-                                        }
-                                        className="form-control"
-                                        id="floatingInputGrid"
-                                        placeholder="Discount"
-                                      />
-                                      <label for="floatingInputGrid">
-                                        Discount
-                                      </label>
-                                    </div>
-                                  </div>
-                                  <div className="col-md">
-                                    <div className="form-floating">
-                                      <input
-                                        type="number"
-                                        className="form-control"
-                                        id="floatingInputGrid"
-                                        placeholder="Discount"
-                                        onChange={(e) =>
-                                          setPriceBeforeDiscount(e.target.value)
-                                        }
-                                      />
-                                      <label for="floatingInputGrid">
-                                        Price Before
-                                      </label>
-                                    </div>
-                                  </div>
-                                </div>
-
-                                <div className="form-floating">
-                                  <select
-                                    className="form-select"
-                                    id="floatingSelect"
-                                    aria-label="Floating label select example"
-                                  >
-                                    <option
-                                      selected
-                                      onChange={(e) =>
-                                        setHall_address(e.target.value)
-                                      }
-                                    >
-                                      Select Address
-                                    </option>
-                                    <option value="Amman">Amman</option>
-                                    <option value="Irbid">Irbid</option>
-                                    <option value="Zarqa">Zarqa</option>
-                                    <option value="Salt">Salt</option>
-                                    <option value="Madaba">Madaba</option>
-                                    <option value="Mafraq">Mafraq</option>
-                                    <option value="Jerash">Jerash</option>
-                                    <option value="Ma'an">Ma'an</option>
-                                    <option value="Tafila">Tafila</option>
-                                    <option value="Karak">Karak</option>
-                                    <option value="Aqapa">Aqapa</option>
-                                    <option value="Gawr">Gawr</option>
-                                  </select>
-                                  <label for="floatingSelect">
-                                    Select Address
-                                  </label>
-                                </div>
-                                <div className="mb-3">
-                                  <label
-                                    for="message-text"
-                                    className="col-form-label"
-                                  >
-                                    discription:
-                                  </label>
-                                  <textarea
-                                    onChange={(e) =>
-                                      setHall_description(e.target.value)
-                                    }
-                                    className="form-control"
-                                    id="message-text"
-                                  ></textarea>
-                                </div>
-                              </form>
-                            </div>
-                            <div className="modal-footer">
-                              <button
-                                type="button"
-                                className="btn btn-secondary"
-                                data-bs-dismiss="modal"
-                              >
-                                Close
-                              </button>
-                            </div>
-                          </div>
                         </div>
                       </div>
                     </div>
@@ -557,7 +351,7 @@ const AllHalls = ({
             <span>Next</span>
           </a>
         ) : (
-          <> </>
+          <> {message}</>
         )}
       </div>
     </>
