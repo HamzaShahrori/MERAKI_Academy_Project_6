@@ -217,7 +217,7 @@ const AllHalls = ({
                   <>
                     <div key={i} className="hall">
                       <div className="hall-img">
-                        <img
+                        <img style={{cursor:"pointer"}}
                           src={element.hall_image}
                           onClick={() => {
                             convertToDetailsHall(element.id);
