@@ -110,7 +110,7 @@ const Wedding = ({ num, setNum, search }) => {
   //------------------------------------------------------------------------------
   return (
     <>
-       <div className="div">
+      <div className="div">
         <menu
           className="main-menu"
           // style={{ marginTop: "10%", marginLeft: "3%" }}
@@ -129,7 +129,7 @@ const Wedding = ({ num, setNum, search }) => {
             <br />
             <br />
             <br />
-            <NavLink className="link1" to="/contact">
+            <NavLink className="link1" to="/details/:halls_id">
               Booking Tables
             </NavLink>
             <br />
@@ -137,29 +137,37 @@ const Wedding = ({ num, setNum, search }) => {
           </nav>
         </menu>
       </div>
-      
-      <div className="iii" >
 
-
+      <div className="iii">
         {state.halls &&
           state.halls.map((element, i) => (
             <>
               <div key={i}>
-                <div >
+                <div>
                   <div class="card-body" id="hall">
                     <img
                       src={element.hall_image}
                       class="card-img-bottom"
                       alt="hall"
-                      style={{ width: "60%", height:"250px", borderRadius:"5px" }}
-                    />{" "}<br/><br/>
-                    <h5 class="card-title"><span style={{ color: "black", fontWeight: "bold" }}>
+                      style={{
+                        width: "60%",
+                        height: "250px",
+                        borderRadius: "5px",
+                      }}
+                    />{" "}
+                    <br />
+                    <br />
+                    <h5 class="card-title">
+                      <span style={{ color: "black", fontWeight: "bold" }}>
                         Name:
-                      </span> {element.hall_name}</h5>{" "}
+                      </span>{" "}
+                      {element.hall_name}
+                    </h5>{" "}
                     <p class="card-text">
                       <span style={{ color: "black", fontWeight: "bold" }}>
                         Address:
-                      </span> {element.hall_address}
+                      </span>{" "}
+                      {element.hall_address}
                     </p>
                     <p class="card-text" id="price">
                       <span style={{ color: "black", fontWeight: "bold" }}>
@@ -186,17 +194,6 @@ const Wedding = ({ num, setNum, search }) => {
                       {element.hall_description}
                     </p>
                     <button
-                      type="button"
-                      className="btn btn-primary"
-                      data-bs-toggle="modal"
-                      id="button-delete"
-                      data-bs-target="#exampleModal"
-                      data-bs-whatever="@getbootstrap"
-                      onClick={() => deleteHallById(element.id)}
-                    >
-                      delete
-                    </button>{" "}
-                    <button
                       id="button-update"
                       type="button"
                       className="btn btn-primary"
@@ -206,6 +203,13 @@ const Wedding = ({ num, setNum, search }) => {
                     >
                       Update Hall
                     </button>
+                    <button
+                    id="button-delete"
+                      type="button"
+                      onClick={() => deleteHallById(element.id)}
+                    >
+                      delete
+                    </button>{" "}
                     {/*  */}
                     {/* <h5 class="card-title"> {element.hall_name}</h5> */}
                     {/* <p class="card-text">
@@ -427,7 +431,11 @@ const Wedding = ({ num, setNum, search }) => {
                               updateHallById(element.id);
                             }}
                             type="button"
-                            style={{backgroundColor: "rgba(184, 19, 206, 0.404)", border:"1px solid rgba(184, 19, 206, 0.404)", color:"black"}}
+                            style={{
+                              backgroundColor: "rgba(184, 19, 206, 0.404)",
+                              border: "1px solid rgba(184, 19, 206, 0.404)",
+                              color: "black",
+                            }}
                             className="btn btn-primary"
                             data-bs-toggle="modal"
                             data-bs-target="#exampleModal"
@@ -442,9 +450,8 @@ const Wedding = ({ num, setNum, search }) => {
                 </div>
               </div>
             </>
-          ))}              </div>
-
-       
+          ))}{" "}
+      </div>
     </>
   );
 };
