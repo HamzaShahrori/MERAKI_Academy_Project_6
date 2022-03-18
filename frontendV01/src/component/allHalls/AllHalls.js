@@ -143,9 +143,9 @@ const AllHalls = ({
   // ------
 
   useEffect(() => {
-    if (place) {
+    
       getHallByAddress();
-    }
+    
   }, [place]);
   useEffect(() => {
     countNumAmman();
@@ -154,12 +154,16 @@ const AllHalls = ({
   }, []);
   useEffect(() => {
     getAllHalls();
-  }, [num, allHalls]);
+  }, [num]);
 
   const convertToDetailsHall = (id) => {
     navigate(`/Hall-Details/${id}`);
   };
 
+  //address
+  const convertToHallsAddress = (address) => {
+    navigate(`/halls/${address}`);
+  };
   // const thirdExample = {
   //   size: 40,
   //   count: 5,
@@ -272,10 +276,7 @@ const AllHalls = ({
                 <input
                   type="checkbox"
                   onClick={() => {
-                    setALLHalls(false);
-
-                    setPlace(`amman`);
-                    setNum(1);
+                    convertToHallsAddress('Amman')
                   }}
                 />{" "}
                 <p>Amman</p> <span>({numAmman})</span>
@@ -284,10 +285,8 @@ const AllHalls = ({
                 <input
                   type="checkbox"
                   onClick={() => {
-                    setALLHalls(false);
+                    convertToHallsAddress("Irbid");
 
-                    setPlace(`Irbid`);
-                    setNum(1);
                   }}
                 />{" "}
                 <p>Irbid</p> <span>({numIrbid})</span>
