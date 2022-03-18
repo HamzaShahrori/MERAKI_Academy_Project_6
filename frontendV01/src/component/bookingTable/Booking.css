@@ -1,7 +1,80 @@
-.div3{
-    background-color: rgba(184, 19, 206, 0.404);
-    width: 16%;
-    height: 567px;
-    margin-top: 4%;
-    margin-left: 1%;
+.div3 {
+  background-color: rgba(184, 19, 206, 0.404);
+  width: 16%;
+  height: 705px;
+  margin-top: -3%;
+  margin-left: 1%;
+}
+.head {
+  width: 70%;
+  margin-left: 300px;
+  transform: translate(2em, 10em);
+}
+th,
+td {
+  border: 2px solid rgba(33, 1, 37, 0.404);
+  padding: 10px;
+}
+.id1 {
+  font-size: 1rem;
+  width: 3%;
+}
+.name1 {
+  font-size: 1rem;
+  width: 20%;
+}
+.day1 {
+  width: 13%;
+  font-size: 1rem;
+}
+.date1 {
+  width: 25%;
+  font-size: 1rem;
+}
+.phone1 {
+  font-size: 1rem;
+
+  width: 12%;
+}
+.time1 {
+  width: 1%;
+  font-size: 1rem;
+}
+.payment1 {
+  font-size: 1rem;
+  width: 40%;
+}
+
+.id {
+  font-size: 1em;
+  width: 1%;
+}
+.name {
+  font-size: 1em;
+
+  width: 5%;
+}
+.day {
+  width: 9%;
+  font-size: 1em;
+}
+.date {
+  /* width: 20px; */
+  font-size: 0.9em;
+}
+.phone {
+  font-size: 1em;
+
+  width: 12%;
+}
+.time {
+  width: 12%;
+  font-size: 1em;
+}
+.payment {
+  font-size: 0.9em;
+}
+.table1 {
+  width: 10px;
+  background-color: rgba(184, 19, 206, 0.404);
 }
