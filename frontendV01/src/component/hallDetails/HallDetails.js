@@ -96,6 +96,8 @@ const HallDetails = () => {
       .then((result) => {
         console.log(result.data.result[0].ratingCount);
          setCount(result.data.result[0].ratingCount);
+             getRatingCountById();
+
       })
       .catch((err) => {
         console.log(err);
