@@ -76,7 +76,7 @@ function App() {
         />
 
         <Route
-          path="/address"
+          path="/halls/:address"
           element={
             <Address
               num={num}
@@ -86,6 +86,11 @@ function App() {
               setALLHalls={setALLHalls}
               place={place}
               setPlace={setPlace}
+              
+              
+              
+           
+             
             />
           }
         />
