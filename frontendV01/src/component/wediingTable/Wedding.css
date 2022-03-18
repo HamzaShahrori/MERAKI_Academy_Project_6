@@ -1,4 +1,5 @@
 .link1 {
+  cursor: pointer;
   text-decoration: none;
   font-size: 1.3rem;
   margin-left: 8%;
@@ -12,30 +13,30 @@
  
   margin-top: 55px;
 }
-.iii {
-  margin-top: -1050px;
+.wedding {
+  margin-top: -1250px;
   margin-left: 500px;
 }
 .div {
   background-color: rgba(184, 19, 206, 0.404);
   width: 16%;
-  height: 990px;
+  height:1310px;
   margin-top: 4%;
   margin-left: 1%;
-  /* background-color: rgba(184, 19, 206, 0.404);
-    width: 20%;
-   
-    height: 300px;
-    margin-top: 4%;
-    margin-left: 1%; */
+}
+#upl{
+  font-size: 1.5rem;
+}
+#upload1{
+  background-color: rgba(184, 19, 206, 0.404) !important;
+
+width: 10%;
 }
 #tables {
   /* margin-top: 80px;*/
   margin-left: 300px;
 }
-#price {
-  /* transform: translate(10em,-2.2em); */
-}
+
 #column {
   width: 2px;
   color: rgba(203, 15, 228, 0.404);
