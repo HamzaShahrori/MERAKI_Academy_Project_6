@@ -107,24 +107,33 @@
   display: grid;
 } */
 
-
-
-
-.divstar{
+.divstar {
   display: grid;
   grid-template-columns: 1fr 3fr;
 }
 
-.hall_ratingDiv{
+.hall_ratingDiv {
   align-items: center;
   margin-top: 17px;
-  
-  
-
 }
 
-.hall_ratingDiv p{
+.hall_ratingDiv p {
   font-weight: 600;
   font-size: 20px;
-} 
+}
 
+.divCount {
+  display: grid;
+  grid-template-columns: 0.5fr 3fr;
+}
+
+.divCount p {
+  font-size: large;
+  font-weight: 600;
+}
+
+.userIcon{
+  margin-top: 5px;
+  /* margin-left: 0.5px; */
+
+}
