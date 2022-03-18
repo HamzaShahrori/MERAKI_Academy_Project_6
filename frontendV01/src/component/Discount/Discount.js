@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setHallsHasDiscount } from "../../reducer/halls/index";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import "./Discount.css";
 
 const AllHallsWithDiscount = ({ num, setNum, searchHall }) => {
   const state = useSelector((state) => {
@@ -49,8 +50,6 @@ const AllHallsWithDiscount = ({ num, setNum, searchHall }) => {
     }
   };
 
-
-
   const convertToDetailsHall = (id) => {
     navigate(`/Hall-Details/${id}`);
   };
@@ -66,9 +65,9 @@ const AllHallsWithDiscount = ({ num, setNum, searchHall }) => {
       <br />
       <br />
       <br />
-      <div className="containerAllHalls">
-        <div className="list-container">
-          <div className="left-col-list">
+      <div className="containerAllHalls ">
+        <div className="list-container ">
+          <div className="left-col-list ">
             {/* <pre>{numAll - 1}+ options</pre> */}
             <h1>Recommended Halls In Jordan</h1>
             {/* <div key={i} className="hall">
@@ -84,7 +83,7 @@ const AllHallsWithDiscount = ({ num, setNum, searchHall }) => {
                     hallInfo.hall_address
                       .toLowerCase()
                       .includes(searchHall.toLowerCase()) ||
-                      hallInfo.hall_name
+                    hallInfo.hall_name
                       .toLowerCase()
                       .includes(searchHall.toLowerCase())
                   ) {
@@ -119,9 +118,6 @@ const AllHallsWithDiscount = ({ num, setNum, searchHall }) => {
                           </h4>
                         </div>
                       </div>
-                      
-                    
-                   
                     </div>
                   </>
                 ))}
@@ -202,29 +198,31 @@ const AllHallsWithDiscount = ({ num, setNum, searchHall }) => {
         </div>
       </div>
       <div className="containerPag">
-      {num == 1 ? (
-        <></>
-      ) : (
-        <a
-          onClick={() => {
-            setNum(num - 1);
-          }}
-        >
-          <span>BACK</span>
-        </a>
-      )}
+        {num == 1 ? (
+          <></>
+        ) : (
+          <a
+            onClick={() => {
+              setNum(num - 1);
+            }}
+          >
+            <span>BACK</span>
+          </a>
+        )}
 
-      {num == 1 ? (
-        <a
-          onClick={() => {
-            setNum(num + 1);
-          }}
-        >
-          <span>Next</span>
-        </a>
-      ) : (
-        <> </>
-      )}
+        {num == 1 &&
+        state.hallsWithDiscount &&
+        state.hallsWithDiscount.length == 4 ? (
+          <a
+            onClick={() => {
+              setNum(num + 1);
+            }}
+          >
+            <span>Next</span>
+          </a>
+        ) : (
+          <> </>
+        )}
       </div>
     </>
   );
