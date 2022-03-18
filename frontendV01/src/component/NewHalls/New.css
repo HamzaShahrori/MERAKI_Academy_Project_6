@@ -6,18 +6,15 @@
 .link1:hover {
   color: black;
 }
-
 .div1 {
   background-color: rgba(184, 19, 206, 0.404);
   width: 16%;
-  /* margin-bottom: 10px; */
-  height: 558px;
-  margin-top: -29%;
-
+  height: 705px;
+  margin-top: -38%;
   margin-left: 1%;
 }
 .div2 {
-  margin-top: 90px;
+  margin-top: 200px;
 }
 #button {
   font-size: 1.2rem;
@@ -37,6 +34,3 @@
 #select {
   margin-top: -80px;
 }
-/* .mb-3{
-        border:1px solid black !important;
-    } */

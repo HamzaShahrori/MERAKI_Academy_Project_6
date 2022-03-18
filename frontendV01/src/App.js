@@ -17,12 +17,13 @@ import HallDetails from "./component/hallDetails/HallDetails";
 // HallBooking
 import HallBooking from "./component/Booking/Booking";
 import Register from "./component/register/Register";
-import BookingTable from "./component/bookingTable/Booking"
+import BookingTable from "./component/bookingTable/Booking";
 import AllHalls from "./component/allHalls/AllHalls";
 import Address from "./component/Address/Address";
 // import StarRating from "./component/StarRating/StarRating";
 
 function App() {
+  const [hallsId, setHallsId] = useState("");
   const [userId, setUserId] = useState("");
   const [num, setNum] = useState(1);
   const [allHalls, setALLHalls] = useState("");
@@ -35,6 +36,7 @@ function App() {
   return (
     <>
       <Navigation
+        hallsId={hallsId}
         setSearchHall={setSearchHall}
         setALLHalls={setALLHalls}
         setPlace={setPlace}
@@ -43,7 +45,10 @@ function App() {
       />
       <Routes>
         <Route path="/details-booking/:user_id" element={<New />} />
-        <Route path="/details/:halls_id" element={<BookingTable />} />
+        <Route
+          path="/details/:halls_id"
+          element={<BookingTable setHallsId={setHallsId} />}
+        />
 
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
@@ -86,16 +91,11 @@ function App() {
               setALLHalls={setALLHalls}
               place={place}
               setPlace={setPlace}
-              
-              
-              
-           
-             
             />
           }
         />
 
-        <Route path="/Hall-Details/:id" element={<HallDetails />} />
+        <Route path="/Hall-Details/:id" element={<HallDetails setHallsId={setHallsId}/>} />
         <Route path="/Hall-Booking/:halls_id" element={<HallBooking />} />
 
         {/* <Route path="/all/rating" element={<StarRating />} /> */}

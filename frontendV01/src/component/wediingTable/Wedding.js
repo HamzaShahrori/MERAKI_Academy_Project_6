@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import "./Wedding.css";
 import { NavLink } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 import { AiOutlineCloudUpload } from "react-icons/ai";
 // AiOutlineCloudUpload
 // import { Image } from "cloudinary-react";
@@ -34,6 +34,7 @@ const Wedding = ({ num, setNum, search }) => {
       halls: state.hallsReducer.halls,
     };
   });
+  const Navigate = useNavigate();
   const dispatch = useDispatch();
 
   const { user_id } = useParams();
@@ -62,13 +63,47 @@ const Wedding = ({ num, setNum, search }) => {
         }
       )
       .then((result) => {
-        console.log(result.data.result);
+        console.log(result.data.result[0].id);
+        localStorage.setItem("hall-id", result.data.result[0].id);
         dispatch(setHalls(result.data.result));
       });
   };
   useEffect(() => {
     getHallByUserId();
   }, []);
+  //upload images using cloudinary
+
+  const uploadImage = (imageFile) => {
+    const formData = new FormData();
+    formData.append("file", imageFile);
+    formData.append("upload_preset", "my-uploads");
+    axios
+      .post("https://api.cloudinary.com/v1_1/dnx1t4ulp/image/upload", formData)
+
+      .then((result) => {
+        setHall_image(result.data.secure_url);
+        setImage(result.data.secure_url);
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
+  };
+  //upload videos using cloudinary
+  const uploadVideo = (videoFile) => {
+    const formData = new FormData();
+    formData.append("file", videoFile);
+    formData.append("upload_preset", "my-uploads");
+    axios
+      .post("https://api.cloudinary.com/v1_1/dnx1t4ulp/video/upload", formData)
+
+      .then((result) => {
+        console.log(result);
+        setVideo(result.data.secure_url);
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
+  };
   //---------------------------------------------------------------------------
   const updateHallById = async (id) => {
     console.log("id", id);
@@ -90,11 +125,15 @@ const Wedding = ({ num, setNum, search }) => {
       .then((result) => {
         console.log("result", result.data);
         dispatch(updateHalls(result.data));
+
         getAllHalls();
       })
       .catch((err) => {
         console.log("err", err);
       });
+  };
+  const convert = () => {
+    Navigate(`/details/${localStorage.getItem("hall-id")}`);
   };
   //------------------------------------------------------------------------------
   const deleteHallById = async (id) => {
@@ -129,16 +168,16 @@ const Wedding = ({ num, setNum, search }) => {
             <br />
             <br />
             <br />
-            <NavLink className="link1" to="/details/:halls_id">
+            <a className="link1" onClick={() => convert()}>
               Booking Tables
-            </NavLink>
+            </a>
             <br />
             <br />
           </nav>
         </menu>
       </div>
 
-      <div className="iii">
+      <div className="wedding">
         {state.halls &&
           state.halls.map((element, i) => (
             <>
@@ -204,62 +243,15 @@ const Wedding = ({ num, setNum, search }) => {
                       Update Hall
                     </button>
                     <button
-                    id="button-delete"
+                      id="button-delete"
                       type="button"
                       onClick={() => deleteHallById(element.id)}
                     >
                       delete
                     </button>{" "}
-                    {/*  */}
-                    {/* <h5 class="card-title"> {element.hall_name}</h5> */}
-                    {/* <p class="card-text">
-                   {element.hall_address}
-                  </p> */}
                     <p class="card-text"></p>
                   </div>
                 </div>
-
-                {/* <div
-                class="card"
-                style={{
-                  width: "40rem",
-                  marginLeft: "20%",
-                  marginTop: "2%",
-                  overflowX: "hidden",
-                }}
-              >
-              
-                <video
-                  class="card-img-top"
-                  controls
-                  autoPlay
-                  id="video"
-                  style={{ width: "100%" }}
-                >
-                  <source src={element.video} type="video/mp4" />
-                </video>{" "}
-                <h5 class="card-title">Name:{element.hall_name}</h5>
-                <p class="card-text">Description: {element.hall_description}</p>
-                <p class="card-text">Address: {element.hall_address}</p>
-                <p class="card-text">Price: {element.price}$</p>
-                <p class="card-text">Discount: {element.discount}%</p>
-                <p class="card-text">
-                  PriceBefore: {element.priceBeforeDiscount}$
-                </p>
-                <button onClick={() => deleteHallById(element.id)}>
-                  delete
-                </button>
-                <div class="card-body">
-                  <p class="card-text">
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
-                  </p>
-                  <a href="#" class="btn btn-primary">
-                    Go somewhere
-                  </a>
-                </div>
-              </div>  */}
-
                 <div>
                   <div
                     className="modal fade"
@@ -283,45 +275,84 @@ const Wedding = ({ num, setNum, search }) => {
                         </div>
 
                         <div className="modal-body">
+                          <form className="form-floating">
+                            <input
+                              onChange={(e) => setHall_name(e.target.value)}
+                              type="text"
+                              // defaultValue={element.hall_name}
+                              className="form-control"
+                              id="floatingInputValue"
+                              placeholder="Hall Name"
+                            />
+                            <label for="floatingInputValue">Hall Name</label>
+                          </form>
+                          <br />
                           <form>
-                            <form className="form-floating">
+                            <div
+                              style={{
+                                marginTop: "0%",
+                                width: "465px",
+                                height: "50px",
+                                marginLeft: "0%",
+                              }}
+                              className="input-group col-mb-3"
+                            >
                               <input
-                                onChange={(e) => setHall_image(e.target.value)}
-                                type="text"
-                                // defaultValue={element.hall_image}
+                                type="file"
+                                onChange={(e) => {
+                                  setImageSelected(e.target.files[0]);
+                                }}
                                 className="form-control"
-                                id="floatingInputValue"
-                                placeholder="Image Link"
+                                placeholder=" Video Link"
+                                aria-label="Username"
+                                aria-describedby="basic-addon1"
                               />
-                              <label for="floatingInputValue">Image Link</label>
-                            </form>
-
+                              <button
+                                type="button"
+                                class="btn "
+                                id="upload1"
+                                onClick={() => uploadImage(imageselected)}
+                              >
+                                <AiOutlineCloudUpload
+                                  title="upload Image2"
+                                  id="upl"
+                                />{" "}
+                              </button>
+                            </div>{" "}
                             <br />
-                            <form className="form-floating">
+                            <div
+                              className="input-group col-mb-3"
+                              style={{
+                                marginTop: "0%",
+                                width: "465px",
+                                height: "50px",
+                                marginLeft: "0%",
+                              }}
+                            >
                               <input
-                                onChange={(e) => setHall_name(e.target.value)}
-                                type="text"
-                                // defaultValue={element.hall_name}
+                                type="file"
+                                onChange={(e) => {
+                                  setImageSelected(e.target.files[0]);
+                                }}
                                 className="form-control"
-                                id="floatingInputValue"
-                                placeholder="Hall Name"
+                                placeholder=" Video Link"
+                                aria-label="Username"
+                                aria-describedby="basic-addon1"
                               />
-                              <label for="floatingInputValue">Hall Name</label>
-                            </form>
 
-                            <br />
-                            <form className="form-floating">
-                              <input
-                                onChange={(e) => setVideo(e.target.value)}
-                                type="text"
-                                // defaultValue={element.hall_name}
-                                className="form-control"
-                                id="floatingInputValue"
-                                placeholder="Video Link"
-                              />
-                              <label for="floatingInputValue">Video Link</label>
-                            </form>
-
+                              <button
+                                type="button"
+                                class="btn"
+                                id="upload"
+                                onClick={() => uploadVideo(imageselected)}
+                              >
+                                {" "}
+                                <AiOutlineCloudUpload
+                                  title="upload Video"
+                                  id="upl"
+                                />{" "}
+                              </button>
+                            </div>
                             <br />
                             <div className="row g-2">
                               <div className="col-md">
@@ -371,7 +402,7 @@ const Wedding = ({ num, setNum, search }) => {
                                 </div>
                               </div>
                             </div>
-
+                            <br />
                             <div className="form-floating">
                               <select
                                 className="form-select"
@@ -401,19 +432,15 @@ const Wedding = ({ num, setNum, search }) => {
                               </select>
                               <label for="floatingSelect">Select Address</label>
                             </div>
+                            <br />
                             <div className="mb-3">
-                              <label
-                                for="message-text"
-                                className="col-form-label"
-                              >
-                                discription:
-                              </label>
                               <textarea
                                 onChange={(e) =>
                                   setHall_description(e.target.value)
                                 }
                                 className="form-control"
                                 id="message-text"
+                                placeholder="Description"
                               ></textarea>
                             </div>
                           </form>
