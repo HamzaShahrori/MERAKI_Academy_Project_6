@@ -11,7 +11,8 @@ import ReactStars from "react-rating-stars-component";
 
 const HallDetails = () => {
   const [hall_rating, setHall_Rating] = useState(0);
-  const [message,setMessage] = useState("")
+  const [message, setMessage] = useState("");
+  const [count, setCount] = useState("");
 
   const state = useSelector((state) => {
     return {
@@ -41,23 +42,23 @@ const HallDetails = () => {
     getHallById();
   }, []);
 
- 
   const getStarRating = () => {
-    axios.get(`http://localhost:5000/halls/rating/${id}`, {
-      headers: { Authorization: `Bearer ${state.token}` },
-    }).then((result)=>{
-      setHall_Rating(result.data.result[0].AverageRating)
-      getStarRating()
-    }) .catch((err)=>{
-      console.log(err);
-    })
+    axios
+      .get(`http://localhost:5000/halls/rating/${id}`, {
+        headers: { Authorization: `Bearer ${state.token}` },
+      })
+      .then((result) => {
+        setHall_Rating(result.data.result[0].AverageRating);
+        getStarRating();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
-
-useEffect(()=>{
-  getStarRating()
-},[])
-console.log(id);
+  useEffect(() => {
+    getStarRating();
+  }, []);
 
   const thirdExample = {
     size: 40,
@@ -67,26 +68,47 @@ console.log(id);
     color: "black",
     activeColor: "yellow",
     onChange: (newValue) => {
-      const hall_rating = newValue
+      const hall_rating = newValue;
       console.log(newValue);
       console.log(`Example 3: new value is ${newValue}`);
       axios
-      .post(
-        `http://localhost:5000/halls/rating/${id}`,
-        { hall_rating },
-        { headers: { Authorization: `Bearer ${state.token}` } }
-      )
-      .then((result) => {
-        console.log(result);
-        setMessage("done");
-      })
+        .post(
+          `http://localhost:5000/halls/rating/${id}`,
+          { hall_rating },
+          { headers: { Authorization: `Bearer ${state.token}` } }
+        )
+        .then((result) => {
+          console.log(result);
+          setMessage("done");
+        })
 
-      .catch((err) => {
-        console.log("sooso");
-        console.log("err",err);
-      });
+        .catch((err) => {
+          console.log("err", err);
+        });
     },
   };
+
+  const getRatingCountById = () => {
+    axios
+      .get(`http://localhost:5000/count/ratingcount/${id}`, {
+        headers: { Authorization: `Bearer ${state.token}` },
+      })
+      .then((result) => {
+        console.log(result.data.result[0].ratingCount);
+         setCount(result.data.result[0].ratingCount);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  console.log(count);
+
+
+    useEffect(() => {
+    getRatingCountById();
+  }, []);
+
 
   return (
     <>
@@ -109,20 +131,16 @@ console.log(id);
                     <source src={element.video} type="video/mp4" />
                   </video>
 
-<div className="divstar">
-
-                  <div className="starRating">
-                  <ReactStars {...thirdExample} />
-                 
-                  {/* <ReactStars {...thirdExample}  /> */}
-                  {/* <ReactStars {...thirdExample}  />
-                  <ReactStars {...thirdExample}  />
-                  <ReactStars {...thirdExample}  /> */}
-                  
-                  </div>
-                  <div className="hall_ratingDiv">
-                  <p>({hall_rating}/5)</p>
-                  </div>
+                  <div className="divstar">
+                    <div className="starRating">
+                      <ReactStars {...thirdExample} />
+                    </div>
+                    <div className="hall_ratingDiv">
+                      <p>({hall_rating}/5)</p>
+                    </div>
+                    <div>
+                      <p>{count}</p>
+                    </div>
                   </div>
                 </div>
                 <div>
@@ -163,11 +181,8 @@ console.log(id);
               {/* <p>{element.price}</p> */}
             </>
           ))}
-          {message}
+        {message}
       </div>
-
-      
-
     </>
   );
 };
