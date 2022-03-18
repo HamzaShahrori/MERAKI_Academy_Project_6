@@ -81,4 +81,40 @@ const getCountIrbid = (req, res) => {
   });
 };
 
-module.exports = { getCountAmman, getCountIrbid, getCountAllHalls };
+//count users id who rate this hall
+const getCountRating = (req, res) => {
+  const halls_id = req.params.halls_id;
+
+  const query = `SELECT COUNT(id) AS ratingCount FROM Rating WHERE Rating.halls_id=${halls_id} AND Rating.is_deleted=0`;
+
+  connection.query(query, (err, result) => {
+    if (err) {
+      res.status(500).json({
+        success: false,
+        message: `Server Error`,
+      });
+    }
+
+    if (!result[0]) {
+      res.status(200).json({
+        success: false,
+        message: `No Rating Yet`,
+      });
+    }
+
+    if (result[0]) {
+      res.status(200).json({
+        success: true,
+        message: `All Rating`,
+        result: result,
+      });
+    }
+  });
+};
+
+module.exports = {
+  getCountAmman,
+  getCountIrbid,
+  getCountAllHalls,
+  getCountRating,
+};
