@@ -7,8 +7,9 @@ import { useNavigate } from "react-router-dom";
 import { setHall } from "../../reducer/halls/index";
 // import Calendar from 'react-calendar';
 // import 'react-calendar/dist/Calendar.css';
-import ReactStars from "react-rating-stars-component";
+import {FiUsers} from "react-icons/fi"
 
+import ReactStars from "react-rating-stars-component";
 const HallDetails = () => {
   const [hall_rating, setHall_Rating] = useState(0);
   const [message, setMessage] = useState("");
@@ -138,8 +139,11 @@ const HallDetails = () => {
                     <div className="hall_ratingDiv">
                       <p>({hall_rating}/5)</p>
                     </div>
-                    <div>
-                      <p>{count}</p>
+                    <div className="divCount">
+                    <FiUsers className="userIcon"></FiUsers>
+                    <p className="countP">{count}</p>
+                   
+
                     </div>
                   </div>
                 </div>
