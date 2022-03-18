@@ -78,7 +78,7 @@ const BookingTable = () => {
                 <td className="date"> {element.date_booking}</td>
                 <td className="phone"> {element.phone}</td>
                 <td className="time">{element.booking_time} AM </td>
-                <td className="donation">{element.payment}</td>
+                <td className="donation">{element.Payment}</td>
               </tr>
               //
             ))}
