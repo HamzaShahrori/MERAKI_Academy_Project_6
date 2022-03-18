@@ -9,7 +9,7 @@ const Navigation = ({
   setPlace,
   setAllHalls,
   setNum,
-  userId,
+  userId
 }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -28,6 +28,8 @@ const Navigation = ({
     state.isLoggedIn = false;
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
+    localStorage.removeItem("hall-id");
+
     localStorage.removeItem("publishing");
 
 
