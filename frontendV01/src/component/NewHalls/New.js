@@ -135,7 +135,7 @@ const New = ({ num, setNum, search }) => {
                 <input
                   type="text"
                   className="form-control"
-                  id="floatingInputGrid"
+                  id="input2"
                   placeholder="Hall Name"
                   onChange={(e) => setHall_name(e.target.value)}
                 />
@@ -147,7 +147,7 @@ const New = ({ num, setNum, search }) => {
                 <textarea
                   type="text"
                   className="form-control"
-                  id="floatingInputGrid"
+                  id="input2"
                   placeholder="Hall Name"
                   onChange={(e) => setHall_description(e.target.value)}
                 />
@@ -160,7 +160,7 @@ const New = ({ num, setNum, search }) => {
                   <input
                     type="number"
                     className="form-control"
-                    id="floatingInputGrid"
+                    id="input2"
                     placeholder="Hall Price"
                     onChange={(e) => setPrice(e.target.value)}
                   />
@@ -179,7 +179,7 @@ const New = ({ num, setNum, search }) => {
                     type="number"
                     onChange={(e) => setDiscount(e.target.value)}
                     className="form-control"
-                    id="floatingInputGrid"
+                    id="input2"
                     placeholder="Discount"
                   />
                   <label for="floatingInputGrid">Discount</label>
@@ -191,7 +191,7 @@ const New = ({ num, setNum, search }) => {
                   <input
                     type="number"
                     className="form-control"
-                    id="floatingInputGrid"
+                    id="input2"
                     placeholder="Discount"
                     onChange={(e) => setPriceBeforeDiscount(e.target.value)}
                   />
@@ -199,6 +199,7 @@ const New = ({ num, setNum, search }) => {
                 </div>
               </div>{" "}
               <br></br>
+             
               <div
                 style={{
                   marginTop: "0%",
@@ -221,12 +222,12 @@ const New = ({ num, setNum, search }) => {
                 <button
                   type="button"
                   class="btn "
-                  id="upload"
+                  id="upload2"
                   onClick={() => uploadImage(imageselected)}
                 >
                   <AiOutlineCloudUpload title="upload Image" />{" "}
                 </button>
-              </div>{" "}
+              </div><br/>
               <br></br>
             </div>
             <br></br>
@@ -280,11 +281,10 @@ const New = ({ num, setNum, search }) => {
               aria-label="Username"
               aria-describedby="basic-addon1"
             />
-
             <button
               type="button"
               class="btn"
-              id="upload"
+              id="upload2"
               onClick={() => uploadVideo(imageselected)}
             >
               {" "}
