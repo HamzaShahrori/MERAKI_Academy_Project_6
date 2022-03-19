@@ -6,14 +6,12 @@
 .link1:hover {
   color: black;
 }
-#all{
- 
-}
+
 .div1 {
   background-color: rgba(184, 19, 206, 0.404);
   width: 16%;
   height: 705px;
-  margin-top: -37%;
+  margin-top: -34.7%;
 }
 .div2 {
   
@@ -23,8 +21,8 @@
   font-size: 1.2rem;
   background-color: rgba(184, 19, 206, 0.404);
   width: 120px;
-  height: 50px;
-  transform: translate(2em, 0em);
+  height: 40px;
+  transform: translate(19em, -2em);
   margin-left: 25%;
   border-radius: 5px;
 }

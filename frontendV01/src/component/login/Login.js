@@ -60,7 +60,7 @@ const Login = ({ setUserId }) => {
             <p className="or">
               <span></span>
             </p>
-            <div class="mb-3">
+            <div class="mb-3" id="mb-3">
               <input
                 onChange={(e) => {
                   setEmail(e.target.value);
@@ -76,7 +76,7 @@ const Login = ({ setUserId }) => {
                 We'll never share your email with anyone else.
               </div> */}
             </div>{" "}
-            <div class="mb-3">
+            <div class="mb-3" id="mb-3">
               <input
                 onChange={(e) => {
                   setPass(e.target.value);
