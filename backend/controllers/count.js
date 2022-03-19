@@ -5,7 +5,6 @@ const getCountAllHalls = (req, res) => {
 
   connection.query(query, async (err, result) => {
     if (err) {
-      console.log(err);
       return res.status(500).json({
         success: false,
         message: `Server Error`,
@@ -32,7 +31,6 @@ const getCountAmman = (req, res) => {
 
   connection.query(query, async (err, result) => {
     if (err) {
-      console.log(err);
       return res.status(500).json({
         success: false,
         message: `Server Error`,
@@ -59,7 +57,6 @@ const getCountIrbid = (req, res) => {
 
   connection.query(query, async (err, result) => {
     if (err) {
-      console.log(err);
       return res.status(500).json({
         success: false,
         message: `Server Error`,

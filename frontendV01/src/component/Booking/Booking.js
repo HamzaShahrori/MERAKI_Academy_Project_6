@@ -31,33 +31,32 @@ const HallBooking = () => {
   const [Payment, setPayment] = useState("");
   const [message, setMessage] = useState("");
   const { halls_id } = useParams();
-console.log(halls_id);
 
   const addBooking = async (e) => {
     e.preventDefault();
 
     try {
-      const result = await axios.post(`http://localhost:5000/booking/${halls_id}`, {
-        reserver,
-        phone,
-        date_booking,
-        booking_day,
-        booking_time,
-        Payment,
-      });
-
+      const result = await axios.post(
+        `http://localhost:5000/booking/${halls_id}`,
+        {
+          reserver,
+          phone,
+          date_booking,
+          booking_day,
+          booking_time,
+          Payment,
+        }
+      );
 
       if (result.data.success) {
-   
-        setMessage("Booking done")
+        setMessage("Booking done");
       } else throw Error;
-
     } catch {}
   };
 
   const dispatch = useDispatch();
 
-  //   /-------
+  //-------
 
   return (
     <>
@@ -131,21 +130,18 @@ console.log(halls_id);
 
             <div className="form-filed">
               <p>Payment value</p>
-              <input type="text"  placeholder="payment value" onChange={(e) => setPayment(e.target.value)} />
-              {/* <select name="select" id="#">
-                <option value="10%">10%</option>
-                <option value="20%">20%</option>
-                <option value="30%">30%</option>
-                <option value="40%">40%</option>
-                <option value="50%">50%</option>
-                <option value="60%">60%</option>
-                <option value="70%">70%</option>
-                <option value="80%">80%</option>
-                <option value="90%">90%</option>
-                <option value="100%">100%</option>
-              </select> */}
+              <input
+                type="text"
+                placeholder="payment value"
+                onChange={(e) => setPayment(e.target.value)}
+              />
             </div>
-           <div className="Co-btn-Booking"> <button className="btn-Booking" onClick={addBooking} >SUBMIT</button></div>
+            <div className="Co-btn-Booking">
+              {" "}
+              <button className="btn-Booking" onClick={addBooking}>
+                SUBMIT
+              </button>
+            </div>
           </form>
         </div>
       </div>

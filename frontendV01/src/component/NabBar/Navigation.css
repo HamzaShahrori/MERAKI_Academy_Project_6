@@ -2,21 +2,18 @@
   position: absolute !important;
   z-index: 1 !important;
   width: 100% !important;
-
   box-sizing: border-box !important;
-  /* background: rgb(43, 41, 41) !important; */
   opacity: 0.6 !important;
 }
-#link{
-    color: black !important;
+#link {
+  color: black !important;
 }
 
-.nav-link:hover{
-    color: black;
-    background-color: rgba(184, 19, 206, 0.404);
+.nav-link:hover {
+  color: black;
+  background-color: rgba(184, 19, 206, 0.404);
 }
 
-
-.form-control{
+.form-control {
   border: 1px black solid !important;
 }

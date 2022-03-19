@@ -5,8 +5,6 @@ import "./New.css";
 import { NavLink } from "react-router-dom";
 
 import { AiOutlineCloudUpload } from "react-icons/ai";
-// AiOutlineCloudUpload
-// import { Image } from "cloudinary-react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   AddHall,
@@ -70,7 +68,6 @@ const New = ({ num, setNum, search }) => {
       })
       .catch((err) => {
         console.log("err", err);
-        // setMessage(err.response.data.message);
       });
   };
   const uploadVideo = (videoFile) => {
@@ -146,7 +143,6 @@ const New = ({ num, setNum, search }) => {
           padding: "5px",
         }}
         type="text"
-        // className="form-control"
         id="input2"
         placeholder="description"
         onChange={(e) => setHall_description(e.target.value)}
@@ -160,7 +156,6 @@ const New = ({ num, setNum, search }) => {
           padding: "5px",
         }}
         type="number"
-        // className="form-control"
         id="input2"
         placeholder="Hall Price"
         onChange={(e) => setPrice(e.target.value)}
@@ -175,7 +170,6 @@ const New = ({ num, setNum, search }) => {
           padding: "5px",
         }}
         onChange={(e) => setDiscount(e.target.value)}
-        // className="form-control"
         id="input22"
         placeholder="Discount"
       />
@@ -188,7 +182,6 @@ const New = ({ num, setNum, search }) => {
           height: "50px",
           padding: "5px",
         }}
-        // className="form-control"
         id="input2"
         placeholder="PriceBefore"
         onChange={(e) => setPriceBeforeDiscount(e.target.value)}
@@ -205,10 +198,7 @@ const New = ({ num, setNum, search }) => {
         onChange={(e) => {
           setImageSelected(e.target.files[0]);
         }}
-        // className="form-control"
         placeholder=" Video Link"
-        // aria-label="Username"
-        // aria-describedby="basic-addon1"
       />
       <button
         type="button"
@@ -216,14 +206,11 @@ const New = ({ num, setNum, search }) => {
           transform: "translate(48em,7em)",
           backgroundColor: "rgba(184, 19, 206, 0.404)",
         }}
-        // className="btn9"
-        // id="upload2"
         onClick={() => uploadImage(imageselected)}
       >
         <AiOutlineCloudUpload title="upload Image" style={{ width: "40px" }} />{" "}
       </button>
       <br />{" "}
-
       <select
         onChange={(e) => {
           setHall_address(e.target.value);
@@ -233,7 +220,7 @@ const New = ({ num, setNum, search }) => {
           height: "50px",
           padding: "5px",
           marginTop: "6%",
-          transform:"translate(50em,-6em)",
+          transform: "translate(50em,-6em)",
           width: "300px",
         }}
         className="form-select"
@@ -265,7 +252,6 @@ const New = ({ num, setNum, search }) => {
         onChange={(e) => {
           setImageSelected(e.target.files[0]);
         }}
-        // className="form-control"
         placeholder=" Video Link"
         aria-label="Username"
         aria-describedby="basic-addon1"
@@ -285,7 +271,7 @@ const New = ({ num, setNum, search }) => {
           style={{ width: "40px" }}
         />{" "}
       </button>
-      <br /> {/* <br></br> <br></br> */}
+      <br />
       <button type="button" id="button" onClick={addNewHall}>
         New Hall
       </button>
@@ -295,9 +281,7 @@ const New = ({ num, setNum, search }) => {
           className="main-menu"
           style={{ marginTop: "10%", marginLeft: "3%" }}
         >
-          <div className="main-menu__top">
-            {/* <SiBitdefender className="logo"></SiBitdefender> */}
-          </div>
+          <div className="main-menu__top"></div>
           <br />
           <nav className="main-menu_nav" id="menu">
             <NavLink className="link1" to="/details-booking/:user_id">

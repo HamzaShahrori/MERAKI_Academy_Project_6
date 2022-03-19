@@ -5,8 +5,6 @@ import "./Wedding.css";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineCloudUpload } from "react-icons/ai";
-// AiOutlineCloudUpload
-// import { Image } from "cloudinary-react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   AddHall,
@@ -150,10 +148,7 @@ const Wedding = ({ num, setNum, search }) => {
   return (
     <>
       <div className="div">
-        <menu
-          className="main-menu"
-          // style={{ marginTop: "10%", marginLeft: "3%" }}
-        >
+        <menu className="main-menu">
           <div className="main-menu__top"></div>
           <br /> <br />
           <nav className="main-menu_nav" id="menu">
@@ -279,7 +274,6 @@ const Wedding = ({ num, setNum, search }) => {
                             <input
                               onChange={(e) => setHall_name(e.target.value)}
                               type="text"
-                              // defaultValue={element.hall_name}
                               className="form-control"
                               id="floatingInputValue"
                               placeholder="Hall Name"

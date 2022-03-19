@@ -1,4 +1,3 @@
-const { rawListeners } = require("../database/db");
 const connection = require("../database/db");
 
 const createNewHall = (req, res) => {
@@ -25,7 +24,6 @@ const createNewHall = (req, res) => {
 
   connection.query(query, data, (err, result) => {
     if (err) {
-      console.log(err);
       return res.status(500).json({
         success: false,
         message: `Server Error`,
@@ -46,7 +44,6 @@ const getHallByUserId = (req, res) => {
 
   connection.query(query, (err, result) => {
     if (err) {
-      console.log("err", err);
       return res.status(500).json({
         success: false,
         message: `Server Error`,
@@ -131,7 +128,6 @@ const updateHallById = (req, res) => {
 
   connection.query(query, data, (err, result) => {
     if (err) {
-      console.log(err);
       return res.status(500).json({
         success: false,
         message: `Server Error`,
@@ -323,10 +319,7 @@ const createRating = (req, res) => {
   const { hall_rating } = req.body;
 
   const user_id = req.token.userId;
-  // console.log("user_id", user_id);
-
   const halls_id = req.params.halls_id;
-  // console.log("halls_id", halls_id);
 
   const query = `INSERT INTO Rating (hall_rating, user_id, halls_id) VALUES(?,?,?)`;
 
@@ -349,9 +342,7 @@ const createRating = (req, res) => {
 };
 
 const getHallByRating = (req, res) => {
-  // const query = `SELECT AVG(Price) AS AveragePrice FROM Products`;
-
-const halls_id = req.params.halls_id
+  const halls_id = req.params.halls_id;
 
   const query = `SELECT AVG(hall_rating) AS AverageRating FROM Rating WHERE halls_id=${halls_id} `;
 

@@ -3,7 +3,6 @@ const connection = require("../database/db");
 const jwt = require("jsonwebtoken");
 
 const login = (req, res) => {
-  
   const email = req.body.email.toLowerCase();
   const password = req.body.pass;
 
@@ -12,7 +11,6 @@ const login = (req, res) => {
 
   connection.query(query, data, async (err, result) => {
     if (err) {
-      console.log(err);
       res.status(500).json({
         success: false,
         message: `Server Error`,

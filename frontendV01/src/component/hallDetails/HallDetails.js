@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { setHall } from "../../reducer/halls/index";
 // import Calendar from 'react-calendar';
 // import 'react-calendar/dist/Calendar.css';
-import {FiUsers} from "react-icons/fi"
+import { FiUsers } from "react-icons/fi";
 
 import ReactStars from "react-rating-stars-component";
 const HallDetails = () => {
@@ -29,7 +29,7 @@ const HallDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
 
-  //   /-------
+  //-------
   const getHallById = async () => {
     try {
       const result = await axios.get(`http://localhost:5000/halls/${id}`);
@@ -79,7 +79,6 @@ const HallDetails = () => {
           { headers: { Authorization: `Bearer ${state.token}` } }
         )
         .then((result) => {
-          console.log(result);
           setMessage("done");
         })
 
@@ -96,22 +95,17 @@ const HallDetails = () => {
       })
       .then((result) => {
         console.log(result.data.result[0].ratingCount);
-         setCount(result.data.result[0].ratingCount);
-             getRatingCountById();
-
+        setCount(result.data.result[0].ratingCount);
+        getRatingCountById();
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
-  console.log(count);
-
-
-    useEffect(() => {
+  useEffect(() => {
     getRatingCountById();
   }, []);
-
 
   return (
     <>
@@ -142,10 +136,8 @@ const HallDetails = () => {
                       <p>({hall_rating}/5)</p>
                     </div>
                     <div className="divCount">
-                    <FiUsers className="userIcon"></FiUsers>
-                    <p className="countP">{count}</p>
-                   
-
+                      <FiUsers className="userIcon"></FiUsers>
+                      <p className="countP">{count}</p>
                     </div>
                   </div>
                 </div>
@@ -153,8 +145,6 @@ const HallDetails = () => {
                   <img src={element.hall_image} />
                 </div>
                 <div>{element.hall_description}</div>
-                {/* <div><img src={element.hall_image}/></div>
-  <div><img src={element.hall_image}/></div>  */}
               </div>
               <div className="small-details">
                 <h2>{element.price}$</h2>
@@ -167,24 +157,6 @@ const HallDetails = () => {
               </div>
 
               <hr className="lineDetails" />
-
-              {/* <div className="detailImg">
-                    <img
-                      className="leftSide"
-                      src={element.hall_image}
-                      alt="hallImage"
-                      width="100%"
-                    />
-                  </div> */}
-
-              {/* <p className="hallDetails">Hall</p> */}
-              {/* <p>{element.hall_name}</p> */}
-              {/* <p className="hallDetails">Description</p> */}
-              {/* <p>{element.hall_description}</p> */}
-              {/* <p className="hallDetails">Address</p> */}
-              {/* <p>{element.hall_address}</p> */}
-              {/* <p className="hallDetails">Price</p> */}
-              {/* <p>{element.price}</p> */}
             </>
           ))}
         {message}

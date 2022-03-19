@@ -80,7 +80,6 @@ const BookingTable = () => {
                 <td className="time">{element.booking_time} AM </td>
                 <td className="donation">{element.Payment}</td>
               </tr>
-              //
             ))}
         </table>
 
@@ -90,7 +89,6 @@ const BookingTable = () => {
             style={{ marginTop: "10%", marginLeft: "3%" }}
           >
             <div className="main-menu__top">
-              {/* <SiBitdefender className="logo"></SiBitdefender> */}
             </div>
             <br />
             <nav className="main-menu_nav" id="menu2">
@@ -113,9 +111,6 @@ const BookingTable = () => {
               <br />
               <br />
               <br />
-              {/* <NavLink className="blog" to="/blog">
-            
-            </NavLink> */}
             </nav>
           </menu>
         </div>

@@ -10,7 +10,6 @@
   color: rgba(0, 0, 0);
 }
 #hall {
- 
   margin-top: 55px;
 }
 .wedding {
@@ -20,20 +19,18 @@
 .div {
   background-color: rgba(184, 19, 206, 0.404);
   width: 16%;
-  height:1310px;
+  height: 1310px;
   margin-top: 4%;
-  /* margin-left: 1%; */
 }
-#upl{
+#upl {
   font-size: 1.5rem;
 }
-#upload1{
+#upload1 {
   background-color: rgba(184, 19, 206, 0.404) !important;
 
-width: 10%;
+  width: 10%;
 }
 #tables {
-  /* margin-top: 80px;*/
   margin-left: 300px;
 }
 
@@ -53,7 +50,6 @@ width: 10%;
   transform: translate(20em, -14em);
   color: black;
   width: 15%;
- 
 
   background-color: rgba(184, 19, 206, 0.404);
   border: 1px solid rgba(184, 19, 206, 0.404);

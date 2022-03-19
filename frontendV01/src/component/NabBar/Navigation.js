@@ -9,7 +9,7 @@ const Navigation = ({
   setPlace,
   setAllHalls,
   setNum,
-  userId
+  userId,
 }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -29,20 +29,13 @@ const Navigation = ({
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
     localStorage.removeItem("hall-id");
-
     localStorage.removeItem("publishing");
-
-
     dispatch(logoutUser());
   };
-  ////
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
-          {/* <img className="navbar-brand" src="https://i.pinimg.com/564x/99/c4/ac/99c4acbc22f2e573abe7465364d9799f.jpg" alt="logo"style={{width:"100px"}}/> */}
-          {/* <img src="https://i.pinimg.com/564x/99/c4/ac/99c4acbc22f2e573abe7465364d9799f.jpg" ></img> */}
-          {/*  */}
           <Link to="/" className="navbar-brand">
             Happy Wedding
           </Link>
@@ -64,19 +57,6 @@ const Navigation = ({
                   Home
                 </Link>
               </li>
-
-              {/* {state.token && state.halls == "publishing" != 0 ? ( */}
-              {/* <li
-                className="nav-item"
-                onClick={() => detailsBooking(localStorage.getItem("userId"))}
-              >
-                <a className="nav-link" style={{ cursor: "pointer" }}>
-                  Profile{" "}
-                </a>
-              </li> */}
-              {/* ) : (
-          <></>
-        )} */}
               <li>
                 <Link
                   to="/all"
@@ -91,121 +71,8 @@ const Navigation = ({
                   Wedding Halls
                 </Link>
               </li>
-
-              {/* <li class="nav-item">
-                <Link
-                  to="/all"
-                  class="nav-link active"
-                  aria-current="page"
-                  onClick={() => {
-                    setAllHalls(true);
-                    setPlace(false);
-                    setNum(1);
-                  }}
-                >
-                  all
-                </Link>
-              </li> */}
-
-              {/* <li class="nav-item dropdown">
-                <Link
-                  to="/all"
-                  class="nav-link dropdown-toggle"
-                  id="navbarDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Category
-                </Link>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-
-                </li> */}
-
-              {/* <li>
-                    <Link
-                      to="/address"
-                      class="dropdown-item"
-                      onClick={() => {
-                        setAllHalls(false);
-                        setPlace(`Amman`);
-                        setNum(1);
-                      }}
-                    >
-                      Amman
-                    </Link>
-                  </li> */}
-
-              {/* <li>
-                    <Link
-                      to="/all"
-                      class="dropdown-item"
-                      onClick={() => {
-                        setAllHalls(false);
-
-                        setPlace(`Irbid`);
-                        setNum(1);
-                      }}
-                    >
-                      Irbid
-                    </Link>
-                  </li>
-                  <li>
-                    <hr class="dropdown-divider" />
-                  </li>
-                  <li>
-                    <Link
-                      to="/all"
-                      class="dropdown-item"
-                      onClick={() => {
-                        setAllHalls(false);
-
-                        setPlace(`else`);
-                        setNum(1);
-                      }}
-                    >
-                      Something else here
-                    </Link>
-                  </li> */}
-
-              {/* 
-                </ul>
-              </li> */}
-
-              {/* <li>
-                <Link
-                  to="/all"
-                  class="nav-link active"
-                  aria-current="page"
-                  onClick={() => {
-                    setAllHalls(true);
-                    setPlace(false);
-                    setNum(1);
-                  }}
-                >
-                  all
-                </Link>
-              </li> */}
-              {/* <li>
-                    <Link
-                      to="/address"
-                      class="dropdown-item"
-                      onClick={() => {
-                        setAllHalls(false);
-
-                        setPlace(`else`);
-                        setNum(1);
-                      }}
-                    >
-Test                    </Link>
-                  </li> */}
-
-              {/* <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
-        </li> */}
             </ul>
-            <form className="d-flex" >
+            <form className="d-flex">
               <input
                 onChange={(e) => {
                   setSearchHall(e.target.value);
@@ -216,15 +83,19 @@ Test                    </Link>
                 aria-label="Search"
               />
             </form>
-          {localStorage.getItem('publishing')==1?(<li
-              className="nav-item"
-              style={{ listStyle: "none" }}
-              onClick={() => detailsBooking(localStorage.getItem("userId"))}
-            >
-              <a className="nav-link" style={{ cursor: "pointer" }} id="link">
-                Profile
-              </a>
-            </li>):(<></>)}  
+            {localStorage.getItem("publishing") == 1 ? (
+              <li
+                className="nav-item"
+                style={{ listStyle: "none" }}
+                onClick={() => detailsBooking(localStorage.getItem("userId"))}
+              >
+                <a className="nav-link" style={{ cursor: "pointer" }} id="link">
+                  Profile
+                </a>
+              </li>
+            ) : (
+              <></>
+            )}
             {state.isLoggedIn ? (
               <>
                 <li

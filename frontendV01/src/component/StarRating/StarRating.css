@@ -1,20 +1,17 @@
-.star-rating{
-    display: flex;
-    justify-content: center;
+.star-rating {
+  display: flex;
+  justify-content: center;
 }
 
-
-
 button {
-    background-color: transparent;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    
-  }
-  .on {
-    color: #000;
-  }
-  .off {
-    color: #ccc;
-  }
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.on {
+  color: #000;
+}
+.off {
+  color: #ccc;
+}
