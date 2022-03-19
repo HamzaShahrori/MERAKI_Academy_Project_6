@@ -6,14 +6,17 @@
 .link1:hover {
   color: black;
 }
+#all{
+ 
+}
 .div1 {
   background-color: rgba(184, 19, 206, 0.404);
   width: 16%;
   height: 705px;
-  margin-top: -38%;
-  /* margin-left: 1%; */
+  margin-top: -37%;
 }
 .div2 {
+  
   margin-top: 200px;
 }
 #button {
@@ -25,11 +28,12 @@
   margin-left: 25%;
   border-radius: 5px;
 }
-#upload {
+#upload2 {
+
   background-color: rgba(184, 19, 206, 0.404) !important;
 }
 .dis {
-  margin-top: -230px;
+  margin-top: -190px;
 }
 #select {
   margin-top: -80px;
