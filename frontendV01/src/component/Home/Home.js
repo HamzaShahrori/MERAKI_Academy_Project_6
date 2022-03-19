@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
-
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import "./Home.css";
+import { GrFacebook } from "react-icons/gr";
+import { AiFillLinkedin } from "react-icons/ai";
+import { FaTwitterSquare } from "react-icons/fa";
+import { BsInstagram, BsSnapchat } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css';
-// import { CDBFooter } from 'cdbreact';
-// import { CDBFooter, CDBFooterLink, CDBBtn, CDBIcon, CDBContainer } from 'cdbreact';
+import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
 import { setHallsHasDiscount } from "../../reducer/halls/index";
-// import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
 const Home = () => {
   const state = useSelector((state) => {
     return {
@@ -64,7 +64,6 @@ const Home = () => {
           <div className="contentDiscount">
             <span>Discounts on booking upto</span>
             <h3>90% off</h3>
-            {/* <p>offers ends after 5 days</p> */}
             <Link to="/discounts" className="btnDiscount">
               Book now{" "}
             </Link>
@@ -90,8 +89,6 @@ const Home = () => {
                 </div>
               </>
             ))}
-
-            
 
           <div className="colVideo">
             {state.hallsWithDiscount &&
@@ -138,48 +135,65 @@ const Home = () => {
         </div>
       </div>
       <footer className="page-footer font-small blue pt-4">
-    <div className="container-fluid text-center text-md-left">
-        <div className="row">
+        <div className="container-fluid text-center text-md-left">
+          <div className="row">
             <div className="col-md-6 mt-md-0 mt-3">
-                <h5 className="text-uppercase"> Happy Wedding</h5>
-                <p>Amman / Gardens / Building No. 20</p>
+              <h5 className="text-uppercase"> Location</h5>
+              <p className="p">Amman - Gardens - Building No. 20</p>
             </div>
 
-            <hr className="clearfix w-100 d-md-none pb-0"/>
-
-            <div className="col-md-3 mb-md-0 mb-3">
-                <h5 className="text-uppercase">Important Links</h5>
-                <ul className="list-unstyled">
-                    <li><a href="#!">About</a></li>
-                    <li><a href="#!">Services</a></li>
-                   
-                </ul>
-            </div>
+            <hr className="clearfix w-100 d-md-none pb-0" />
 
             <div className="col-md-3 mb-md-0 mb-3">
-                <h5 className="text-uppercase">Connect with us</h5>
-                <ul className="list-unstyled">
-                    <li><a href="#!">+765-85656525125</a></li>
-                    <li><a href="#!">Facebook</a></li>
-                   
-                </ul>
+              <h5 className="text-uppercase">Around The Web</h5>
+              <ul className="socialsFooter">
+                <li>
+                  <a>
+                    <GrFacebook className="icon1"></GrFacebook>
+                  </a>
+
+                  <a>
+                    <BsInstagram className="icon2"></BsInstagram>
+                  </a>
+
+                  <a>
+                    <AiFillLinkedin className="icon3"></AiFillLinkedin>
+                  </a>
+
+                  <a>
+                    <BsSnapchat className="icon4"></BsSnapchat>
+                  </a>
+
+                  <a>
+                    <FaTwitterSquare className="icon5"></FaTwitterSquare>
+                  </a>
+                </li>
+              </ul>
             </div>
+
+            <div className="col-md-3 mb-md-0 mb-3">
+              <h5 className="text-uppercase">Any Question</h5>
+              <input
+                placeholder="Question"
+                style={{
+                  padding: "5px",
+                  transform: "translate(0.2em,0em)",
+                  width: "180px",
+                }}
+              ></input>
+              <button className="bb">send</button>
+            </div>
+          </div>
         </div>
-    </div>
 
-    <div className="footer-copyright text-center py-3">© 2022 Copyright:
-        <a href="https://mdbootstrap.com/"> CodeWarriors
-</a>
-    </div>
-
-</footer>
-      {/* 
-
-
-  <script>
-
-
-  </script> */}
+        <div id="copy" className="footer-copyright text-center py-3">
+          © 2022 Copyright:
+          <a href="https://mdbootstrap.com/">
+            {" "}
+            <span style={{ fontWeight: "bold" }}>CodeWarriors</span>
+          </a>
+        </div>
+      </footer>
     </>
   );
 };

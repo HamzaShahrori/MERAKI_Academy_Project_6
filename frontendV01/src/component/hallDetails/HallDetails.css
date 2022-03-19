@@ -53,7 +53,6 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  /* margin: 10px 0; */
 }
 
 .gallery_hallDetails {
@@ -86,26 +85,8 @@
   font-weight: 500;
 }
 .btnDetails {
-  /* position: relative; */
   float: right;
-  /* float: left; */
 }
-/* .lineDetails{
-  border: 0px;
-  height: 1px;
-  background:rgb(54, 25, 25) ;
-  width: 100%;
-  max-width: 800px;
-  margin: 20px 0 50px;
-} */
-
-/* .starRating{
-  display: flex;
-}  */
-
-/* .hall_ratingDiv {
-  display: grid;
-} */
 
 .divstar {
   display: grid;
@@ -134,6 +115,4 @@
 
 .userIcon{
   margin-top: 5px;
-  /* margin-left: 0.5px; */
-
 }

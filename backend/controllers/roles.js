@@ -7,8 +7,6 @@ const createNewRole = (req, res) => {
   const data = [role_name];
 
   connection.query(query, data, (err, result) => {
-    console.log(result);
-
     if (err) {
       return res.status(500).json({
         success: false,
@@ -16,7 +14,7 @@ const createNewRole = (req, res) => {
       });
     }
 
-   return res.status(201).json({
+    return res.status(201).json({
       success: true,
       message: `Sucess role created`,
       result: result,

@@ -1,11 +1,7 @@
-.card-text{
-  
-    text-decoration:dotted black !important;
+.card-text {
+  text-decoration: dotted black !important;
 }
 
-
-.dis{
-    align-items: center !important;
-    /* text-align: center !important; */
+.dis {
+  align-items: center !important;
 }
-

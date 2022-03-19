@@ -58,7 +58,6 @@ const AllHallsWithDiscount = ({ num, setNum, searchHall }) => {
     getAllHallsHasDiscount();
   });
 
-  //   console.log(state.hallsWithDiscount);
   return (
     <>
       <br />
@@ -68,11 +67,7 @@ const AllHallsWithDiscount = ({ num, setNum, searchHall }) => {
       <div className="containerAllHalls ">
         <div className="list-container ">
           <div className="left-col-list ">
-            {/* <pre>{numAll - 1}+ options</pre> */}
             <h1>Recommended Halls In Jordan</h1>
-            {/* <div key={i} className="hall">
-           
-          </div> */}
 
             {state.hallsWithDiscount &&
               state.hallsWithDiscount
@@ -87,7 +82,6 @@ const AllHallsWithDiscount = ({ num, setNum, searchHall }) => {
                       .toLowerCase()
                       .includes(searchHall.toLowerCase())
                   ) {
-                    console.log("after", searchHall); //
 
                     return hallInfo;
                   }
@@ -109,7 +103,6 @@ const AllHallsWithDiscount = ({ num, setNum, searchHall }) => {
                         <h3>{element.hall_name}</h3>
                         <p>{element.hall_description}</p>
                         <div className="hall-price">
-                          {/* <p>2 Guest</p> */}
                           <h4 className="priceBeforeDiscount">
                             ${element.price}
                             <span className="price">
@@ -122,79 +115,6 @@ const AllHallsWithDiscount = ({ num, setNum, searchHall }) => {
                   </>
                 ))}
           </div>
-          {/* <div className="right-col-list">
-            <div className="sidebar">
-              <h2>Select Filters</h2>
-              <h3>Choose the province</h3>
-              <div className="filter">
-                <input
-                  type="checkbox"
-                  onClick={() => {
-                    setALLHalls(true);
-                    setPlace(false);
-                    setNum(1);
-                  }}
-                />{" "}
-                <p>All Halls</p> <span>({numAll})</span>
-              </div>
-              <div className="filter">
-                <input
-                  type="checkbox"
-                  onClick={() => {
-                    setALLHalls(false);
-
-                    setPlace(`amman`);
-                    setNum(1);
-                  }}
-                />{" "}
-                <p>Amman</p> <span>({numAmman})</span>
-              </div>
-              <div className="filter">
-                <input
-                  type="checkbox"
-                  onClick={() => {
-                    setALLHalls(false);
-
-                    setPlace(`Irbid`);
-                    setNum(1);
-                  }}
-                />{" "}
-                <p>Irbid</p> <span>({numIrbid})</span>
-              </div>
-              <div className="filter">
-                <input type="checkbox" /> <p>Zarqa</p> <span>(0)</span>
-              </div>
-              <div className="filter">
-                <input type="checkbox" /> <p>Salt</p> <span>(0)</span>
-              </div>
-              <div className="filter">
-                <input type="checkbox" /> <p>Ma'an</p> <span>(0)</span>
-              </div>
-              <div className="filter">
-                <input type="checkbox" /> <p>Jerash</p> <span>(0)</span>
-              </div>
-              <div className="filter">
-                <input type="checkbox" /> <p>Mafraq</p> <span>(0)</span>
-              </div>
-              <div className="filter">
-                <input type="checkbox" /> <p>Madaba</p> <span>(0)</span>
-              </div>
-
-              <h3>Additional options</h3>
-              <div className="filter">
-                <input type="checkbox" /> <p>Tafila</p> <span>(0)</span>
-              </div>
-              <div className="filter">
-                <input type="checkbox" /> <p>Karak</p> <span>(0)</span>
-              </div>
-              <div className="filter">
-                <input type="checkbox" /> <p>Aqapa</p> <span>(0)</span>
-              </div>
-              <div className="filter">
-                <input type="checkbox" /> <p>Gawr</p> <span>(0)</span>
-              </div>
-            </div>
-          </div> */}
         </div>
       </div>
       <div className="containerPag">

@@ -4,8 +4,6 @@ CREATE DATABASE MERAKI_Academy_Project_6;
 
 USE MERAKI_Academy_Project_6;
 
--- DROP TABLE booking;
-
 CREATE TABLE roles (
 id INT AUTO_INCREMENT NOT NULL,
 role_name VARCHAR(255) NOT NULL,

@@ -143,9 +143,7 @@ const AllHalls = ({
   // ------
 
   useEffect(() => {
-    
-      getHallByAddress();
-    
+    getHallByAddress();
   }, [place]);
   useEffect(() => {
     countNumAmman();
@@ -164,27 +162,7 @@ const AllHalls = ({
   const convertToHallsAddress = (address) => {
     navigate(`/halls/${address}`);
   };
-  // const thirdExample = {
-  //   size: 40,
-  //   count: 5,
-  //   isHalf: false,
-  //   value: 4,
-  //   color: "blue",
-  //   activeColor: "red",
-  //   onChange: (newValue) => {
-  //     console.log(`Example 3: new value is ${newValue}`);
-  //     const getStarRating = () => {
-  //   axios.get(`http://localhost:5000/halls/rating/${halls_id}`, {
-  //     headers: { Authorization: `Bearer ${state.token}` },
-  //   }).then((result)=>{
-  //     setHall_Rating(result.data)
-  //   }) .catch((err)=>{
-  //     console.log(err);
-  //   })
-  // };
-
-  //   },
-  // };
+ 
 
   return (
     <>
@@ -221,7 +199,8 @@ const AllHalls = ({
                   <>
                     <div key={i} className="hall">
                       <div className="hall-img">
-                        <img style={{cursor:"pointer"}}
+                        <img
+                          style={{ cursor: "pointer" }}
                           src={element.hall_image}
                           onClick={() => {
                             convertToDetailsHall(element.id);
@@ -276,7 +255,7 @@ const AllHalls = ({
                 <input
                   type="checkbox"
                   onClick={() => {
-                    convertToHallsAddress('Amman')
+                    convertToHallsAddress("Amman");
                   }}
                 />{" "}
                 <p>Amman</p> <span>({numAmman})</span>
@@ -286,7 +265,6 @@ const AllHalls = ({
                   type="checkbox"
                   onClick={() => {
                     convertToHallsAddress("Irbid");
-
                   }}
                 />{" "}
                 <p>Irbid</p> <span>({numIrbid})</span>

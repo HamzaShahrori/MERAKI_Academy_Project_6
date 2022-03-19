@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate , Link} from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../reducer/login";
@@ -50,8 +50,7 @@ const Login = ({ setUserId }) => {
   return (
     <>
       <br />
-      {/* <br /> 
-     <br />  */}
+
       <div className="cont">
         <div className="left">
           <form style={{ width: "20rem" }}>
@@ -72,9 +71,6 @@ const Login = ({ setUserId }) => {
               <button className="user">
                 <FaUser />
               </button>
-              {/* <div id="emailHelp" class="form-text">
-                We'll never share your email with anyone else.
-              </div> */}
             </div>{" "}
             <div class="mb-3" id="mb-3">
               <input
@@ -89,18 +85,18 @@ const Login = ({ setUserId }) => {
                 <IoIosKey />
               </button>
             </div>
-            
             <button onClick={login} type="submit" className="btn">
               LOGIN
             </button>
             <button
-          
               type="submit"
               className="btn3"
               style={{ marginTop: "1rem" }}
             >
-              <Link to="/register" id="btn3"> SIGN UP</Link>
-             
+              <Link to="/register" id="btn3">
+                {" "}
+                SIGN UP
+              </Link>
             </button>
           </form>
           {message ? (

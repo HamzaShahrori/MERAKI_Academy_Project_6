@@ -24,8 +24,6 @@ const Address = ({ num, setNum, place, searchHall, setALLHalls, setPlace }) => {
   const { address } = useParams();
   const navigate = useNavigate();
 
-  console.log(place);
-
   const getHallByAddress = async () => {
     try {
       const res = await axios.get(
@@ -42,7 +40,6 @@ const Address = ({ num, setNum, place, searchHall, setALLHalls, setPlace }) => {
       }
 
       if (res.data.success) {
-     
         dispatch(setHalls(res.data.result));
       }
     } catch (error) {
@@ -123,9 +120,8 @@ const Address = ({ num, setNum, place, searchHall, setALLHalls, setPlace }) => {
 
   useEffect(() => {
     getHallByAddress();
-  }, [num,address]);
+  }, [num, address]);
 
-  console.log(num);
   return (
     <>
       <br />
@@ -151,7 +147,7 @@ const Address = ({ num, setNum, place, searchHall, setALLHalls, setPlace }) => {
                       .toLowerCase()
                       .includes(searchHall.toLowerCase())
                   ) {
-                    console.log("after", searchHall); //
+                    console.log("after", searchHall);
 
                     return hallinfo;
                   }
@@ -199,7 +195,7 @@ const Address = ({ num, setNum, place, searchHall, setALLHalls, setPlace }) => {
                 <input
                   type="checkbox"
                   onClick={() => {
-                   navigate("/all")
+                    navigate("/all");
                   }}
                 />{" "}
                 <p>All Halls</p> <span>({numAll})</span>
@@ -218,7 +214,6 @@ const Address = ({ num, setNum, place, searchHall, setALLHalls, setPlace }) => {
                   type="checkbox"
                   onClick={() => {
                     convertToHallsAddress("Irbid");
-                  
                   }}
                 />{" "}
                 <p>Irbid</p> <span>({numIrbid})</span>
