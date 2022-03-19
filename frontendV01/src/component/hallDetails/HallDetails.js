@@ -144,7 +144,7 @@ const HallDetails = () => {
                 <div>
                   <img src={element.hall_image} />
                 </div>
-                <div>{element.hall_description}</div>
+                <div style={{transform:"translate(0em,-3em)"}}>{element.hall_description}</div>
               </div>
               <div className="small-details">
                 <h2>{element.price}$</h2>
