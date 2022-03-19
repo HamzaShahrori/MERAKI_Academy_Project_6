@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./Register.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Register = () => {
@@ -47,7 +47,6 @@ const Register = () => {
 
   return (
     <>
-      <br />
       <br />
       <br />
 
@@ -114,141 +113,136 @@ const Register = () => {
             <br />
           </form> */}
 
-      <br />
+  
       <div className="registerContainer">
         <div className="left-register">
-      <form   onSubmit={addNewUser}>
-        <div className="form-group">
-          <label for="exampleInputEmail1">First Name</label>
-          <input
-            type="text"
-            className="form-control"
-            id="exampleInputEmail1"
-            placeholder="First Name"
-            style={{ width: "20rem" }}
-            onChange={(e) => setFirstName(e.target.value)}
-          />
-        </div>
-
-        <div className="form-group">
-          <label for="exampleInputFirstName1">Last Name</label>
-          <input
-            type="text"
-            className="form-control"
-            id="exampleInputLastName1"
-            placeholder="Last Name"
-            style={{ width: "20rem" }}
-            onChange={(e) => setLastName(e.target.value)}
-          />
-        </div>
-
-        <div className="form-group">
-          <label for="exampleInputCountry1">Country</label>
-          <input
-            type="text"
-            className="form-control"
-            id="exampleInputEmail1"
-            placeholder="Country"
-            style={{ width: "20rem" }}
-            onChange={(e) => setCountry(e.target.value)}
-          />
-        </div>
-
-        <div className="form-group">
-          <label for="exampleInputEmail1">Email address</label>
-          <input
-            type="email"
-            className="form-control"
-            id="exampleInputEmail1"
-            placeholder="Email"
-            style={{ width: "20rem" }}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input
-            type="password"
-            className="form-control"
-            id="exampleInputPassword1"
-            placeholder="Password"
-            style={{ width: "20rem" }}
-            onChange={(e) => setPass(e.target.value)}
-          />
-        </div>
-
-        <div className="checkbox">
-          <label>
-            <input
-              type="checkbox"
-              onClick={() => {
-                setPublishing(1);
-              }} 
-            />{" "}
-            as a publisher
-          </label>
-          <label>
-            <input
-              type="checkbox" style={{marginLeft:"1rem" ,marginTop: "1rem"}}
-              onClick={() => {
-                setReservation(1);
-              }} 
-            />{" "}
-            for reservations
-          </label>
-        </div>
-
-        <button type="submit" className="btn btn-success" style={{marginTop:"1rem"}}>
-         Sign Up 
-        </button>
-      </form>
-
-      {status
-        ? message && <div className="SuccessMessage">{message}</div>
-        : message && (
-            <div 
-              className="alert alert-danger"
-              role="alert"
-              style={{ width: "20rem",marginTop:"1rem" }}
-            >
-              {message}
+          <form onSubmit={addNewUser}>
+            <h2 className="sign">SIGN UP</h2>
+            <br />
+            <div className="form-group">
+              <input
+                type="text"
+                className="form-control"
+                id="input"
+                placeholder="First Name"
+                style={{ width: "20rem" }}
+                onChange={(e) => setFirstName(e.target.value)}
+              />
             </div>
-          )}
-</div>
+            <div className="form-group">
+              <input
+                type="text"
+                className="form-control"
+                id="input"
+                placeholder="Last Name"
+                style={{ width: "20rem" }}
+                onChange={(e) => setLastName(e.target.value)}
+              />
+            </div>
+            <div className="form-group">
+              <input
+                type="text"
+                className="form-control"
+                id="input"
+                placeholder="Country"
+                style={{ width: "20rem" }}
+                onChange={(e) => setCountry(e.target.value)}
+              />
+            </div>
+            <div className="form-group">
+              <input
+                type="email"
+                className="form-control"
+                id="input"
+                placeholder="Email"
+                style={{ width: "20rem" }}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div className="form-group">
+              <input
+                type="password"
+                className="form-control"
+                id="input"
+                placeholder="Password"
+                style={{ width: "20rem" }}
+                onChange={(e) => setPass(e.target.value)}
+              />
+            </div>
+            <div className="checkbox" >
+              <label id="check">
+                <input
+                  type="checkbox"
+                  onClick={() => {
+                    setPublishing(1);
+                  }}
+                />{" "}
+                Publisher
+              </label>
+              <label id="checkbox">
+                <input
+                  type="checkbox"
+                  style={{ marginLeft: "1rem", marginTop: "1rem" }}
+                  onClick={() => {
+                    setReservation(1);
+                  }}
+                />{" "}
+                Reservations
+              </label>
+            </div>
+            <button
+              type="submit"
+              className="btn4"
+              style={{ marginTop: "1rem" }}
+            >
+              SIGN UP
+            </button>
+            <button
+              type="submit"
+              className="btn6"
+              style={{ marginTop: "1rem" }}
+            >
+              <Link to="/login" id="btn6">
+                {" "}
+                SIGN IN
+              </Link>
+            </button>
+          </form>
 
+          {status
+            ? message && <div className="SuccessMessage">{message}</div>
+            : message && (
+                <div
+                  className="alert alert-danger"
+                  role="alert"
+                  style={{ width: "20rem", marginTop: "1rem" }}
+                >
+                  {message}
+                </div>
+              )}
+        </div>
 
-<div className="right-register">
-
-{/* <p className="newhere">Login and discover our website</p> */}
-  {/* <p className="wordSign">
+        <div className="right-register">
+          {/* <p className="newhere">Login and discover our website</p> */}
+          {/* <p className="wordSign">
    
   </p> */}
 
-<img src= "./image/reg.png" className="registerImg" alt="logo"/>
+          {/* <img src= "./image/reg.png" className="registerImg" alt="logo"/> */}
 
-  {/* <button type="submit" class="btn btn-primary">
+          {/* <button type="submit" class="btn btn-primary">
 
   <Link to="/login" className="link">
       Sign In
     </Link>
   </button> */}
+        </div>
 
-
-
-
-
-</div>
-
-
-
-
-
-
-      {/* 
+        {/* 
           {status
             ? message && <div className="SuccessMessage">{message}</div>
             : message && <div className="ErrorMessage">{message}</div>} */}
-            </div>
+      </div>
     </>
     // </div>
     // </>
