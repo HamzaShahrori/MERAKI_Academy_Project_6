@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate , Link} from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../reducer/login";
 import "./Login.css";
+import { FaUser } from "react-icons/fa";
+import { IoIosKey } from "react-icons/io";
+import { AiOutlineMail } from "react-icons/ai";
 import "bootstrap/dist/css/bootstrap.min.css";
 const Login = ({ setUserId }) => {
   // const state = useSelector((state) => {
@@ -24,7 +27,7 @@ const Login = ({ setUserId }) => {
 
   const login = (e) => {
     e.preventDefault();
-  
+
     axios
       .post("http://localhost:5000/login", userLogin)
       .then(async (result) => {
@@ -49,79 +52,68 @@ const Login = ({ setUserId }) => {
       <br />
       {/* <br /> 
      <br />  */}
-      <div className="container">
-        <div className="right-login">
-          <img src="./image/log.png" className="loginImg" alt="logo"/>
-
-          {/* <p className="newhere">Be Part of Our Family</p>
-  <p className="wordSign">
-   We will be very pleased to join us
-  </p>
-
-
-  <button type="button" class="btn btn-success">
-
-  <Link to="/register" className="link">
-      Sign Up
-    </Link>
-  </button> */}
-        </div>
-
-        <div className="left-login">
+      <div className="cont">
+        <div className="left">
           <form style={{ width: "20rem" }}>
+            <h2 className="login">Welcome Back!</h2>
+            <h6 className="welcome">Login to continue</h6>
+            <p className="or">
+              <span></span>
+            </p>
             <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">
-                Email address
-              </label>
               <input
                 onChange={(e) => {
                   setEmail(e.target.value);
                 }}
                 type="email"
-                class="form-control"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
+                placeholder="Email"
+                className="email"
               />
-              <div id="emailHelp" class="form-text">
+              <button className="user">
+                <FaUser />
+              </button>
+              {/* <div id="emailHelp" class="form-text">
                 We'll never share your email with anyone else.
-              </div>
-            </div>
+              </div> */}
+            </div>{" "}
             <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">
-                Password
-              </label>
               <input
                 onChange={(e) => {
                   setPass(e.target.value);
                 }}
+                placeholder="Password"
                 type="password"
-                class="form-control"
-                id="exampleInputPassword1"
-              />
+                className="password"
+              />{" "}
+              <button className="user">
+                <IoIosKey />
+              </button>
             </div>
-            {/* <div class="mb-3 form-check">
-            <input
-              type="checkbox"
-              class="form-check-input"
-              id="exampleCheck1"
-            />
-            <label class="form-check-label" for="exampleCheck1">
-              Check me out
-            </label>
-          </div> */}
-            <button onClick={login} type="submit" class="btn btn-primary">
-              Sign In
+            
+            <button onClick={login} type="submit" className="btn">
+              LOGIN
+            </button>
+            <button
+          
+              type="submit"
+              className="btn3"
+              style={{ marginTop: "1rem" }}
+            >
+              <Link to="/register" id="btn3"> SIGN UP</Link>
+             
             </button>
           </form>
-          {message ? (<div 
+          {message ? (
+            <div
               className="alert alert-danger"
               role="alert"
-              style={{ width: "20rem",marginTop:"1rem" }}
+              style={{ width: "20rem", marginTop: "1rem" }}
             >
               {message}
-            </div>):(
-              <></>
-            )}
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </>
