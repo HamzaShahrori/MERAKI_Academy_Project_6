@@ -152,14 +152,14 @@ const HallDetails = () => {
                   className="btnDetails"
                   onClick={() => convertToBookingHall(element.id)}
                 >
-                  Booking
+                  Booking Now
                 </button>
               </div>
 
               <hr className="lineDetails" />
             </>
           ))}
-        {message}
+        {/* {message} */}
       </div>
     </>
   );
