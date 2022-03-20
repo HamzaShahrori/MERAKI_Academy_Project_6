@@ -174,7 +174,7 @@ const Wedding = ({ num, setNum, search }) => {
 
       <div className="wedding">
         {state.halls &&
-          state.halls.map((element, i) => (
+          state.halls.slice(0, 2).map((element, i) => (
             <>
               <div key={i}>
                 <div>
@@ -337,14 +337,13 @@ const Wedding = ({ num, setNum, search }) => {
                               <button
                                 type="button"
                                 class="btn"
-                                id="upload"
+                                id="upload1"
                                 onClick={() => uploadVideo(imageselected)}
                               >
-                                {" "}
                                 <AiOutlineCloudUpload
                                   title="upload Video"
                                   id="upl"
-                                />{" "}
+                                />
                               </button>
                             </div>
                             <br />

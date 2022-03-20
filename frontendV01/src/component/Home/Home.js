@@ -62,7 +62,7 @@ const Home = () => {
           </div>
 
           <div className="contentDiscount">
-            <span>Discounts on booking upto</span>
+            <span>Discounts on booking up to</span>
             <h3>90% off</h3>
             <Link to="/discounts" className="btnDiscount">
               Book now{" "}
@@ -75,7 +75,7 @@ const Home = () => {
       </div>
 
       <div className="containerVideo">
-        <h1>It is recommended by users</h1>
+        <h1>Categorized By Rating</h1>
         <div className="rowVideo">
           {state.hallsWithDiscount &&
             state.hallsWithDiscount.slice(0, 1).map((element, i) => (
@@ -84,12 +84,11 @@ const Home = () => {
                 <div className="colVideo">
                   <div className="Big-img">
                     <img src={element.hall_image} width="100%" />
-                    <img src="./image/play.png" className="btnPlay" />
+                    {/* <img src="./image/play.png" className="btnPlay" /> */}
                   </div>
                 </div>
               </>
             ))}
-
           <div className="colVideo">
             {state.hallsWithDiscount &&
               state.hallsWithDiscount.slice(1, 4).map((element, i) => (
@@ -98,16 +97,16 @@ const Home = () => {
                   <div className="Small-img-row">
                     <div className="small-img">
                       <img src={element.hall_image} />
-                      <img
-                        src="./image/play.png"
+                      {/* <img
+                        // src="./image/play.png"
                         type="button"
                         className="btn btn-primary btnPlay"
                         data-bs-toggle="modal"
                         data-bs-target="#exampleModal"
                         data-bs-whatever="@getbootstrap"
-                      />
+                      /> */}
                     </div>
-                    <p>{element.hall_description}</p>
+                    <p>{element.hall_name}</p>
                   </div>
                   <div
                     className="modal fade"
@@ -120,10 +119,15 @@ const Home = () => {
                       <div className="modal-content">
                         <div className="modal-headera">
                           <div className="video-player" id="videoPlayer">
-                            <video width="100%" controls autoPlay id="video">
+                            {/* <video width="100%" controls autoPlay id="video">
                               <source src={element.video} type="video/mp4" />
+
                             </video>
                             {/* <img src="./image/play.png" className="btnClose" /> */}
+
+                            </video> */}
+                            
+
                           </div>
                         </div>
                       </div>

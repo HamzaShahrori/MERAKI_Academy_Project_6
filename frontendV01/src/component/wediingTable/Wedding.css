@@ -39,15 +39,15 @@
   color: rgba(203, 15, 228, 0.404);
 }
 #button-delete {
-  transform: translate(15em, -8em);
+  transform: translate(14em, -18.5em);
   color: black;
   height: 40px;
-  width: 14%;
+  width: 15%;
   background-color: rgba(184, 19, 206, 0.404);
   border: 1px solid rgba(184, 19, 206, 0.404);
 }
 #button-update {
-  transform: translate(20em, -14em);
+  transform: translate(19.5em, -14em);
   color: black;
   width: 15%;
 

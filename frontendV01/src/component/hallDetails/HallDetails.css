@@ -75,7 +75,6 @@
 
 #video {
   height: 25rem;
-  width: 50rem;
   object-fit: cover;
 }
 .small-details {
@@ -84,8 +83,12 @@
 .small-details h2 {
   font-weight: 500;
 }
+
 .btnDetails {
-  float: right;
+  transform: translate(32em,0em);
+  background-color: rgba(184, 19, 206, 0.604);
+  width: 100px;
+  /* float: right; */
 }
 
 .divstar {

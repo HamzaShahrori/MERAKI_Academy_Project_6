@@ -162,7 +162,6 @@ const AllHalls = ({
   const convertToHallsAddress = (address) => {
     navigate(`/halls/${address}`);
   };
- 
 
   return (
     <>
@@ -208,7 +207,7 @@ const AllHalls = ({
                         />
                       </div>
                       <div className="hall-info">
-                        <p>name Hall</p>
+                        {/* <p>Hall</p> */}
                         <h3>{element.hall_name}</h3>
                         <p>{element.hall_description}</p>
                         <div className="hall-price">
@@ -319,7 +318,7 @@ const AllHalls = ({
             <span>BACK</span>
           </a>
         )}
-        {num == 1 && state.halls && state.halls.length == 4 ? (
+        {state.halls && state.halls.length == 4 ? (
           <a
             onClick={() => {
               setNum(num + 1);

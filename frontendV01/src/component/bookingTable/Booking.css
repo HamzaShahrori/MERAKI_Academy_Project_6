@@ -2,8 +2,7 @@
   background-color: rgba(184, 19, 206, 0.404);
   width: 16%;
   height: 705px;
-  margin-top: -3%;
-  /* margin-left: 1%; */
+  margin-top: -2%;
 }
 .head {
   width: 70%;
@@ -59,7 +58,6 @@ td {
   font-size: 1em;
 }
 .date {
-  /* width: 20px; */
   font-size: 0.9em;
 }
 .phone {
