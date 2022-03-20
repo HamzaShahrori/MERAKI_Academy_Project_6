@@ -123,7 +123,7 @@ const Home = () => {
                             <video width="100%" controls autoPlay id="video">
                               <source src={element.video} type="video/mp4" />
                             </video>
-                            <img src="./image/play.png" className="btnClose" />
+                            {/* <img src="./image/play.png" className="btnClose" /> */}
                           </div>
                         </div>
                       </div>
