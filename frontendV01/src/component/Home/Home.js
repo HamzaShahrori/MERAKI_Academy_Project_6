@@ -125,9 +125,10 @@ const Home = () => {
                             </video>
                             {/* <img src="./image/play.png" className="btnClose" /> */}
 
-                            </video> */}
+                            {/* </video> */} 
                             
-
+                           
+                          
                           </div>
                         </div>
                       </div>
